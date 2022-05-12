@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/12 17:40:56 by fboumell         ###   ########.fr       */
+/*   Created: 2022/05/12 17:39:58 by fboumell          #+#    #+#             */
+/*   Updated: 2022/05/12 17:40:37 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-# include <stdio.h>
-# include <stdlib.h>
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
 
-	/* returns */
-# define SUCCESS 0
-# define FAILURE -1
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	return (s1[i] - s2[i]);
+}
 
-	/* utils.c */
-int	ft_strcmp(char *s1, char *s2);
-int	parse(char *av);
+int	parse(char *av)
+{
+	int	i;
 
-	/* main.c */
-int	check_format_map(char *av);
-int	main(int ac, char **av);
-
-#endif
+	i = 0;
+	while (av[i])
+	{
+		if (av[i] == '.')
+			return (SUCCESS);
+		i++;
+	}
+	return (FAILURE);
+}
