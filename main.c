@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/13 13:27:02 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:22:43 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@ void	check_file(char *av)
 		printf("Error\nThis is not a file\n");
 		exit(0);
 	}
-	else if (fd < 0)
+	else
 	{
-		close(fd);
 		printf("Error\nExtension file missing\n");
 		exit(0);
 	}
@@ -77,6 +76,10 @@ void	check_arguments(int ac, char *av)
 
 int	main(int ac, char **av)
 {
+	t_data	data;
+
 	check_arguments(ac, av[1]);
+	init_window(&data);
+	loop(data);
 	return (SUCCESS);
 }
