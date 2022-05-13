@@ -6,13 +6,14 @@
 #    By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 16:11:35 by fboumell          #+#    #+#              #
-#    Updated: 2022/05/12 16:17:32 by fboumell         ###   ########.fr        #
+#    Updated: 2022/05/13 11:08:03 by fboumell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
 SRCS	= main.c \
+		utils.c \
 
 OBJS = ${SRCS:.c=.o}
 
