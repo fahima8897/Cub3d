@@ -1,50 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 17:39:58 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/14 17:02:00 by adaloui          ###   ########.fr       */
+/*   Created: 2021/05/24 12:56:13 by adaloui           #+#    #+#             */
+/*   Updated: 2022/02/18 09:37:10 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-/*int	ft_strcmp(char *s1, char *s2)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	i;
+	int				i;
+	char			*str;
 
 	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+	if (!s)
+		return (NULL);
+	while (s[i] != '\0')
 		i++;
-	return (s1[i] - s2[i]);
-}*/
-
-void ft_free_tab(char **str)
-{
-	int i;
-
+	str = (char *)malloc(sizeof(char) * (i + 1));
+	if (str == NULL)
+		return (NULL);
 	i = 0;
-	while (str[i])
+	while (s[i] != '\0')
 	{
-		free(str[i]);
+		str[i] = f(i, s[i]);
 		i++;
 	}
-	free(str);
-}
-
-int	parse(char *av)
-{
-	int	i;
-
-	i = 0;
-	while (av[i])
-	{
-		if (av[i] == '.')
-			return (SUCCESS);
-		i++;
-	}
-	return (FAILURE);
+	str[i] = '\0';
+	return (str);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/13 15:22:43 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:40:34 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,41 +17,48 @@ int	check_extension(char *av)
 	int		i;
 	char	*format;
 
-	i = 0;
-	format = "cub";
+	i = -1;
+	format = "cub"; // corriger le cas maps/.ber
 	if (av[0] == '.')
-		return (-1);
-	if (parse(av) == -1)
+		return (FAILURE);
+	if (parse(av) == FAILURE)
 		return (1);
-	while (av[i])
+	while (av[++i])
 	{
 		if (av[i] == '.')
 		{
 			i++;
 			if (ft_strcmp((av + i), format) != 0)
-				return (-1);
+				return (FAILURE);
 		}
-		i++;
 	}
-	return (0);
+	return (SUCCESS);
 }
 
-void	check_file(char *av)
+int check_directory(char *av)
 {
-	int	fd;
+	int fd;
 
 	fd = open(av, O_DIRECTORY);
 	if (fd > 0)
 	{
 		close(fd);
-		printf("Error\nThis is not a file\n");
-		exit(0);
+		return (FAILURE);
 	}
-	else
+	return (SUCCESS);
+}
+
+int check_file_existence(char *av)
+{
+	int fd;
+
+	fd = open(av, O_RDONLY);
+	if (fd < 0)
 	{
-		printf("Error\nExtension file missing\n");
-		exit(0);
+		close(fd);
+		return (FAILURE);
 	}
+	return (SUCCESS);
 }
 
 void	check_arguments(int ac, char *av)
@@ -60,18 +67,18 @@ void	check_arguments(int ac, char *av)
 
 	ret = 0;
 	if (ac != 2)
-	{
-		printf("Error\nWrong number of arguments\n");
-		exit(0);
-	}
+		write_errors("Error.\nWrong number of arguments.");
+	ret = check_directory(av);
+	if (ret == FAILURE)
+		write_errors("Error.\nYou are trying to open a directory.");
+	ret = check_file_existence(av);
+	if (ret == FAILURE)
+		write_errors("Error.\nThe file you are trying to open does not exist.");
 	ret = check_extension(av);
-	if (ret == -1)
-	{
-		printf("Error\nExtension map invalid\n");
-		exit(0);
-	}
+	if (ret == FAILURE)
+		write_errors("Error.\nExtension map invalid.");
 	if (ret == 1)
-		check_file(av);
+		write_errors("Error.\nExtension file missing.");
 }
 
 int	main(int ac, char **av)
@@ -79,6 +86,7 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	check_arguments(ac, av[1]);
+	check_opt_argv_map(av[1]);
 	init_window(&data);
 	loop(data);
 	return (SUCCESS);

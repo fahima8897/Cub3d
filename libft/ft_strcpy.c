@@ -1,50 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 17:39:58 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/14 17:02:00 by adaloui          ###   ########.fr       */
+/*   Created: 2022/05/14 18:18:01 by adaloui           #+#    #+#             */
+/*   Updated: 2022/05/14 18:18:16 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-/*int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
-}*/
-
-void ft_free_tab(char **str)
+char *ft_strcpy(char *dest, char *src)
 {
 	int i;
 
 	i = 0;
-	while (str[i])
+	while (src[i] != '\0')
 	{
-		free(str[i]);
+		dest[i] = src[i];
 		i++;
 	}
-	free(str);
-}
-
-int	parse(char *av)
-{
-	int	i;
-
-	i = 0;
-	while (av[i])
-	{
-		if (av[i] == '.')
-			return (SUCCESS);
-		i++;
-	}
-	return (FAILURE);
+	dest[i] = '\0';
+	return (dest);
 }
