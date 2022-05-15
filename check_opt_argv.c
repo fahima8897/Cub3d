@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:14:49 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/15 09:51:27 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/15 10:19:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void check_opt_argv_map(char *argv)
 		printf("%s", map[i]);
 		i++;
 	}
+	close(fd);
 	ft_free_tab(map);
 }
