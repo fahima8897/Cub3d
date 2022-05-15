@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 07:48:10 by user42            #+#    #+#             */
-/*   Updated: 2022/05/15 15:02:38 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/15 15:46:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ int ft_return_size_of_file(char *argv)
 			free(buffer);
 			return (i);
 		}
-		//i++;
 	}
 	i++;
 	free(buffer);
-	printf("i == %d\n", i);
 	close(fd);
 	return (i);
 }
