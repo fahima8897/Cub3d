@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 07:48:10 by user42            #+#    #+#             */
-/*   Updated: 2022/05/15 10:14:21 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/15 15:02:38 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,19 @@ int ft_return_size_of_file(char *argv)
 		return (i);
 	while (j != 0)
 	{
-		j = read(fd, buffer, BUFFER_SIZE);
+		j = read(fd, buffer, 1);
+		if (buffer[0] == '\n')
+			i++;
 		if (j == -1)
 		{
 			free(buffer);
 			return (i);
 		}
-		i++;
+		//i++;
 	}
+	i++;
 	free(buffer);
+	printf("i == %d\n", i);
 	close(fd);
 	return (i);
 }
@@ -50,7 +54,7 @@ char *ft_buffer_init(char *buffer)
 
 char **ft_ret_init(char **ret, int i)
 {
-	ret = ft_calloc(sizeof(char *), i + 8);
+	ret = ft_calloc(sizeof(char *), i + 1);
 	if (ret == NULL)
 		return (NULL);
 	return (ret);
@@ -62,10 +66,10 @@ char **ft_fill_tab(char **tab, int fd, char *buffer)
 	int i;
 
 	j = 1;
-	i = 0;
+	i = 0;	
 	while (j != 0)
 	{
-		j = read(fd, buffer, BUFFER_SIZE);
+		j = read(fd, buffer, 34);
 		if (j == -1)
 		{
 			free(buffer);
@@ -76,6 +80,7 @@ char **ft_fill_tab(char **tab, int fd, char *buffer)
 		i++;
 	}
 	free(buffer);
+	printf("i == %d\n", i );
 	return (tab);
 }
 

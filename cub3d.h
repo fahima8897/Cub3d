@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/15 08:35:20 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/15 11:16:37 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ typedef struct s_data
 	int		win_width;
 }	t_data;
 
+typedef struct s_verif
+{
+	long long no;
+	long long so;
+	long long we;
+	long long ea;
+	long long f;
+	long long c;
+}				t_verif;
+
 	/* returns */
 # define SUCCESS 0
 # define FAILURE -1
@@ -55,7 +65,7 @@ int		init_window(t_data *data);
 void	write_errors(char *error_str);
 
 	/*check_opt_argv.c*/
-void	check_opt_argv_map(char *argv);
+int		check_opt_argv_map(char *argv);
 
 	/* main.c */
 int		check_extension(char *av);
@@ -63,6 +73,11 @@ void	check_arguments(int ac, char *av);
 int		main(int ac, char **av);
 
 	/*new_gnl.c*/
-char **new_gnl(int fd, char *argv);
+char	**new_gnl(int fd, char *argv);
+char	**ft_fill_tab(char **tab, int fd, char *buffer);
+char	**ft_ret_init(char **ret, int i);
+int		ft_return_size_of_file(char *argv);
+char	*ft_buffer_init(char *buffer);
+char	**ft_ret_init(char **ret, int i);
 
 #endif

@@ -6,23 +6,25 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 11:25:45 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/15 07:59:53 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/15 14:26:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/*int	ft_strlen_2( char *s)
+int ft_strlen_2(const char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	while (s[i] != '\0')
+	if (!str)
+		return (i);
+	while (str[i])
 		i++;
 	return (i);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup_2(const char *s)
 {
 	char	*cpy;
 	int		len;
@@ -69,7 +71,7 @@ void	*ft_memmove_2(char *save, char *buf, int n)
 	return (save);
 }
 
-char	*ft_strjoin(char *save, char *buf)
+char	*ft_strjoin_2(char *save, char *buf)
 {
 	char	*cpy;
 	int		len;
@@ -87,7 +89,7 @@ char	*ft_strjoin(char *save, char *buf)
 	return (cpy);
 }
 
-char	*ft_strchr(char *save, int c)
+char	*ft_strchr_2(char *save, int c)
 {
 	while (*save != '\0' && *save != (char)c)
 		save++;
@@ -96,10 +98,10 @@ char	*ft_strchr(char *save, int c)
 	else if (*save == '\0')
 		return (save);
 	return (NULL);
-}*/
+}
 
 /*		mon get next line utils */
-
+/*
 char	*ft_strjoin_2( char *s1,  char *s2)
 {
 	char	*str;
@@ -168,3 +170,4 @@ int	ft_strchr_2(char *s)
 	}
 	return (0);
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/15 10:15:57 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/15 10:56:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	check_arguments(ac, av[1]);
-	check_opt_argv_map(av[1]);
+	if (check_opt_argv_map(av[1]) == FAILURE)
+		return (FAILURE);
 	init_window(&data);
 	loop(data);
 	return (SUCCESS);
