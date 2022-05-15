@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/14 17:03:29 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/15 08:35:20 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
+# include "libft/libft.h"
 
 # ifndef O_DIRECTORY
 #  define O_DIRECTORY 00200000
@@ -55,11 +56,13 @@ void	write_errors(char *error_str);
 
 	/*check_opt_argv.c*/
 void	check_opt_argv_map(char *argv);
-char	**ft_split(char *str, char c);
 
 	/* main.c */
 int		check_extension(char *av);
 void	check_arguments(int ac, char *av);
 int		main(int ac, char **av);
+
+	/*new_gnl.c*/
+char **new_gnl(int fd, char *argv);
 
 #endif

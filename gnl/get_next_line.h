@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 11:26:46 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/14 18:43:54 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/15 08:00:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
-int		ft_strlen(const char *s);
-char	*ft_strdup(const char *s);
+int		ft_strlen(char *s);
+char	*ft_strdup(char *s);
 void	*ft_memmove(char *save, char *buf, int n);
 char	*ft_strjoin(char *save, char *buf);
 char	*ft_strchr(char *save, int c);
@@ -43,15 +43,11 @@ char	*ft_strchr(char *save, int c);
 # define BUFFER_SIZE 1
 
 int		get_next_line(int fd, char **line);
-void	*ft_memmove(void *dst, const void *src, size_t len);
-size_t	ft_strlen(const char *s);
-char	*ft_strjoin(const char *s1, const char *s2);
-int		ft_strchr(char *s);
+void	*ft_memmove_2(void *dst, void *src, int len);
+int     ft_strlen_2(char *s);
+char	*ft_strjoin_2(char *s1, char *s2);
+int		ft_strchr_2(char *s);
 char	*ft_get_line(char *str);
 char	*ft_get_char(char *str);
-size_t	ft_strlen(const char *str);
-char	*ft_strdup(char *src);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-void	*ft_memset(void *b, int c, size_t len);
 
 #endif

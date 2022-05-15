@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+         #
+#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 16:11:35 by fboumell          #+#    #+#              #
-#    Updated: 2022/05/14 18:52:40 by adaloui          ###   ########.fr        #
+#    Updated: 2022/05/15 09:14:27 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRCS	= main.c \
 		window.c \
 		write_error.c \
 		check_opt_argv.c \
-		libft/ft_strcmp.c libft/ft_split.c \
+		new_gnl.c \
+		libft/*.c \
 		gnl/*.c \
 
 OBJS = ${SRCS:.c=.o}

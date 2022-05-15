@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 11:23:36 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/14 18:58:23 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/15 09:00:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char	*get_next_line(int fd)
 	{
 		ret = read(fd, buf, BUFFER_SIZE);
 		buf[ret] = '\0';
-		save = ft_strjoin(save, buf);
+		save = ft_strjoin_2(save, buf);
 	}
 	line = ft_get_line(save);
 	tmp = ft_after_n(save);
@@ -200,7 +200,7 @@ int	get_next_line(int fd, char **line)
 	buf = NULL;
 	ft_read(fd, line);
 	buf = ft_malloc(buf);
-	while (!ft_strchr(str) && i != 0)
+	while (/*!ft_strchr_2(str) &&*/ i != 0)
 	{
 		i = read(fd, buf, BUFFER_SIZE);
 		if (i == -1)
@@ -209,11 +209,11 @@ int	get_next_line(int fd, char **line)
 			return (-1);
 		}
 		buf[i] = '\0';
-		str = ft_strjoin(str, buf);
+		str = ft_strjoin_2(str, buf);
 	}
 	free(buf);
 	*line = ft_get_line(str);
-	str = ft_get_char(str);
+//	str = ft_get_char(str);
 	if (i == 0)
 	{
 		free(*line);
