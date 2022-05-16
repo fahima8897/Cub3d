@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   check_opt_argv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:14:49 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/15 16:43:46 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/16 11:38:58 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_verif ft_verif_init(void)
+t_verif	ft_verif_init(void)
 {
-	t_verif check;
+	t_verif	check;
 
 	check.c = 0;
 	check.f = 0;
@@ -25,11 +25,11 @@ t_verif ft_verif_init(void)
 	return (check);
 }
 
-int ft_check_map_content(char **map)
+int	ft_check_map_content(char **map)
 {
-	int i;
-	int j;
-	t_verif check;
+	int		i;
+	int		j;
+	t_verif	check;
 
 	i = 0;
 	j = 0;
@@ -39,19 +39,23 @@ int ft_check_map_content(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			while(map[i][j] == ' ' || map[i][j] == '\t')
+			while (map[i][j] == ' ' || map[i][j] == '\t')
 				j++;
 			if (map[i][j] == 'C' && map[i][j + 1] == ' ')
 				check.c = 1;
 			if (map[i][j] == 'F' && map[i][j + 1] == ' ')
 				check.f = 1;
-			if (map[i][j] == 'N' && map[i][j + 1] == 'O' && map[i][j + 2] == ' ')
+			if (map[i][j] == 'N' && map[i][j + 1] == 'O'
+				&& map[i][j + 2] == ' ')
 				check.no = 1;
-			if (map[i][j] == 'S' && map[i][j + 1] == 'O' && map[i][j + 2] == ' ')
+			if (map[i][j] == 'S' && map[i][j + 1] == 'O'
+				&& map[i][j + 2] == ' ')
 				check.so = 1;
-			if (map[i][j] == 'E' && map[i][j + 1] == 'A' && map[i][j + 2] == ' ')
+			if (map[i][j] == 'E' && map[i][j + 1] == 'A'
+				&& map[i][j + 2] == ' ')
 				check.ea = 1;
-			if (map[i][j] == 'W' && map[i][j + 1] == 'E' && map[i][j + 2] == ' ')
+			if (map[i][j] == 'W' && map[i][j + 1] == 'E'
+				&& map[i][j + 2] == ' ')
 				check.we = 1;
 			j++;
 		}
@@ -84,13 +88,14 @@ int ft_check_map_content(char **map)
 	return (SUCCESS);
 }
 
-int check_opt_argv_map(char *argv)
+int	check_opt_argv_map(char *argv)
 {
-	char **map = NULL;
-	int fd;
-	int i;
-	int j;;
-	
+	char	**map;
+	int		fd;
+	int		i;
+	int		j;
+
+	map = NULL;
 	fd = open (argv, O_RDONLY);
 	i = ft_return_size_of_file(argv);
 	j = 0;

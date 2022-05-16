@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/15 11:16:37 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/16 11:40:09 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef struct s_verif
 # define FAILURE -1
 
 	/* utils.c */
-int		ft_strcmp(char *s1, char *s2);
 int		parse(char *av);
 void	ft_free_tab(char **str);
 
@@ -65,10 +64,14 @@ int		init_window(t_data *data);
 void	write_errors(char *error_str);
 
 	/*check_opt_argv.c*/
+t_verif	ft_verif_init(void);
+int		ft_check_map_content(char **map);
 int		check_opt_argv_map(char *argv);
 
 	/* main.c */
 int		check_extension(char *av);
+int		check_directory(char *av);
+int		check_file_existence(char *av);
 void	check_arguments(int ac, char *av);
 int		main(int ac, char **av);
 

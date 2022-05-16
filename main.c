@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/15 10:56:12 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/16 11:34:22 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	check_extension(char *av)
 	return (SUCCESS);
 }
 
-int check_directory(char *av)
+int	check_directory(char *av)
 {
-	int fd;
+	int	fd;
 
 	fd = open(av, O_DIRECTORY);
 	if (fd > 0)
@@ -48,9 +48,9 @@ int check_directory(char *av)
 	return (SUCCESS);
 }
 
-int check_file_existence(char *av)
+int	check_file_existence(char *av)
 {
-	int fd;
+	int	fd;
 
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
