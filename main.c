@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/16 11:34:22 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:13:46 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int	check_extension(char *av)
 	int		i;
 	char	*format;
 
-	i = -1;
-	format = "cub"; // corriger le cas maps/.ber
-	if (av[0] == '.')
+	i = 0;
+	format = "cub";
+	if (av[5] == '.' || av[0] == '.')
 		return (FAILURE);
 	if (parse(av) == FAILURE)
 		return (1);
-	while (av[++i])
+	while (av[i])
 	{
 		if (av[i] == '.')
 		{
@@ -31,6 +31,7 @@ int	check_extension(char *av)
 			if (ft_strcmp((av + i), format) != 0)
 				return (FAILURE);
 		}
+		i++;
 	}
 	return (SUCCESS);
 }
@@ -87,8 +88,9 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	check_arguments(ac, av[1]);
-	if (check_opt_argv_map(av[1]) == FAILURE)
-		return (FAILURE);
+	// if (check_opt_argv_map(av[1]) == FAILURE)
+	// 	return (FAILURE);
+	ft_create_map(av[1]);
 	init_window(&data);
 	loop(data);
 	return (SUCCESS);
