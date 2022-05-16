@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/16 16:13:46 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:38:37 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,8 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	check_arguments(ac, av[1]);
-	// if (check_opt_argv_map(av[1]) == FAILURE)
-	// 	return (FAILURE);
-	ft_create_map(av[1]);
+	if (check_opt_argv_map(av[1]) == FAILURE)
+	 	return (FAILURE);
 	init_window(&data);
 	loop(data);
 	return (SUCCESS);

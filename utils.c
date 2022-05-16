@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:39:58 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/16 11:35:52 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:35:55 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,10 @@ int	parse(char *av)
 		i++;
 	}
 	return (FAILURE);
+}
+
+void ft_free_struct(t_map *map)
+{
+	ft_free_tab(map->map);
+	free(map);
 }
