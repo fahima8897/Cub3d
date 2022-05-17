@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+         #
+#    By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 16:11:35 by fboumell          #+#    #+#              #
-#    Updated: 2022/05/17 18:02:26 by fboumell         ###   ########.fr        #
+#    Updated: 2022/05/17 19:13:05 by adaloui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS	= main.c \
 		libft/*.c \
 		gnl/*.c \
 		init.c \
-		free.c
+		free.c \
+		check_line_content.c \
 
 OBJS = ${SRCS:.c=.o}
 

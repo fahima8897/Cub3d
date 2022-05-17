@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/17 18:24:57 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/17 19:51:31 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ t_verif	verif_init(void);
 int		check_map_content(t_map *map);
 int		check_compo_map(char **map);
 int		check_opt_argv_map(char *argv, t_data *data);
+t_verif	verif_init(void);
+int		check_line_content(t_map *map);
+
 //void	ft_create_map(char *av);
 
 	/* main.c */

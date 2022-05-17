@@ -3,48 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_opt_argv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:14:49 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/17 18:24:40 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/17 21:32:13 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/*int	check_compo_map(char **map)
-{
-	int		i;
-	int		j;
-	t_verif	check;
-
-	i = 0;
-	// printf("check = %lld\n", check.c);
-	while (map[i])
-	{
-		j = 0;
-		// printf("%s", map[i]);
-		while (map[i][j])
-		{
-			if (check.c == 1 && check.c == 1 && check.f == 1 && check.no == 1
-				&& check.so == 1 && check.we == 1)
-			{
-				// printf("check = %lld\n", check.c);
-				i++;
-			}
-			if (map[i][j] != ' ' && map[i][j] != '0' && map[i][j] != '1'
-				&& map[i][j] != 'N' && map[i][j] != 'S' && map[i][j] != 'E'
-				&& map[i][j] != 'W')
-			{
-				write_errors("Errors\nAt least one of the component is wrong");
-				return (FAILURE);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (SUCCESS);
-}*/
 
 t_verif	verif_init(void)
 {
@@ -69,8 +35,6 @@ int	check_verif(t_verif tab)
 		return (FAILURE);
 	return (SUCCESS);
 }
-
-/*JE VAIS CHANGER LA FORET DE IF, JE PENSE A UTILISER DES POINTEURS SUR FONCTIONS */
 
 t_verif check_split_content(char *str, char *file, t_verif check)
 {
@@ -113,7 +77,7 @@ t_verif check_split_content(char *str, char *file, t_verif check)
 	return (check);
 }
 
-char	*ft_strdup_no_n(const char *s1)
+/*char	*ft_strdup_no_n(const char *s1)
 {
 	char	*str;
 	int		i;
@@ -130,14 +94,9 @@ char	*ft_strdup_no_n(const char *s1)
 	}
 	str[i] = '\0';
 	return (str);
-}
+}*/
 
-/* FONCTION QUI SPLIT NOTRE LIGNE PAR ESPACE ET QUI CHECK LA PRESENCE DE NO SO WE EA F ET C*/
-/* POUR LE MOMENT, ELLE RENVOIT QUE SUCCESS */
-/* PAS TERMINER, IL FAUT ETENDRE LES CAS DE FIGURES TRAITES ET FAIRE UNE FONCTION PLUS GENERALE*/
-/* SINON LE PROGRAMME SAUTERA TROP FACILEMENT */
-
-int		check_map_content(t_map *map)
+/*int		check_map_content(t_map *map)
 {
 	int		i;
 	int		j;
@@ -166,11 +125,6 @@ int		check_map_content(t_map *map)
 		printf("map : [%s]\n", map->map[i]);
 		i++;
 	}
-/* IL FAUT QUE JE PENSE A UNE REELLE ARCHITECTURE D ERREURS*/
-/* IL FAUT QUE CETTE FONCTION (OU PLUSIEURS) CHECK S'IL Y'A BIEN NO SO WE EA */
-/* PUIS TENTE D'OPEN LE FICHIER QUI EST A COTE */
-/* PAREIL POUR F ET C MAIS AVEC LES DONNEES DE COULEURS */
-
 	printf ("2 check.c == %lld\n", check.c);
 	printf ("2 check.f == %lld\n", check.f);
 	printf ("2 check.ea == %lld\n", check.ea);
@@ -180,17 +134,20 @@ int		check_map_content(t_map *map)
 	if (check_verif(check) == FAILURE)
 		return (return_failure("Error.\nProblem with textures.\n"));
 	return (SUCCESS);
-}
+}*/
 
-/* CA LEAKS PLUS ET CA RENVOIT BIEN LA MAP SANS AUCUN SOUCIS */
-/* Si il y'a un probleme avec les textures == FAILURE*/
 int	check_opt_argv_map(char *argv, t_data *data)
 {
 	data->map = create_map(argv, data);
-	if (check_map_content(data->map) == FAILURE)
+	if (check_line_content(data->map) == FAILURE)
 	{
 		free_struct(data->map);
 		return (FAILURE);
 	}
+/*	if (check_map_content(data->map) == FAILURE)
+	{
+		free_struct(data->map);
+		return (FAILURE);
+	}*/
 	return (SUCCESS);
 }
