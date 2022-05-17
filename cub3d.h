@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/17 16:18:51 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/17 18:24:57 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef struct s_verif
 
 	/* utils.c */
 int		parse(char *av);
+
+	/* free.c */
 void	free_tab(char **str);
 void	free_struct(t_map *map);
 void	free_data(t_data *data);

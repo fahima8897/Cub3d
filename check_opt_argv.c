@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_opt_argv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:14:49 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/17 17:24:50 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/17 18:24:40 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,13 +147,12 @@ int		check_map_content(t_map *map)
 
 	check = verif_init();
 	i = 0;
-	while (map->map[i] && i < 5)
+	while (map->map[i] && i < 20)
 	{
-		split_byspace = ft_split(map->map[i], ' ');
-		j = 0;
-		printf("split == [%c]", split_byspace[j][1]);
-		if (split_byspace[j][0] == '\n')
+		if (map->map[i][0] != '\n')
 		{
+			split_byspace = ft_split(map->map[i], ' ');
+			j = 0;
 			while (split_byspace[j])
 			{
 				tmp = ft_strdup_no_n(split_byspace[1]);
@@ -162,8 +161,9 @@ int		check_map_content(t_map *map)
 				free(tmp);
 				j++;
 			}
+			free(split_byspace);
 		}
-		free(split_byspace);
+		printf("map : [%s]\n", map->map[i]);
 		i++;
 	}
 /* IL FAUT QUE JE PENSE A UNE REELLE ARCHITECTURE D ERREURS*/
@@ -178,7 +178,7 @@ int		check_map_content(t_map *map)
 	printf ("2 check.so == %lld\n", check.so);
 	printf ("2 check.we == %lld\n", check.we);
 	if (check_verif(check) == FAILURE)
-		return (return_failure("Error.\nProblem with textures."));
+		return (return_failure("Error.\nProblem with textures.\n"));
 	return (SUCCESS);
 }
 
