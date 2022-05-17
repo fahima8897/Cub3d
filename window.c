@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/17 11:43:53 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:20:03 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	loop(t_data data)
-{
-	mlx_hook(data.mlx_win, 2, 1L << 0, &close_escape, &data);
-	mlx_hook(data.mlx_win, 17, 0L, &close_redx, &data);
-	mlx_loop(data.mlx);
-}
 
 // penser a destroy image ou texture et a free le double tableau de la map
 int	close_escape(int keycode, t_data *data)
@@ -31,6 +24,7 @@ int	close_escape(int keycode, t_data *data)
 			data->mlx_win = NULL;
 		}
 		free(data->mlx);
+		free_data(data);
 		exit(0);
 	}
 	return (SUCCESS);
@@ -46,6 +40,7 @@ int	close_redx(t_data *data)
 		data->mlx_win = NULL;
 	}
 	free(data->mlx);
+	free_data(data);
 	exit(0);
 }
 
@@ -56,7 +51,6 @@ int	init_window(t_data *data)
 {
 	data->win_width = 640;
 	data->win_height = 800;
-
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		return (FAILURE);
@@ -65,7 +59,22 @@ int	init_window(t_data *data)
 	if (data->mlx_win == NULL)
 	{
 		free(data->mlx_win);
+		free(data);
 		return (FAILURE);
 	}
 	return (SUCCESS);
+}
+
+void	loop(t_data *data)
+{
+	// mlx_destroy_window(data.mlx, data.mlx_win);
+	// mlx_destroy_display(data.mlx);
+	// 		data.mlx_win = NULL;
+	// 	free(data.mlx);
+	// 	free_data(&data);
+	//	free(*data);
+	//	exit(0);
+	mlx_hook(data->mlx_win, 2, 1L << 0, &close_escape, data);
+	mlx_hook(data->mlx_win, 17, 0L, &close_redx, data);
+	mlx_loop(data->mlx);
 }

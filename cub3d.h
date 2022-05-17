@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/17 11:59:14 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:18:51 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,10 @@ typedef struct s_verif
 int		parse(char *av);
 void	free_tab(char **str);
 void	free_struct(t_map *map);
+void	free_data(t_data *data);
 
 	/* window.c */
-void	loop(t_data data);
+void	loop(t_data *data);
 int		close_escape(int keycode, t_data *data);
 int		close_redx(t_data *data);
 int		init_window(t_data *data);
@@ -95,8 +96,11 @@ char	*ft_buffer_init(char *buffer);
 char	**ft_ret_init(char **ret, int i);
 
 	/* get_map_content.c */
-t_map	*create_map(char *av);
+t_map	*create_map(char *av, t_data *data);
 void	fill_map(int row, int column, int i, t_map *map);
 int		count_line(char *s);
+
+	/* init.c */
+void	init_data(t_data *data);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_content.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:39:37 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/17 12:05:29 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/17 15:02:00 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	fill_map(int row, int column, int i, t_map *map)
 	map->map[row] = NULL;
 }
 
-t_data	*create_map(char *av, t_data *data)
+t_map	*create_map(char *av, t_data *data)
 {
 	int		row;
 	int		i;
@@ -71,23 +71,21 @@ t_data	*create_map(char *av, t_data *data)
 	row = 0;
 	i = 0;
 	column = 0;
-	// map = malloc(sizeof(t_map) * 1);
-//    if (map == NULL)
-  //      return (NULL);
+	data->map->count_line = 0;
 	data->map->count_line = count_line(av);
-	data->->data-> = ft_calloc(map->count_line + 1, sizeof(char *));
-	if (!(map->map))
+	data->map->map = ft_calloc(data->map->count_line + 1, sizeof(char *));
+	if (!(data->map->map))
 		return (NULL);
-	map->fd = open(av, O_RDONLY);
-	if (map->fd < 0)
+	data->map->fd = open(av, O_RDONLY);
+	if (data->map->fd < 0)
     {
 		printf("Error\nOpen failed\n");
         return (NULL);
     }
 	else
 	{
-		fill_map(row, column, i, map);
-		close(map->fd);
+		fill_map(row, column, i, data->map);
+		close(data->map->fd);
 	}
-    return (map);
+    return (data->map);
 }

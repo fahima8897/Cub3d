@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_opt_argv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:14:49 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/17 11:50:23 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:20:51 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,18 +93,26 @@ t_verif check_split_content(char *str, t_verif check)
 /* POUR LE MOMENT, ELLE RENVOIT QUE SUCCESS */
 /* PAS TERMINER, IL FAUT ETENDRE LES CAS DE FIGURES TRAITES ET FAIRE UNE FONCTION PLUS GENERALE*/
 /* SINON LE PROGRAMME SAUTERA TROP FACILEMENT */
+
 int		check_map_content(t_map *map)
 {
 	int		i;
 	int		j;
 	char	**split_byspace;
-	t_verif check;
+	t_verif	check;
 
 	check = verif_init();
 	i = 0;
 	while (map->map[i])
 	{
 		split_byspace = ft_split(map->map[i], ' ');
+		int h = 0;
+		while (split_byspace[h])
+		{
+			printf("%s", split_byspace[h]);
+			h++;
+		}
+		
 		j = 0;
 		while (split_byspace[j])
 		{
@@ -133,16 +141,13 @@ int		check_map_content(t_map *map)
 
 /* CA LEAKS PLUS ET CA RENVOIT BIEN LA MAP SANS AUCUN SOUCIS */
 /* Si il y'a un probleme avec les textures == FAILURE*/
-int	check_opt_argv_map(char *argv)
+int	check_opt_argv_map(char *argv, t_data *data)
 {
-	t_map	*map;
-
-	map = create_map(argv);
-	if (check_map_content(map) == FAILURE)
+	data->map = create_map(argv, data);
+	if (check_map_content(data->map) == FAILURE)
 	{
-		free_struct(map);
+		free_struct(data->map);
 		return (FAILURE);
 	}
-	free_struct(map);
 	return (SUCCESS);
 }

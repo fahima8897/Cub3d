@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/17 11:57:52 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:20:24 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,21 @@ void	check_arguments(int ac, char *av)
 
 int	main(int ac, char **av)
 {
-	t_data	data;
+	t_data	*data;
 
-	check_arguments(ac, av[1]);
-	if (check_opt_argv_map(av[1], &data) == FAILURE)
+	data = malloc(sizeof(t_data));
+	if (!data)
 		return (FAILURE);
-	init_window(&data);
+	check_arguments(ac, av[1]);
+	init_data(data);
+	if (check_opt_argv_map(av[1], data) == FAILURE)
+	{
+		free(data);
+		return (FAILURE);
+	}
+	init_window(data);
 	loop(data);
+	if (data)
+		free_data(data);
 	return (SUCCESS);
 }
