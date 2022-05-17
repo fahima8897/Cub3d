@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/17 11:49:30 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/17 11:59:14 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,21 @@
 #  define O_DIRECTORY 00200000
 # endif
 
-typedef struct s_data
-{
-	void	*mlx;
-	void	*mlx_win;
-	int		win_height;
-	int		win_width;
-}	t_data;
-
 typedef struct s_map
 {
 	char	**map;
 	int		fd;
 	int		count_line;
 }	t_map;
+
+typedef struct s_data
+{
+	void	*mlx;
+	void	*mlx_win;
+	int		win_height;
+	int		win_width;
+	t_map	*map;
+}	t_data;
 
 typedef struct s_verif
 {
@@ -72,10 +73,10 @@ void	write_errors(char *error_str);
 int		return_failure(char *error_str);
 
 	/* check_opt_argv.c */
-t_verif	ft_verif_init(void);
-int		ft_check_map_content(t_map *map);
+t_verif	verif_init(void);
+int		check_map_content(t_map *map);
 int		check_compo_map(char **map);
-int		check_opt_argv_map(char *argv);
+int		check_opt_argv_map(char *argv, t_data *data);
 //void	ft_create_map(char *av);
 
 	/* main.c */

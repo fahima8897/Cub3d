@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:39:37 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/17 11:51:29 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/17 12:05:29 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,20 @@ void	fill_map(int row, int column, int i, t_map *map)
 	map->map[row] = NULL;
 }
 
-t_map	*create_map(char *av)
+t_data	*create_map(char *av, t_data *data)
 {
-	t_map	*map;
-	int	row;
-	int	i;
-	int	column;
+	int		row;
+	int		i;
+	int		column;
 
 	row = 0;
 	i = 0;
 	column = 0;
-	map = malloc(sizeof(t_map) * 1);
+	// map = malloc(sizeof(t_map) * 1);
 //    if (map == NULL)
   //      return (NULL);
-	map->count_line = count_line(av);
-	map->map = ft_calloc(map->count_line+ 1, sizeof(char *));
+	data->map->count_line = count_line(av);
+	data->->data-> = ft_calloc(map->count_line + 1, sizeof(char *));
 	if (!(map->map))
 		return (NULL);
 	map->fd = open(av, O_RDONLY);
