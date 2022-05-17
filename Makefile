@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+         #
+#    By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 16:11:35 by fboumell          #+#    #+#              #
-#    Updated: 2022/05/16 16:45:14 by adaloui          ###   ########.fr        #
+#    Updated: 2022/05/17 11:51:02 by fboumell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS	= main.c \
 		window.c \
 		write_error.c \
 		check_opt_argv.c \
-		ft_get_map_content.c \
+		get_map_content.c \
 		new_gnl.c \
 		libft/*.c \
 		gnl/*.c \

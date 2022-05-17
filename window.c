@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/13 15:34:46 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/17 11:43:53 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int	close_redx(t_data *data)
 	exit(0);
 }
 
+/*initialisation de width et height juste pour tester
+A initialiser comme il faut quand dans une fonction 
+	et quand on aura la taille de la map*/
 int	init_window(t_data *data)
 {
-	/*initialisation de width et height juste pour tester
-	A initialiser comme il faut quand dans une fonction 
-	 et quand on aura la taille de la map*/
 	data->win_width = 640;
 	data->win_height = 800;
 

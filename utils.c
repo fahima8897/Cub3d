@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:39:58 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/16 16:35:55 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/17 11:49:44 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_free_tab(char **str)
+void	free_tab(char **str)
 {
 	int	i;
 
@@ -39,8 +39,8 @@ int	parse(char *av)
 	return (FAILURE);
 }
 
-void ft_free_struct(t_map *map)
+void	free_struct(t_map *map)
 {
-	ft_free_tab(map->map);
+	free_tab(map->map);
 	free(map);
 }

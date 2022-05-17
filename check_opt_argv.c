@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_opt_argv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:14:49 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/16 19:56:44 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/17 11:50:23 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 	return (SUCCESS);
 }*/
 
-t_verif	ft_verif_init(void)
+t_verif	verif_init(void)
 {
 	t_verif	check;
 
@@ -59,7 +59,7 @@ t_verif	ft_verif_init(void)
 	return (check);
 }
 
-int ft_check_verif(t_verif tab)
+int	check_verif(t_verif tab)
 {
 	if (tab.c != 1 || tab.f != 1)
 		return (FAILURE);
@@ -72,7 +72,7 @@ int ft_check_verif(t_verif tab)
 
 /*JE VAIS CHANGER LA FORET DE IF, JE PENSE A UTILISER DES POINTEURS SUR FONCTIONS */
 
-t_verif ft_check_split_content(char *str, t_verif check)
+t_verif check_split_content(char *str, t_verif check)
 {
 	if (str[0] == 'C' && str[1] == '\0')
 		check.c++;
@@ -93,14 +93,14 @@ t_verif ft_check_split_content(char *str, t_verif check)
 /* POUR LE MOMENT, ELLE RENVOIT QUE SUCCESS */
 /* PAS TERMINER, IL FAUT ETENDRE LES CAS DE FIGURES TRAITES ET FAIRE UNE FONCTION PLUS GENERALE*/
 /* SINON LE PROGRAMME SAUTERA TROP FACILEMENT */
-int		ft_check_map_content(t_map *map)
+int		check_map_content(t_map *map)
 {
 	int		i;
 	int		j;
 	char	**split_byspace;
 	t_verif check;
 
-	check = ft_verif_init();
+	check = verif_init();
 	i = 0;
 	while (map->map[i])
 	{
@@ -108,7 +108,7 @@ int		ft_check_map_content(t_map *map)
 		j = 0;
 		while (split_byspace[j])
 		{
-			check = ft_check_split_content(split_byspace[j], check);
+			check = check_split_content(split_byspace[j], check);
 			free(split_byspace[j]);
 			j++;
 		}
@@ -126,22 +126,23 @@ int		ft_check_map_content(t_map *map)
 	printf ("2 check.no == %lld\n", check.no);
 	printf ("2 check.so == %lld\n", check.so);
 	printf ("2 check.we == %lld\n", check.we);
-	if (ft_check_verif(check) == FAILURE)
+	if (check_verif(check) == FAILURE)
 		return (return_failure("Error.\nProblem with textures."));
 	return (SUCCESS);
 }
+
 /* CA LEAKS PLUS ET CA RENVOIT BIEN LA MAP SANS AUCUN SOUCIS */
 /* Si il y'a un probleme avec les textures == FAILURE*/
 int	check_opt_argv_map(char *argv)
 {
-	t_map *map;
-	
-	map = ft_create_map(argv);
-	if (ft_check_map_content(map) == FAILURE)
+	t_map	*map;
+
+	map = create_map(argv);
+	if (check_map_content(map) == FAILURE)
 	{
-		ft_free_struct(map);
+		free_struct(map);
 		return (FAILURE);
 	}
-	ft_free_struct(map);
+	free_struct(map);
 	return (SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/16 19:37:16 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/17 11:49:30 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,8 @@ typedef struct s_verif
 
 	/* utils.c */
 int		parse(char *av);
-void	ft_free_tab(char **str);
-void	ft_free_struct(t_map *map);
-
-
+void	free_tab(char **str);
+void	free_struct(t_map *map);
 
 	/* window.c */
 void	loop(t_data data);
@@ -69,11 +67,11 @@ int		close_escape(int keycode, t_data *data);
 int		close_redx(t_data *data);
 int		init_window(t_data *data);
 
-	/*write_error.c */
+	/* write_error.c */
 void	write_errors(char *error_str);
 int		return_failure(char *error_str);
 
-	/*check_opt_argv.c*/
+	/* check_opt_argv.c */
 t_verif	ft_verif_init(void);
 int		ft_check_map_content(t_map *map);
 int		check_compo_map(char **map);
@@ -95,9 +93,9 @@ int		ft_return_size_of_file(char *argv);
 char	*ft_buffer_init(char *buffer);
 char	**ft_ret_init(char **ret, int i);
 
-/*		ft_get_map_content.c	*/
-t_map	*ft_create_map(char *av);
-void	ft_fill_map(int row, int column, int i, t_map *map);
-int		ft_count_line(char *s);
+	/* get_map_content.c */
+t_map	*create_map(char *av);
+void	fill_map(int row, int column, int i, t_map *map);
+int		count_line(char *s);
 
 #endif

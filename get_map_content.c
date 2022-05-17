@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_map_content.c                               :+:      :+:    :+:   */
+/*   get_map_content.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:39:37 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/16 16:50:23 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/17 11:51:29 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_count_line(char *s)
+int	count_line(char *s)
 {
 	int		fd;
 	int		count_line;
@@ -21,7 +21,7 @@ int	ft_count_line(char *s)
 	count_line = 0;
 	fd = open(s, O_RDONLY);
 	if (fd < 0)
-		printf("Error\nOpen map.ber failed\n");
+		printf("Error\nOpen map.cub failed\n");
 	else
 	{
 		line = get_next_line(fd);
@@ -36,7 +36,7 @@ int	ft_count_line(char *s)
 	return (count_line);
 }
 
-void	ft_fill_map(int row, int column, int i, t_map *map)
+void	fill_map(int row, int column, int i, t_map *map)
 {
 	char	*line;
 
@@ -45,7 +45,7 @@ void	ft_fill_map(int row, int column, int i, t_map *map)
 	{
 		map->map[row] = ft_calloc(ft_strlen(line) + 1, sizeof(char));
 		if (!(map->map[row]))
-			return (ft_free_tab(map->map));
+			return (free_tab(map->map));
 		while (line[i] != '\0')
 		{
 			map->map[row][column] = line[i];
@@ -62,7 +62,7 @@ void	ft_fill_map(int row, int column, int i, t_map *map)
 	map->map[row] = NULL;
 }
 
-t_map	*ft_create_map(char *av)
+t_map	*create_map(char *av)
 {
 	t_map	*map;
 	int	row;
@@ -75,7 +75,7 @@ t_map	*ft_create_map(char *av)
 	map = malloc(sizeof(t_map) * 1);
 //    if (map == NULL)
   //      return (NULL);
-	map->count_line = ft_count_line(av);
+	map->count_line = count_line(av);
 	map->map = ft_calloc(map->count_line+ 1, sizeof(char *));
 	if (!(map->map))
 		return (NULL);
@@ -87,7 +87,7 @@ t_map	*ft_create_map(char *av)
     }
 	else
 	{
-		ft_fill_map(row, column, i, map);
+		fill_map(row, column, i, map);
 		close(map->fd);
 	}
     return (map);
