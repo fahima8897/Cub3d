@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:14:49 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/17 16:20:51 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/17 17:24:50 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,21 +72,64 @@ int	check_verif(t_verif tab)
 
 /*JE VAIS CHANGER LA FORET DE IF, JE PENSE A UTILISER DES POINTEURS SUR FONCTIONS */
 
-t_verif check_split_content(char *str, t_verif check)
+t_verif check_split_content(char *str, char *file, t_verif check)
 {
 	if (str[0] == 'C' && str[1] == '\0')
 		check.c++;
 	if (str[0] == 'F' && str[1] == '\0')
 		check.f++;
 	if (str[0] == 'N' && str[1] == 'O' && str[2] == '\0')
+	{
+		if (open(file, O_RDONLY) < 0)
+			printf("Error\nCannot open file.\n");
+		else
+			printf("Open successfull NO.\n");
 		check.no++;
+	}
 	if (str[0] == 'S' && str[1] == 'O' && str[2] == '\0')
+	{
 		check.so++;
+		if (open(file, O_RDONLY) < 0)
+			printf("Error\nCannot open file.\n");
+		else
+			printf("Open successfull SO.\n");
+	}
 	if (str[0] == 'E' && str[1] == 'A' && str[2] == '\0')
+	{		
+		if (open(file, O_RDONLY) < 0)
+			printf("Error\nCannot open file.\n");
+		else
+			printf("Open successfull EA.\n");
 		check.ea++;
+	}
 	if (str[0] == 'W' && str[1] == 'E' && str[2] == '\0')
+	{
+		if (open(file, O_RDONLY) < 0)
+			printf("Error\nCannot open file.\n");
+		else
+			printf("Open successfull WE.\n");
 		check.we++;
+	}
 	return (check);
+}
+
+char	*ft_strdup_no_n(const char *s1)
+{
+	char	*str;
+	int		i;
+
+	i = ft_strlen(s1);
+	str = (char *)malloc(sizeof(char) * (i + 1));
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	while (s1[i] != '\0' && s1[i] != '\n')
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
 
 /* FONCTION QUI SPLIT NOTRE LIGNE PAR ESPACE ET QUI CHECK LA PRESENCE DE NO SO WE EA F ET C*/
@@ -100,25 +143,25 @@ int		check_map_content(t_map *map)
 	int		j;
 	char	**split_byspace;
 	t_verif	check;
+	char	*tmp;
 
 	check = verif_init();
 	i = 0;
-	while (map->map[i])
+	while (map->map[i] && i < 5)
 	{
 		split_byspace = ft_split(map->map[i], ' ');
-		int h = 0;
-		while (split_byspace[h])
-		{
-			printf("%s", split_byspace[h]);
-			h++;
-		}
-		
 		j = 0;
-		while (split_byspace[j])
+		printf("split == [%c]", split_byspace[j][1]);
+		if (split_byspace[j][0] == '\n')
 		{
-			check = check_split_content(split_byspace[j], check);
-			free(split_byspace[j]);
-			j++;
+			while (split_byspace[j])
+			{
+				tmp = ft_strdup_no_n(split_byspace[1]);
+				check = check_split_content(split_byspace[j], tmp, check);
+				free(split_byspace[j]);
+				free(tmp);
+				j++;
+			}
 		}
 		free(split_byspace);
 		i++;
