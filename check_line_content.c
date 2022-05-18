@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 19:12:05 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/18 13:56:27 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/18 17:17:20 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,16 +107,8 @@ int	compare_and_open_line(char **split_byspace, t_verif *check, char *tmp)
 	return (SUCCESS);
 }
 
-
-
 int	compare_and_check_number_line(char **split_byspace, t_verif *check)
 {
-	// char	**split_bycomma;
-	// int		i;
-	// int		size_tab;
-	// char	*tmp;
-
-	// i = 0;
 	if (strncmp(split_byspace[0], "F", 1) == 0)
 	{
 		check->f++;
@@ -124,23 +116,7 @@ int	compare_and_check_number_line(char **split_byspace, t_verif *check)
 			return (return_failure("Error\nYou have too much F.\n"));
 		if (reduce_compare_and_check_line_f(split_byspace[1]) == FAILURE)
 			return (FAILURE);
-		// split_bycomma = ft_split(split_byspace[1], ',');
-		// size_tab = strlen_tab(split_bycomma);
-		// if (size_tab != 3)
-		// 	return (return_failure("Error\nWrong syntax for F.\n"));
-		// while (split_bycomma[i])
-		// {
-		// 	tmp = strdup_no_n(split_bycomma[i]);
-		// 	if (check_digit(tmp) == FAILURE)
-		// 		return (return_failure("Error\nNon-digit character in F.\n"));
-		// 	if (check_digit_size(ft_atoi(tmp)) == FAILURE)
-		// 		return (return_failure("Error\nNumber too small or big in F.\n"));
-		// 	free(tmp);
-		// 	i++;
-		// }
-		// free_tab(split_bycomma);
 	}
-	// i = 0;
 	if (strncmp(split_byspace[0], "C", 1) == 0)
 	{
 		check->c++;
@@ -148,21 +124,6 @@ int	compare_and_check_number_line(char **split_byspace, t_verif *check)
 			return (return_failure("Error\nYou have too much C."));
 		if (reduce_compare_and_check_line_c(split_byspace[1]) == FAILURE)
 			return (FAILURE);
-		// split_bycomma = ft_split(split_byspace[1], ',');
-		// size_tab = strlen_tab(split_bycomma);
-		// if (size_tab != 3)
-		// 	return (return_failure("Error\nWrong syntax for C."));
-		// while (split_bycomma[i])
-		// {
-		// 	tmp = strdup_no_n(split_bycomma[i]);
-		// 	if (check_digit(tmp) == FAILURE)
-		// 		return (return_failure("Error\nNon-digit character in C."));
-		// 	if (check_digit_size(ft_atoi(tmp)) == FAILURE)
-		// 		return (return_failure("Error\nNumber too small or big in C."));
-		// 	free(tmp);
-		// 	i++;
-		// }
-		// free_tab(split_bycomma);
 	}
 	return (SUCCESS);
 }
@@ -176,11 +137,18 @@ int	check_filled_lines(char **map, t_verif *check)
 	i = -1;
 	while (map[++i])
 	{
+
 		if (ft_strlen(map[i]) > 1)
 		{
 			if (map[i][0] == '\n')
 				i++;
 			s_byspa = ft_split(map[i], ' ');
+			if (s_byspa[2] && s_byspa[2][0] != '\n')
+				return (ret_free("Error\nWrong syntax.", s_byspa));
+			if (ft_strncmp(s_byspa[0], "NO", 3) != 0 && ft_strncmp(s_byspa[0], "SO", 3) != 0
+				&& ft_strncmp(s_byspa[0], "WE", 3) != 0 && ft_strncmp(s_byspa[0], "EA", 3) != 0
+				&& ft_strncmp(s_byspa[0], "F", 2) != 0 && ft_strncmp(s_byspa[0], "C", 2) != 0)
+				ret_free("Error\nWrong syntax.LLLL", s_byspa);
 			if (s_byspa[1])
 			{
 				tmp = strdup_no_n(s_byspa[1]);
@@ -205,12 +173,12 @@ int	check_line_content(t_map *map)
 	{
 		printf("FAILURE\n"); //printf a garder??
 		return (FAILURE);
-	}
+	}/*
 	if (check_verif_2(check) == FAILURE)
 	{
 		printf("FAILURE verif != 1\n"); //printf a garder??
 		return (FAILURE);
 	}
-	printf("SUCCESS !\n");
+	printf("SUCCESS !\n");*/
 	return (SUCCESS);
 }

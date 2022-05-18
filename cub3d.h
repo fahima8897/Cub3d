@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/18 14:18:56 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:36:20 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ typedef struct s_map
 	char	**map;
 	int		fd;
 	int		count_line;
+	int		is_map;
+	int		map_begin_line;
+	int		map_end_line;
+	int		x;
+	int		y;
 }	t_map;
 
 typedef struct s_data
@@ -81,8 +86,6 @@ int		return_failure(char *error_str);
 int		ret_free(char *error_str, char **tab);
 int		ret_free2(char *error_str, char **tab, char*tmp);
 
-
-
 	/* check_opt_argv.c */
 t_verif	verif_init(void);
 int		check_map_content(t_map *map);
@@ -107,7 +110,7 @@ int		main(int ac, char **av);
 // char	**ft_ret_init(char **ret, int i);
 
 	/* get_map_content.c */
-int		count_line(char *s);
+t_map	*count_line(char *s, t_data *data);
 void	fill_map(int row, int column, int i, t_map *map);
 t_map	*create_map(char *av, t_data *data);
 

@@ -6,36 +6,61 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:39:37 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/18 11:23:19 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:37:11 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	count_line(char *s)
+int	check_get_next_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] > 32)// || line[i] != '\t')
+			return (SUCCESS);
+		i++;
+	}
+	return (FAILURE);
+}
+
+t_map	*count_line(char *s, t_data *data)
 {
 	int		fd;
 	int		count_line;
 	char	*line;
+	int		i;
 
 	count_line = 0;
+	i = 0;
+	data->map->map = malloc(sizeof(char *) * (6 + 1));
+	if (!data->map->map)
+		return (NULL);
 	fd = open(s, O_RDONLY);
 	if (fd < 0)
 		printf("Error\nOpen map.cub failed\n");
 	else
 	{
 		line = get_next_line(fd);
-		while (line != NULL)
+		while (line != NULL && count_line < 6)
 		{
-			count_line++;
+			if (check_get_next_line(line) == SUCCESS)
+			{
+				count_line++;
+				data->map->map[i] = ft_strdup(line);
+				i++;
+			}
 			free(line);
 			line = get_next_line(fd);
 		}
 		close(fd);
 	}
-	return (count_line);
+	return (data->map);
 }
 
+/*
 void	fill_map(int row, int column, int i, t_map *map)
 {
 	char	*line;
@@ -89,3 +114,4 @@ t_map	*create_map(char *av, t_data *data)
 	}
 	return (data->map);
 }
+*/

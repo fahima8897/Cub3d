@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 18:02:04 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/18 11:18:42 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:45:47 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,5 @@ int	strlen_tab(char **str)
 	i = 0;
 	while (str[i])
 		i++;
-	printf("\ni strsize == %d\n", i);
 	return (i);
 }
