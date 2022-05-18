@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/18 21:01:07 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/18 23:03:27 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_map
 	char	**map;
 	int		fd;
 	int		count_line;
+	int		player;
+	int		space_in_map;
 }	t_map;
 
 typedef struct s_data
@@ -84,9 +86,7 @@ int		ret_free2(char *error_str, char **tab, char*tmp);
 	/* check_opt_argv.c */
 t_verif	verif_init(void);
 int		check_map_content(t_map *map);
-int		check_compo_map(char **map);
 int		check_opt_argv_map(char *argv, t_data *data);
-t_verif	verif_init(void);
 int		check_line_content(t_map *map);
 
 	/* main.c */
@@ -116,11 +116,20 @@ int		reduce_check_filled_lines(char **split_byspace, char *tmp);
 int		reduce_compare_and_check_line_f(char *split_byspace);
 int		reduce_compare_and_check_line_c(char *split_byspace);
 
-	/* utils_check_line_content.c */
+	/* utils_check_line_content2.c */
 int		check_no(t_verif *check, char *tmp);
 int		check_so(t_verif *check, char *tmp);
 int		check_we(t_verif *check, char *tmp);
 int		check_ea(t_verif *check, char *tmp);
+
+	/* check_map_content.c	*/
+int		check_map_content_characters(t_data *data);
+int		check_forbidden_character(char **map);
+
+	/*get_rest_of_the_map.c	*/
+int		check_get_next_line2(char *line);
+int		ft_return_size_of_file(char *s);
+t_map	*count_line_for_map(char *s, t_data *data);
 
 	/* t_verif.c */
 t_verif	verif_init(void);

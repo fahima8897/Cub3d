@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/18 20:39:03 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/18 23:21:31 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int	main(int ac, char **av)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (FAILURE);
+//	printf("Salam Fahima\nJ'ai regle pas mal de truc.\nJe pense avoir termine le parsing pour les ressources\nToutefois, il reste 1 leaks dont je n'arrive pas a me debrarasser (pour les ressources) qui est lie au get next line de count_line, celui qui est ligne 56\n");
+//	printf("J'ai pas verifie les leaks pour la map, mais j'ai bien avance sur son paring egalement.\nJe voudrais, pendant le temps ou je suis pas la que tu essayes de trouver le leaks qui est lie a get next line stp, c'est un petit non reachable de qlq bits\n");
 	check_arguments(ac, av[1]);
 	init_data(data);
 	if (check_opt_argv_map(av[1], data) == FAILURE)

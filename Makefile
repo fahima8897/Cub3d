@@ -6,7 +6,7 @@
 #    By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 16:11:35 by fboumell          #+#    #+#              #
-#    Updated: 2022/05/18 20:57:02 by adaloui          ###   ########.fr        #
+#    Updated: 2022/05/18 21:55:24 by adaloui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ SRCS	= main.c \
 		errors.c \
 		check_opt_argv.c \
 		get_map_content.c \
-		new_gnl.c \
 		libft/*.c \
 		gnl/*.c \
 		init.c \
@@ -26,6 +25,8 @@ SRCS	= main.c \
 		check_line_content.c \
 		utils_check_line_content.c \
 		utils_check_line_content2.c \
+		check_map_content.c \
+		get_rest_of_map.c \
 		t_verif.c \
 		
 
