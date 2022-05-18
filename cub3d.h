@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/18 11:32:24 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:18:56 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,13 @@ int		close_escape(int keycode, t_data *data);
 int		close_redx(t_data *data);
 int		init_window(t_data *data);
 
-	/* write_error.c */
+	/* error.c */
 void	write_errors(char *error_str);
 int		return_failure(char *error_str);
+int		ret_free(char *error_str, char **tab);
+int		ret_free2(char *error_str, char **tab, char*tmp);
+
+
 
 	/* check_opt_argv.c */
 t_verif	verif_init(void);
@@ -111,6 +115,16 @@ t_map	*create_map(char *av, t_data *data);
 void	init_data(t_data *data);
 
 	/* check_line_content.c */
+int		check_verif_content(char *str, t_verif *check);
+int		compare_and_open_line(char **split_byspace, t_verif *check, char *tmp);
+int		compare_and_check_number_line(char **split_byspace, t_verif *check);
+int		check_filled_lines(char **map, t_verif *check);
+int		check_line_content(t_map *map);
+
+	/* utils_check_line_content.c */
+int		reduce_check_filled_lines(char **split_byspace, char *tmp);
+int		reduce_compare_and_check_line_f(char *split_byspace);
+int		reduce_compare_and_check_line_c(char *split_byspace);
 
 	/* t_verif.c */
 t_verif	verif_init(void);

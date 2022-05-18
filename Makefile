@@ -6,7 +6,7 @@
 #    By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 16:11:35 by fboumell          #+#    #+#              #
-#    Updated: 2022/05/18 11:34:24 by fboumell         ###   ########.fr        #
+#    Updated: 2022/05/18 12:43:12 by fboumell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ SRCS	= main.c \
 		init.c \
 		free.c \
 		check_line_content.c \
+		utils_check_line_content.c \
 		t_verif.c \
+		
 
 OBJS = ${SRCS:.c=.o}
 

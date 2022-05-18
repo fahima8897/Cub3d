@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 19:15:19 by adaloui           #+#    #+#             */
-/*   Updated: 2022/03/28 14:19:34 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/18 13:06:37 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	ft_counting(const char *str, char c)
 	return (nb);
 }
 
-char	**ft_split(const char *str, char c)
+char	**ft_split(char *str, char c)
 {
 	int		i;
 	int		k;
