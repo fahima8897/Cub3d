@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/18 16:36:20 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:01:07 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@ typedef struct s_map
 	char	**map;
 	int		fd;
 	int		count_line;
-	int		is_map;
-	int		map_begin_line;
-	int		map_end_line;
-	int		x;
-	int		y;
 }	t_map;
 
 typedef struct s_data
@@ -101,14 +96,6 @@ int		check_file_existence(char *av);
 void	check_arguments(int ac, char *av);
 int		main(int ac, char **av);
 
-// 	/*new_gnl.c*/
-// // char	**new_gnl(int fd, char *argv);
-// char	**ft_fill_tab(char **tab, int fd, char *buffer);
-// char	**ft_ret_init(char **ret, int i);
-// int		ft_return_size_of_file(char *argv);
-// char	*ft_buffer_init(char *buffer);
-// char	**ft_ret_init(char **ret, int i);
-
 	/* get_map_content.c */
 t_map	*count_line(char *s, t_data *data);
 void	fill_map(int row, int column, int i, t_map *map);
@@ -128,6 +115,12 @@ int		check_line_content(t_map *map);
 int		reduce_check_filled_lines(char **split_byspace, char *tmp);
 int		reduce_compare_and_check_line_f(char *split_byspace);
 int		reduce_compare_and_check_line_c(char *split_byspace);
+
+	/* utils_check_line_content.c */
+int		check_no(t_verif *check, char *tmp);
+int		check_so(t_verif *check, char *tmp);
+int		check_we(t_verif *check, char *tmp);
+int		check_ea(t_verif *check, char *tmp);
 
 	/* t_verif.c */
 t_verif	verif_init(void);

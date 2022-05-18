@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_content.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:39:37 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/18 16:37:11 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:03:46 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_get_next_line(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] > 32)// || line[i] != '\t')
+		if (line[i] > 32)
 			return (SUCCESS);
 		i++;
 	}
@@ -35,8 +35,8 @@ t_map	*count_line(char *s, t_data *data)
 
 	count_line = 0;
 	i = 0;
-	data->map->map = malloc(sizeof(char *) * (6 + 1));
-	if (!data->map->map)
+	data->map->map = ft_calloc(6 + 1, sizeof(char *));
+	if (!(data->map->map))
 		return (NULL);
 	fd = open(s, O_RDONLY);
 	if (fd < 0)
@@ -55,6 +55,7 @@ t_map	*count_line(char *s, t_data *data)
 			free(line);
 			line = get_next_line(fd);
 		}
+		free(line);
 		close(fd);
 	}
 	return (data->map);

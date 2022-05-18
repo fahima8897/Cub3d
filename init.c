@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:38:08 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/18 14:53:47 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/18 19:46:36 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,4 @@ void	init_data(t_data *data)
 	data->map->map = NULL;
 	data->map->fd = 0;
 	data->map->count_line = 0;
-	data->map->is_map = 0;
-	data->map->map_begin_line = 0;
-	data->map->map_end_line = 0;
-	data->map->x = 0;
-	data->map->y = 0;
 }

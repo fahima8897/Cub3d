@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/18 16:37:58 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/18 20:39:03 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,10 @@ int	main(int ac, char **av)
 	init_data(data);
 	if (check_opt_argv_map(av[1], data) == FAILURE)
 	{
-		free(data);
+		free_data(data);
 		return (FAILURE);
 	}
 	init_window(data);
 	loop(data);
-	if (data)
-		free_data(data);
 	return (SUCCESS);
 }
