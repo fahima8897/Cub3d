@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/17 19:51:31 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/18 11:32:24 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ typedef struct s_verif
 
 	/* utils.c */
 int		parse(char *av);
+char	*strdup_no_n(const char *s1);
+int		check_digit(char *str);
+int		check_digit_size(int nb);
+int		strlen_tab(char **str);
 
 	/* free.c */
 void	free_tab(char **str);
@@ -83,8 +87,6 @@ int		check_opt_argv_map(char *argv, t_data *data);
 t_verif	verif_init(void);
 int		check_line_content(t_map *map);
 
-//void	ft_create_map(char *av);
-
 	/* main.c */
 int		check_extension(char *av);
 int		check_directory(char *av);
@@ -92,20 +94,27 @@ int		check_file_existence(char *av);
 void	check_arguments(int ac, char *av);
 int		main(int ac, char **av);
 
-	/*new_gnl.c*/
-// char	**new_gnl(int fd, char *argv);
-char	**ft_fill_tab(char **tab, int fd, char *buffer);
-char	**ft_ret_init(char **ret, int i);
-int		ft_return_size_of_file(char *argv);
-char	*ft_buffer_init(char *buffer);
-char	**ft_ret_init(char **ret, int i);
+// 	/*new_gnl.c*/
+// // char	**new_gnl(int fd, char *argv);
+// char	**ft_fill_tab(char **tab, int fd, char *buffer);
+// char	**ft_ret_init(char **ret, int i);
+// int		ft_return_size_of_file(char *argv);
+// char	*ft_buffer_init(char *buffer);
+// char	**ft_ret_init(char **ret, int i);
 
 	/* get_map_content.c */
-t_map	*create_map(char *av, t_data *data);
-void	fill_map(int row, int column, int i, t_map *map);
 int		count_line(char *s);
+void	fill_map(int row, int column, int i, t_map *map);
+t_map	*create_map(char *av, t_data *data);
 
 	/* init.c */
 void	init_data(t_data *data);
+
+	/* check_line_content.c */
+
+	/* t_verif.c */
+t_verif	verif_init(void);
+int		check_verif(t_verif tab);
+int		check_verif_2(t_verif tab);
 
 #endif

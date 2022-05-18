@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/17 16:20:03 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/18 10:26:21 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,6 @@ int	init_window(t_data *data)
 
 void	loop(t_data *data)
 {
-	// mlx_destroy_window(data.mlx, data.mlx_win);
-	// mlx_destroy_display(data.mlx);
-	// 		data.mlx_win = NULL;
-	// 	free(data.mlx);
-	// 	free_data(&data);
-	//	free(*data);
-	//	exit(0);
 	mlx_hook(data->mlx_win, 2, 1L << 0, &close_escape, data);
 	mlx_hook(data->mlx_win, 17, 0L, &close_redx, data);
 	mlx_loop(data->mlx);

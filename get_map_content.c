@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_content.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:39:37 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/17 16:24:37 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/18 11:23:19 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,14 @@ t_map	*create_map(char *av, t_data *data)
 		return (NULL);
 	data->map->fd = open(av, O_RDONLY);
 	if (data->map->fd < 0)
-    {
+	{
 		printf("Error\nOpen failed\n");
-        return (NULL);
-    }
+		return (NULL);
+	}
 	else
 	{
 		fill_map(row, column, i, data->map);
 		close(data->map->fd);
 	}
-    return (data->map);
+	return (data->map);
 }

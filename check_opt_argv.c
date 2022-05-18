@@ -3,38 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   check_opt_argv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:14:49 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/17 21:32:13 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/18 11:35:28 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_verif	verif_init(void)
-{
-	t_verif	check;
-
-	check.c = 0;
-	check.f = 0;
-	check.ea = 0;
-	check.no = 0;
-	check.so = 0;
-	check.we = 0;
-	return (check);
-}
-
-int	check_verif(t_verif tab)
-{
-	if (tab.c != 1 || tab.f != 1)
-		return (FAILURE);
-	if (tab.ea != 1 || tab.no != 1)
-		return (FAILURE);
-	if (tab.so != 1 || tab.we != 1)
-		return (FAILURE);
-	return (SUCCESS);
-}
+// int	check_verif(t_verif tab)
+// {
+// 	if (tab.c != 1 || tab.f != 1)
+// 		return (FAILURE);
+// 	if (tab.ea != 1 || tab.no != 1)
+// 		return (FAILURE);
+// 	if (tab.so != 1 || tab.we != 1)
+// 		return (FAILURE);
+// 	return (SUCCESS);
+// }
 
 t_verif check_split_content(char *str, char *file, t_verif check)
 {
