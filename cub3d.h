@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/18 23:03:27 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 11:04:03 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,10 @@ void	check_arguments(int ac, char *av);
 int		main(int ac, char **av);
 
 	/* get_map_content.c */
+int		check_get_next_line(char *line);	
+t_map	*reduce_count_line(t_data *data, int fd);
 t_map	*count_line(char *s, t_data *data);
-void	fill_map(int row, int column, int i, t_map *map);
-t_map	*create_map(char *av, t_data *data);
+
 
 	/* init.c */
 void	init_data(t_data *data);
@@ -128,7 +129,8 @@ int		check_forbidden_character(char **map);
 
 	/*get_rest_of_the_map.c	*/
 int		check_get_next_line2(char *line);
-int		ft_return_size_of_file(char *s);
+int		reduce_return_size_of_map(int fd);
+int		return_size_of_file(char *s);
 t_map	*count_line_for_map(char *s, t_data *data);
 
 	/* t_verif.c */
