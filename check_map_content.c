@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_content.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:08:18 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 16:56:50 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 18:03:05 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,48 @@ int	check_surrounded_by_walls_top_bottom(char **map)
 	return (SUCCESS);
 }
 
-int	check_for_hole(char *s, int size)
+int	check_right_hole(char *s, int size)
 {
 	int	i;
 
 	i = 0;
+	while (i < size)
+		i++;
+	i++;
 	while (s[i])
 	{
-		if (s[i + 1] + size == '0')
+		if (s[i] == '0')
+			return (FAILURE);
+		i++;
+	}
+	return (SUCCESS);
+}
+
+int	check_left_hole(char *s1, char *s2)
+{
+	int	i;
+	int	count;
+	int	diff;
+
+	i = 0;
+	count = 0;
+	diff = 0;
+	while (s1[i])
+	{
+		if (s1[i] != ' ')
+		{
+			count++;
+			i++;
+		}
+		if (s1[i] == ' ')
+			i++;
+	}
+	diff = (ft_strlen(s2) - 1) - count;
+	printf("diff : %d\n", diff);
+	i = 0;
+	while (s2[i] && i < diff)
+	{
+		if (s2[i] == '0')
 			return (FAILURE);
 		i++;
 	}
@@ -114,8 +148,12 @@ int	check_surrounded_by_walls_left_right(char **map)
 	{
 		printf("i : %d\n", i);
 		if (ft_strlen(map[i]) < ft_strlen(map[i + 1]))
-			if (check_for_hole(map[i + 1], ft_strlen(map[i]) == FAILURE))
-				return (return_failure("Error\nThere is a hole"));
+		{
+			if (check_right_hole(map[i + 1], ft_strlen(map[i]) - 1) == FAILURE)
+				return (return_failure("Error\nThere is a hole on the right"));
+			if (check_left_hole(map[i], map[i + 1]) == FAILURE)
+				return (return_failure("Error\nThere is a hole ont the left"));
+		}
 		i++;
 	}
 	// int	i;
