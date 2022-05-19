@@ -6,10 +6,11 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 11:23:36 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/19 14:57:34 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 15:41:04 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "get_next_line.h"
 
 static int	ft_search_n(char *save)
@@ -77,6 +78,7 @@ static char	*ft_return(char **save, char **line, int ret)
 		free(*line);
 		free(*save);
 		*save = NULL;
+		printf("FIN DU GNL\n");
 		return (NULL);
 	}
 	return (*line);

@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:39:37 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 14:59:08 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 15:39:52 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,21 @@ int	check_get_next_line(char *line)
 
 t_map	*reduce_count_line(t_data *data, int fd)
 {
-	int		count_line;
 	char	*line;
 	int		i;
 
-	count_line = 0;
 	i = 0;
-	line = get_next_line(fd);
-	while (line != NULL && count_line < 6)
+	while ((line = get_next_line(fd)))
 	{
 		if (check_get_next_line(line) == SUCCESS)
 		{
-			count_line++;
-			data->map->map[i] = strdup_no_n(line);
-			i++;
+			if (i <= 5)
+			{
+				data->map->map[i] = strdup_no_n(line);
+				i++;
+			}
 		}
 		free(line);
-		line = get_next_line(fd);
 	}
 	free(line);
 	close(fd);

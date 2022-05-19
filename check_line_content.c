@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 19:12:05 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 15:09:52 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 15:40:24 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,7 @@ int	check_filled_lines(char **map, t_verif *check)
 			if (s_byspa[1])
 			{
 				if (compare_and_open_line(s_byspa, check, s_byspa[1]) == -1)
-				{
-					printf("je rentre ici\n");
 					return (reduce_check_filled_lines(s_byspa));
-					printf("JE SUIS LA\n");
-				}
 				if (compare_and_check_number_line(s_byspa, check) == FAILURE)
 					return (reduce_check_filled_lines(s_byspa));
 			}

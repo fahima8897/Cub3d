@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:08:18 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 14:36:16 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 15:16:58 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,11 @@ int	check_surrounded_by_walls_top_bottom(char **map)
 	return (SUCCESS);
 }
 
-int check_surrounded_by_walls_left_right(char **map)
+int	check_surrounded_by_walls_left_right(char **map)
 {
-	int i;
-	int j;
-	int x_size;
+	int	i;
+	int	j;
+	int	x_size;
 
 	i = 1;
 	while (map[i])
@@ -116,10 +116,6 @@ int check_surrounded_by_walls_left_right(char **map)
 
 int	check_map_content_characters(t_data *data)
 {
-	/*1 Check l'existence de craracteres interdits
-	  2 Check si la carte est entourre par des murs en haut puis en bas 
-	  3 Check si la carte est entouree de murs a gauche et a droite (pas termine)
-	  4 Check les players et le nombre */
 	if (check_forbidden_character(data->map->map_2) == FAILURE)
 		return (FAILURE);
 	if (check_surrounded_by_walls_top_bottom(data->map->map_2) == FAILURE)
