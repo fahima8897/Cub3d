@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:08:18 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/18 23:35:30 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 14:36:16 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ int	check_player_nb(t_map *map)
 	int	j;
 
 	i = 0;
-	while (map->map[i])
+	while (map->map_2[i])
 	{
 		j = 0;
-		while (map->map[i][j])
+		while (map->map_2[i][j])
 		{
-			if (map->map[i][j] == 'N' || map->map[i][j] == 'E'
-				|| map->map[i][j] == 'S' || map->map[i][j] == 'W')
+			if (map->map_2[i][j] == 'N' || map->map_2[i][j] == 'E'
+				|| map->map_2[i][j] == 'S' || map->map_2[i][j] == 'W')
 				map->player++;
 			j++;
 		}
@@ -102,7 +102,7 @@ int check_surrounded_by_walls_left_right(char **map)
 	while (map[i])
 	{
 		j = 0;
-		x_size = ft_strlen(map[i]) - 2;
+		x_size = ft_strlen(map[i]) - 1;
 		while (map[i][j] == ' ' || map[i][j] == '\t')
 			j++;
 		if (map[i][j] != '1') // faut il rajouter map[i][j] != ' ' ? car espace == wall
@@ -120,11 +120,11 @@ int	check_map_content_characters(t_data *data)
 	  2 Check si la carte est entourre par des murs en haut puis en bas 
 	  3 Check si la carte est entouree de murs a gauche et a droite (pas termine)
 	  4 Check les players et le nombre */
-	if (check_forbidden_character(data->map->map) == FAILURE)
+	if (check_forbidden_character(data->map->map_2) == FAILURE)
 		return (FAILURE);
-	if (check_surrounded_by_walls_top_bottom(data->map->map) == FAILURE)
+	if (check_surrounded_by_walls_top_bottom(data->map->map_2) == FAILURE)
 		return (FAILURE);
-	if (check_surrounded_by_walls_left_right(data->map->map) == FAILURE)
+	if (check_surrounded_by_walls_left_right(data->map->map_2) == FAILURE)
 		return (FAILURE);
 	if (check_player_nb(data->map) == FAILURE)
 		return (FAILURE);

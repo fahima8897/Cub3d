@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map_content.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:39:37 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 10:49:09 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:59:08 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_map	*reduce_count_line(t_data *data, int fd)
 		if (check_get_next_line(line) == SUCCESS)
 		{
 			count_line++;
-			data->map->map[i] = ft_strdup(line);
+			data->map->map[i] = strdup_no_n(line);
 			i++;
 		}
 		free(line);

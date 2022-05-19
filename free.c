@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:39:58 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/17 18:02:41 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:11:06 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ void	free_tab(char **str)
 
 void	free_struct(t_map *map)
 {
-	free_tab(map->map);
+	if (map->map)
+		free_tab(map->map);
+	if (map->map_2)
+		free_tab(map->map_2);
 	free(map);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_rest_of_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:46:20 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 11:04:44 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:36:12 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ t_map	*count_line_for_map(char *s, t_data *data)
 	count_line = 0;
 	i = 0;
 	map_size = return_size_of_map(s);
-	data->map->map = ft_calloc(map_size + 1, sizeof(char *));
-	if (!(data->map->map))
+	data->map->map_2 = ft_calloc(map_size + 1, sizeof(char *));
+	if (!(data->map->map_2))
 		return (NULL);
 	fd = open(s, O_RDONLY);
 	if (fd < 0)
@@ -92,13 +92,13 @@ t_map	*count_line_for_map(char *s, t_data *data)
 				count_line++;
 				if (count_line > 6)
 				{
-					data->map->map[i] = ft_strdup(line);
+					data->map->map_2[i] = strdup_no_n(line);
 					i++;
 				}
 			}
 			else if (count_line > 6 && i > 0)
 			{
-				data->map->space_in_map = 1;
+				data->map->space_in_map_2 = 1;
 				break ;
 			}
 			free(line);

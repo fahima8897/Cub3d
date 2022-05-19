@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:38:08 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/18 23:03:08 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 14:37:11 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ void	init_data(t_data *data)
 	if (!data->map)
 		return ;
 	data->map->map = NULL;
+	data->map->map_2 = NULL;
 	data->map->fd = 0;
 	data->map->count_line = 0;
 	data->map->player = 0;
-	data->map->space_in_map = 0;
+	data->map->space_in_map_2 = 0;
 }

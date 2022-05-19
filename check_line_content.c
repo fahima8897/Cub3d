@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 19:12:05 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/18 21:02:46 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 15:09:52 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	compare_and_open_line(char **split_byspace, t_verif *check, char *tmp)
 {
-	if (ft_strncmp(split_byspace[0], "NO", 3) == 0)
+	if (ft_strncmp(split_byspace[0], "NO", 2) == 0)
 	{
 		if (check_no(check, tmp) == FAILURE)
 			return (FAILURE);
@@ -58,29 +58,51 @@ int	compare_and_check_number_line(char **split_byspace, t_verif *check)
 	return (SUCCESS);
 }
 
+int	check_whitespace(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] <= 32)
+			return (SUCCESS);
+		i++;
+	}
+	return (FAILURE);
+}
+
 int	check_filled_lines(char **map, t_verif *check)
 {
 	int		i;
 	char	**s_byspa;
-	char	*tmp;
 
 	i = -1;
 	while (map[++i])
 	{
-		s_byspa = ft_split(map[i], ' ');
-		if (s_byspa[1])
+		if (check_whitespace(map[i]) == SUCCESS)
 		{
-			tmp = strdup_no_n(s_byspa[1]);
-			if (compare_and_open_line(s_byspa, check, tmp) == FAILURE)
-				return (reduce_check_filled_lines(s_byspa, tmp));
-			if (compare_and_check_number_line(s_byspa, check) == FAILURE)
-				return (reduce_check_filled_lines(s_byspa, tmp));
-			free(tmp);
+			s_byspa = ft_split(map[i], ' ');
+			if (!s_byspa[1])
+				return (ret_free("Error\nWrong syntax.", s_byspa));
+			if (s_byspa[1])
+			{
+				if (compare_and_open_line(s_byspa, check, s_byspa[1]) == -1)
+				{
+					printf("je rentre ici\n");
+					return (reduce_check_filled_lines(s_byspa));
+					printf("JE SUIS LA\n");
+				}
+				if (compare_and_check_number_line(s_byspa, check) == FAILURE)
+					return (reduce_check_filled_lines(s_byspa));
+			}
+			if (s_byspa[2])
+				return (ret_free("Error\nToo much words", s_byspa));
+			else
+				free_tab(s_byspa);
 		}
-		if (s_byspa[2] && s_byspa[2][0] != '\n')
-			ret_free("Error\nWrong syntax. Too much words", s_byspa);
 		else
-			free_tab(s_byspa);
+			return (return_failure("Error\nCharacter without space"));
 	}
 	return (SUCCESS);
 }
@@ -93,6 +115,6 @@ int	check_line_content(t_map *map)
 	if (check_filled_lines(map->map, &check) == FAILURE)
 		return (return_failure("Error\nProblem in line."));
 	if (check_verif_2(check) == FAILURE)
-		return (return_failure("Error\nRessources not present."));
+		return (return_failure("Error\nAt least one ressource is not present."));
 	return (SUCCESS);
 }

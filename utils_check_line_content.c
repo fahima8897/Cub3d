@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   utils_check_line_content.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:42:39 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/18 14:20:44 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:12:49 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	reduce_check_filled_lines(char **split_byspace, char *tmp)
+int	reduce_check_filled_lines(char **split_byspace)
 {
 	free_tab(split_byspace);
-	free(tmp);
 	return (FAILURE);
 }
 

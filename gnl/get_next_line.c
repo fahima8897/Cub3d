@@ -6,12 +6,9 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 11:23:36 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/18 20:35:19 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 14:57:34 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "get_next_line.h"
-#include <stdio.h>
 
 #include "get_next_line.h"
 

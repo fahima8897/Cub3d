@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/19 11:04:03 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:36:47 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@
 typedef struct s_map
 {
 	char	**map;
+	char	**map_2;
 	int		fd;
 	int		count_line;
 	int		player;
-	int		space_in_map;
+	int		space_in_map_2;
 }	t_map;
 
 typedef struct s_data
@@ -113,7 +114,7 @@ int		check_filled_lines(char **map, t_verif *check);
 int		check_line_content(t_map *map);
 
 	/* utils_check_line_content.c */
-int		reduce_check_filled_lines(char **split_byspace, char *tmp);
+int		reduce_check_filled_lines(char **split_byspace);
 int		reduce_compare_and_check_line_f(char *split_byspace);
 int		reduce_compare_and_check_line_c(char *split_byspace);
 

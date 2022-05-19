@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 11:25:45 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/18 11:27:44 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:55:54 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen_2(const char *str)
+
+int	ft_strlen_2(const char *s)
 {
 	int	i;
-
 	i = 0;
-	if (!str)
-		return (i);
-	while (str[i])
+
+	while (s[i] != '\0')
 		i++;
 	return (i);
 }

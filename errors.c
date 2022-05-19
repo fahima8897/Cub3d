@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 17:38:16 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/18 14:18:43 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:02:13 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ret_free(char *error_str, char **tab)
 	return (FAILURE);
 }
 
-int	ret_free2(char *error_str, char **tab, char*tmp)
+int	ret_free2(char *error_str, char **tab, char *tmp)
 {
 	printf("\033[1;31m%s\n\033[1;30m", error_str);
 	free_tab(tab);
