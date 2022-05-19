@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:08:18 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 15:16:58 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 15:53:23 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,9 @@ int	check_surrounded_by_walls_left_right(char **map)
 		x_size = ft_strlen(map[i]) - 1;
 		while (map[i][j] == ' ' || map[i][j] == '\t')
 			j++;
-		if (map[i][j] != '1') // faut il rajouter map[i][j] != ' ' ? car espace == wall
+		if (map[i][j] != '1')// rajouter map[i][j] != ' ' ? car espace == wall
 			return (return_failure("Error\nWall error 2."));
-		if (map[i][x_size] != '1') // faut il rajouter map[i][j] != ' ' ? car espace == wall
+		if (map[i][x_size] != '1') // meme chose
 			return (return_failure("Error\nWall error 3."));
 		i++;
 	}

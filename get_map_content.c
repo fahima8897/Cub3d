@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:39:37 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 15:39:52 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 15:49:38 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ t_map	*reduce_count_line(t_data *data, int fd)
 	int		i;
 
 	i = 0;
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		if (check_get_next_line(line) == SUCCESS)
 		{
@@ -43,6 +44,8 @@ t_map	*reduce_count_line(t_data *data, int fd)
 			}
 		}
 		free(line);
+		line = get_next_line(fd);
+
 	}
 	free(line);
 	close(fd);

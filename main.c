@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/19 15:08:16 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 15:50:09 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,6 @@ int	main(int ac, char **av)
 	init_data(data);
 	if (check_opt_argv_map(av[1], data) == FAILURE)
 	{
-		int i = 0;
-		while (data->map->map[i])
-		{
-			printf("data->map->map == %s\n", data->map->map[i]);
-			i++;
-		}
 		free_data(data);
 		return (FAILURE);
 	}

@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 19:12:05 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 15:40:24 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 16:01:23 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 int	compare_and_open_line(char **split_byspace, t_verif *check, char *tmp)
 {
-	if (ft_strncmp(split_byspace[0], "NO", 2) == 0)
+	if (ft_strncmp(split_byspace[0], "NO", 3) == 0)
 	{
 		if (check_no(check, tmp) == FAILURE)
 			return (FAILURE);
 	}
-	if (ft_strncmp(split_byspace[0], "SO", 2) == 0)
+	if (ft_strncmp(split_byspace[0], "SO", 3) == 0)
 	{
 		if (check_so(check, tmp) == FAILURE)
 			return (FAILURE);
 	}
-	if (ft_strncmp(split_byspace[0], "WE", 2) == 0)
+	if (ft_strncmp(split_byspace[0], "WE", 3) == 0)
 	{
 		if (check_we(check, tmp) == FAILURE)
 			return (FAILURE);
 	}
-	if (ft_strncmp(split_byspace[0], "EA", 2) == 0)
+	if (ft_strncmp(split_byspace[0], "EA", 3) == 0)
 	{
 		if (check_ea(check, tmp) == FAILURE)
 			return (FAILURE);
@@ -39,7 +39,7 @@ int	compare_and_open_line(char **split_byspace, t_verif *check, char *tmp)
 
 int	compare_and_check_number_line(char **split_byspace, t_verif *check)
 {
-	if (strncmp(split_byspace[0], "F", 1) == 0)
+	if (strncmp(split_byspace[0], "F", 2) == 0)
 	{
 		check->f++;
 		if (check_verif(*check) == FAILURE)
@@ -47,7 +47,7 @@ int	compare_and_check_number_line(char **split_byspace, t_verif *check)
 		if (reduce_compare_and_check_line_f(split_byspace[1]) == FAILURE)
 			return (FAILURE);
 	}
-	if (strncmp(split_byspace[0], "C", 1) == 0)
+	if (strncmp(split_byspace[0], "C", 2) == 0)
 	{
 		check->c++;
 		if (check_verif(*check) == FAILURE)

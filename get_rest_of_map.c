@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:46:20 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 14:36:12 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/19 15:46:58 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,7 @@ t_map	*count_line_for_map(char *s, t_data *data)
 				}
 			}
 			else if (count_line > 6 && i > 0)
-			{
 				data->map->space_in_map_2 = 1;
-				break ;
-			}
 			free(line);
 			line = get_next_line(fd);
 		}
