@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:08:18 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 18:03:05 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/20 13:16:10 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,14 @@ int	check_surrounded_by_walls_top_bottom(char **map)
 	while (map[0][j])
 	{
 		if (map[0][j] != '1' && map[0][j] != '\n' && map[0][j] != ' ')
-			return (return_failure("Error\nEmpty wall first wall."));
+			return (return_failure("Error\nThere's hole on the top."));
 		j++;
 	}
 	j = 0;
 	while (map[size][j])
 	{
 		if (map[size][j] != '1' && map[size][j] != '\n' && map[size][j] != ' ')
-			return (return_failure("Error\nEmpty wall last wall."));
+			return (return_failure("Error\nThere's hole ont the bottom."));
 		j++;
 	}
 	return (SUCCESS);
@@ -130,7 +130,7 @@ int	check_left_hole(char *s1, char *s2)
 	diff = (ft_strlen(s2) - 1) - count;
 	printf("diff : %d\n", diff);
 	i = 0;
-	while (s2[i] && i < diff)
+	while (s2[i] && i < (diff - 1))
 	{
 		if (s2[i] == '0')
 			return (FAILURE);
@@ -142,11 +142,17 @@ int	check_left_hole(char *s1, char *s2)
 int	check_surrounded_by_walls_left_right(char **map)
 {
 	int	i;
+	int	size;
 
 	i = 0;
 	while (map[i])
 	{
 		printf("i : %d\n", i);
+		size = ft_strlen(map[i]);
+		if (map[i][size - 1] == '0')
+			return (return_failure("Error\nThere is a hole on the right"));
+		if (map[i][0] == '0')
+			return (return_failure("Error\nThere is a hole on the left"));
 		if (ft_strlen(map[i]) < ft_strlen(map[i + 1]))
 		{
 			if (check_right_hole(map[i + 1], ft_strlen(map[i]) - 1) == FAILURE)
@@ -154,6 +160,11 @@ int	check_surrounded_by_walls_left_right(char **map)
 			if (check_left_hole(map[i], map[i + 1]) == FAILURE)
 				return (return_failure("Error\nThere is a hole ont the left"));
 		}
+		if (ft_strlen(map[i]) > ft_strlen(map[i + 1]))
+			if (check_right_hole(map[i], ft_strlen(map[i + 1]) - 1) == FAILURE)
+				return (return_failure("Error\nThere is a hole on the right"));
+			// if (check_left_hole(map[i], map[i + 1]) == FAILURE)
+			// 	return (return_failure("Error\nThere is a hole ont the left"));
 		i++;
 	}
 	// int	i;
