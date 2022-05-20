@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:08:18 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/20 13:16:10 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/20 15:08:44 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ft_strlen_tab(char **tab)
 	return (i);
 }
 
-int	check_surrounded_by_walls_top_bottom(char **map)
+int	check_walls_top_bottom(char **map)
 {
 	int	j;
 	int	size;
@@ -96,6 +96,8 @@ int	check_right_hole(char *s, int size)
 	int	i;
 
 	i = 0;
+	if (!s)
+		return (SUCCESS);
 	while (i < size)
 		i++;
 	i++;
@@ -111,35 +113,24 @@ int	check_right_hole(char *s, int size)
 int	check_left_hole(char *s1, char *s2)
 {
 	int	i;
-	int	count;
-	int	diff;
+	int	j;
 
 	i = 0;
-	count = 0;
-	diff = 0;
-	while (s1[i])
-	{
-		if (s1[i] != ' ')
-		{
-			count++;
-			i++;
-		}
-		if (s1[i] == ' ')
-			i++;
-	}
-	diff = (ft_strlen(s2) - 1) - count;
-	printf("diff : %d\n", diff);
-	i = 0;
-	while (s2[i] && i < (diff - 1))
-	{
-		if (s2[i] == '0')
-			return (FAILURE);
+	if (!s1 || !s2)
+		return (SUCCESS);
+	while (s1[i] && s1[i] == ' ')
 		i++;
+	j = 0;
+	while (s2[j] && j < i)
+	{
+		if (s2[j] == '0')
+			return (FAILURE);
+		j++;
 	}
 	return (SUCCESS);
 }
 
-int	check_surrounded_by_walls_left_right(char **map)
+int	check_walls_left_right(char **map)
 {
 	int	i;
 	int	size;
@@ -147,7 +138,7 @@ int	check_surrounded_by_walls_left_right(char **map)
 	i = 0;
 	while (map[i])
 	{
-		printf("i : %d\n", i);
+		// printf("i : %d\n", i);
 		size = ft_strlen(map[i]);
 		if (map[i][size - 1] == '0')
 			return (return_failure("Error\nThere is a hole on the right"));
@@ -161,41 +152,51 @@ int	check_surrounded_by_walls_left_right(char **map)
 				return (return_failure("Error\nThere is a hole ont the left"));
 		}
 		if (ft_strlen(map[i]) > ft_strlen(map[i + 1]))
+		{
 			if (check_right_hole(map[i], ft_strlen(map[i + 1]) - 1) == FAILURE)
 				return (return_failure("Error\nThere is a hole on the right"));
-			// if (check_left_hole(map[i], map[i + 1]) == FAILURE)
-			// 	return (return_failure("Error\nThere is a hole ont the left"));
+			if (check_left_hole(map[i], map[i + 1]) == FAILURE)
+				return (return_failure("Error\nThere is a hole ont the left"));
+		}
 		i++;
 	}
-	// int	i;
-	// int	j;
-	// int	x_size;
-
-	// i = 1;
-	// while (map[i])
-	// {
-	// 	j = 0;
-	// 	x_size = ft_strlen(map[i]) - 1;
-	// 	while (map[i][j] == ' ' || map[i][j] == '\t')
-	// 		j++;
-	// 	if (map[i][j] != '1')// rajouter map[i][j] != ' ' ? car espace == wall
-	// 		return (return_failure("Error\nWall error 2."));
-	// 	if (map[i][x_size] != '1') // meme chose
-	// 		return (return_failure("Error\nWall error 3."));
-	// 	i++;
-	// }
 	return (SUCCESS);
 }
 
+int	check_hole_inside_map(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == '0')
+				if (map[i][j + 1] == ' ')
+					return (FAILURE);
+			if (map[i][j] == ' ')
+				if (map[i][j + 1] == '0')
+					return (FAILURE);
+			j++;
+		}
+		i++;
+	}
+	return (SUCCESS);
+}
 
 int	check_map_content_characters(t_data *data)
 {
 	if (check_forbidden_character(data->map->map_2) == FAILURE)
 		return (FAILURE);
-	if (check_surrounded_by_walls_top_bottom(data->map->map_2) == FAILURE)
+	if (check_walls_top_bottom(data->map->map_2) == FAILURE)
 		return (FAILURE);
-	if (check_surrounded_by_walls_left_right(data->map->map_2) == FAILURE)
+	if (check_walls_left_right(data->map->map_2) == FAILURE)
 		return (FAILURE);
+	if (check_hole_inside_map(data->map->map_2) == FAILURE)
+		return (return_failure("Error\nThere's a hole inside the map."));
 	if (check_player_nb(data->map) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
