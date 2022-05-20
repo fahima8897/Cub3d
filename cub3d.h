@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/19 14:36:47 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/20 20:03:13 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,20 @@
 #  define O_DIRECTORY 00200000
 # endif
 
+typedef struct s_map_info
+{
+	int		f_red;
+	int		f_green;
+	int		f_blue;
+	int		c_red;
+	int		c_green;
+	int		c_blue;
+	char	*no_texture;
+	char	*so_texture;
+	char	*ea_texture;
+	char	*we_texture;
+}	t_map_info;
+
 typedef struct s_map
 {
 	char	**map;
@@ -39,11 +53,12 @@ typedef struct s_map
 
 typedef struct s_data
 {
-	void	*mlx;
-	void	*mlx_win;
-	int		win_height;
-	int		win_width;
-	t_map	*map;
+	void		*mlx;
+	void		*mlx_win;
+	int			win_height;
+	int			win_width;
+	t_map		*map;
+	t_map_info	*map_info;
 }	t_data;
 
 typedef struct s_verif
@@ -71,6 +86,7 @@ int		strlen_tab(char **str);
 void	free_tab(char **str);
 void	free_struct(t_map *map);
 void	free_data(t_data *data);
+void	free_map_info(t_map_info *map_info);
 
 	/* window.c */
 void	loop(t_data *data);
@@ -101,7 +117,6 @@ int		main(int ac, char **av);
 int		check_get_next_line(char *line);	
 t_map	*reduce_count_line(t_data *data, int fd);
 t_map	*count_line(char *s, t_data *data);
-
 
 	/* init.c */
 void	init_data(t_data *data);
@@ -138,5 +153,8 @@ t_map	*count_line_for_map(char *s, t_data *data);
 t_verif	verif_init(void);
 int		check_verif(t_verif tab);
 int		check_verif_2(t_verif tab);
+
+/*		get_all_map_info.c		*/
+t_map_info	*get_all_map_info(t_data *data);
 
 #endif

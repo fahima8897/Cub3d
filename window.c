@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/18 10:26:21 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/05/20 16:48:20 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	close_escape(int keycode, t_data *data)
 		free_data(data);
 		exit(0);
 	}
+	if (keycode == 100 || keycode == 97 || keycode == 115 || keycode == 119)
+		printf("coucou\n");
 	return (SUCCESS);
 }
 
@@ -49,7 +51,7 @@ A initialiser comme il faut quand dans une fonction
 	et quand on aura la taille de la map*/
 int	init_window(t_data *data)
 {
-	data->win_width = 640;
+	data->win_width = 800;
 	data->win_height = 800;
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)

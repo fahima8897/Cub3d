@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:39:58 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/19 15:11:06 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/20 20:04:29 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,17 @@ void	free_data(t_data *data)
 {
 	if (data->map)
 		free_struct(data->map);
+	if (data->map_info)
+		free_map_info(data->map_info);
 	if (data != NULL)
 		free(data);
+}
+
+void	free_map_info(t_map_info *map_info)
+{
+	free(map_info->no_texture);
+	free(map_info->so_texture);
+	free(map_info->ea_texture);
+	free(map_info->we_texture);
+	free(map_info);
 }

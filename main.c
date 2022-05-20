@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/19 15:50:09 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/20 20:04:40 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	main(int ac, char **av)
 		free_data(data);
 		return (FAILURE);
 	}
+	data->map_info = get_all_map_info(data);
 	init_window(data);
 	loop(data);
 	return (SUCCESS);
