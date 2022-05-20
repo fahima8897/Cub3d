@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/20 20:12:59 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/20 20:56:22 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,17 +97,6 @@ int	main(int ac, char **av)
 		free_data(data);
 		return (FAILURE);
 	}
-	data->map_info = get_all_map_info(data);
-	// printf("f_red %d\n", data->map_info->f_red);
-	// printf("f_green %d\n", data->map_info->f_green);
-	// printf("f_blue %d\n", data->map_info->f_blue);
-	// printf("c_red %d\n", data->map_info->c_red);
-	// printf("c_green %d\n", data->map_info->c_green);
-	// printf("c_blue %d\n", data->map_info->c_blue);
-	// printf("NO_texture = %s\n", data->map_info->no_texture);
-	// printf("SO_texture = %s\n", data->map_info->so_texture);
-	// printf("EA_texture = %s\n", data->map_info->ea_texture);
-	// printf("WE_texture = %s\n", data->map_info->we_texture);
 	init_window(data);
 	loop(data);
 	return (SUCCESS);

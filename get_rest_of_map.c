@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:46:20 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 15:46:58 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/20 21:15:13 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,41 @@ int	return_size_of_map(char *s)
 	return (i);
 }
 
+t_map	*reduce_cl_for_map(t_data *data, int fd, int cl)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		if (check_get_next_line2(line) == SUCCESS)
+		{
+			cl++;
+			if (cl > 6)
+			{
+				data->map->map_2[i] = strdup_no_n(line);
+				i++;
+			}
+		}
+		else if (cl > 6 && i > 0)
+			data->map->space_in_map_2 = 1;
+		free(line);
+		line = get_next_line(fd);
+	}
+	free(line);
+	close(fd);
+	return (data->map);
+}
+
 t_map	*count_line_for_map(char *s, t_data *data)
 {
 	int		fd;
 	int		count_line;
-	char	*line;
-	int		i;
 	int		map_size;
 
 	count_line = 0;
-	i = 0;
 	map_size = return_size_of_map(s);
 	data->map->map_2 = ft_calloc(map_size + 1, sizeof(char *));
 	if (!(data->map->map_2))
@@ -83,27 +108,6 @@ t_map	*count_line_for_map(char *s, t_data *data)
 	if (fd < 0)
 		printf("Error\nOpen map.cub failed\n");
 	else
-	{
-		line = get_next_line(fd);
-		while (line != NULL)
-		{
-			if (check_get_next_line2(line) == SUCCESS)
-			{
-				count_line++;
-				if (count_line > 6)
-				{
-					data->map->map_2[i] = strdup_no_n(line);
-					i++;
-				}
-			}
-			else if (count_line > 6 && i > 0)
-				data->map->space_in_map_2 = 1;
-			free(line);
-			line = get_next_line(fd);
-		}
-		free(line);
-		close(fd);
-	}
+		data->map = reduce_cl_for_map(data, fd, count_line);
 	return (data->map);
 }
-

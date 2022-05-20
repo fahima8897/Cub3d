@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/20 20:03:13 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/20 21:00:15 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_map_info
 	char	*so_texture;
 	char	*ea_texture;
 	char	*we_texture;
+//	int		free_switch;
 }	t_map_info;
 
 typedef struct s_map

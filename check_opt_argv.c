@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:14:49 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 15:10:53 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/20 21:09:05 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int	check_opt_argv_map(char *argv, t_data *data)
 		return (return_failure("Error\nNo empty line allowed for map."));
 	if (check_map_content_characters(data) == FAILURE)
 		return (FAILURE);
+	data->map_info = get_all_map_info(data);
 	return (SUCCESS);
 }

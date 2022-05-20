@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 19:33:44 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/20 20:12:48 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/20 21:10:07 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,7 @@ t_map_info	*get_colors_cf(char **map, t_map_info *map_info)
 
 t_map_info	*get_all_map_info(t_data *data)
 {
-	t_map_info	*map_info;
-
-	map_info = malloc(sizeof(t_map_info) * 1);
-	if (map_info == NULL)
-		return (NULL);
-	map_info = get_textures(data->map->map, map_info);
-	map_info = get_colors_cf(data->map->map, map_info);
-	return (map_info);
+	data->map_info = get_textures(data->map->map, data->map_info);
+	data->map_info = get_colors_cf(data->map->map, data->map_info);
+	return (data->map_info);
 }
