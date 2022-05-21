@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture.xpm
-SO ./path_to_the_south_texture.xpm
-WE ./path_to_the_west_texture.xpm
-EA ./path_to_the_east_texture.xpm
+NO ./ressources/wall10.xpm
+SO ./ressources/grass.xpm
+WE ./ressources/wall10.xpm
+EA ./ressources/wall10.xpm
    
 C 255,255,255
 F 220,255,255

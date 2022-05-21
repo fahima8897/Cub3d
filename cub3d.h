@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/20 21:00:15 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/21 09:46:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ typedef struct s_map_info
 	char	*so_texture;
 	char	*ea_texture;
 	char	*we_texture;
-//	int		free_switch;
+	void	*mlx_no;
+	void	*mlx_so;
+	void	*mlx_ea;
+	void	*mlx_we;
 }	t_map_info;
 
 typedef struct s_map
@@ -87,7 +90,7 @@ int		strlen_tab(char **str);
 void	free_tab(char **str);
 void	free_struct(t_map *map);
 void	free_data(t_data *data);
-void	free_map_info(t_map_info *map_info);
+void	free_map_info(t_map_info *map_info, t_data *data);
 
 	/* window.c */
 void	loop(t_data *data);

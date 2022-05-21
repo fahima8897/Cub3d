@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:38:08 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/20 21:08:17 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/21 09:23:58 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@ void	init_data(t_data *data)
 	data->map_info->so_texture = NULL;
 	data->map_info->we_texture = NULL;
 	data->map_info->ea_texture = NULL;
-//	data->map_info->free_switch = 0;
+	data->map_info->mlx_no = NULL;
+	data->map_info->mlx_so = NULL;
+	data->map_info->mlx_we = NULL;
+	data->map_info->mlx_ea = NULL;
+	
 }

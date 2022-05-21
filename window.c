@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/20 16:48:20 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/21 11:40:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	close_escape(int keycode, t_data *data)
 	{
 		if (data->mlx_win)
 		{
+			free_map_info(data->map_info, data);
 			mlx_destroy_window(data->mlx, data->mlx_win);
 			mlx_destroy_display(data->mlx);
 			data->mlx_win = NULL;
@@ -37,6 +38,7 @@ int	close_redx(t_data *data)
 {
 	if (data->mlx_win)
 	{
+		free_map_info(data->map_info, data);
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		mlx_destroy_display(data->mlx);
 		data->mlx_win = NULL;
@@ -51,8 +53,8 @@ A initialiser comme il faut quand dans une fonction
 	et quand on aura la taille de la map*/
 int	init_window(t_data *data)
 {
-	data->win_width = 800;
-	data->win_height = 800;
+	data->win_width = 24 * 48;
+	data->win_height = 10 * 48;
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		return (FAILURE);
