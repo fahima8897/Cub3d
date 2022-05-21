@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_all_map_info.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 19:33:44 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/20 21:10:07 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/21 14:46:45 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,42 @@ t_map_info	*get_colors_cf(char **map, t_map_info *map_info)
 	return (map_info);
 }
 
+char	get_player_pos(t_data *data)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (data->map->map_2[i])
+	{
+		j = 0;
+		while (data->map->map_2[i][j])
+		{
+			if (data->map->map_2[i][j] == 'E')
+			{
+				data->map->player = 'E';
+				data->map->p_pos_x = i;
+				data->map->p_pos_y = j;
+			}
+			if (data->map->map_2[i][j] == 'W')
+				data->map->player = 'W';
+			if (data->map->map_2[i][j] == 'S')
+				data->map->player = 'S';
+			if (data->map->map_2[i][j] == 'N')
+				data->map->player = 'N';
+			j++;
+		}
+		i++;
+	}
+	return (data->map->player);
+}
+
 t_map_info	*get_all_map_info(t_data *data)
 {
 	data->map_info = get_textures(data->map->map, data->map_info);
 	data->map_info = get_colors_cf(data->map->map, data->map_info);
+	data->map->player = get_player_pos(data);
+	printf("%c\n", data->map->player);
+
 	return (data->map_info);
 }

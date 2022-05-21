@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:38:08 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/21 09:23:58 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/21 14:47:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	init_data(t_data *data)
 		return ;
 	data->map_info = malloc(sizeof(t_map_info));
 	if (!data->map_info)
+		return ;
+	data->ray = malloc(sizeof(t_ray));
+	if (!data->ray)
 		return ;
 	data->map->map = NULL;
 	data->map->map_2 = NULL;
@@ -34,5 +37,10 @@ void	init_data(t_data *data)
 	data->map_info->mlx_so = NULL;
 	data->map_info->mlx_we = NULL;
 	data->map_info->mlx_ea = NULL;
+	data->ray->plany = 0;
+	data->ray->planx = 0;
+	data->ray->diry = 0;
+	data->map->p_pos_x = 0;
+	data->map->p_pos_y = 0;
 	
 }

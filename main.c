@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/21 12:11:16 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/21 14:56:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,46 @@ int	free_win_and_data(t_data *data)
 	return (FAILURE);
 }
 
+void	init_ray(t_data *data)
+{
+	data->ray->posx = (double)data->map->p_pos_x + 0.5;
+	data->ray->posy = (double)data->map->p_pos_y + 0.5;
+	data->ray->dirx = 0;
+	data->ray->diry = 0;
+	data->ray->planx = 0;
+	data->ray->plany = 0;
+	data->ray->hit = 0;
+	data->ray->perpwalldist = 0;
+	data->ray->camerax = 2 * data->ray->x / (double)10 - 1;
+	data->ray->raydirx = data->ray->dirx + data->ray->planx * \
+						data->ray->camerax;
+	data->ray->raydiry = data->ray->diry + data->ray->plany * \
+						data->ray->camerax;
+	data->ray->mapx = (int)data->ray->posx;
+	data->ray->mapy = (int)data->ray->posy;
+	data->ray->movespeed = 0.1;
+	data->ray->rotspeed = 0.033 * 1.8;
+	if (data->map->player == 'N')
+		data->ray->dirx = -1;
+	if (data->map->player == 'S')
+		data->ray->dirx = 1;
+	if (data->map->player == 'E')
+		data->ray->diry = 1;
+	if (data->map->player == 'W')
+		data->ray->diry = -1;
+	if (data->map->player == 'N')
+		data->ray->plany = 0.66;
+	if (data->map->player == 'S')
+		data->ray->plany = -0.66;
+	if (data->map->player == 'E')
+		data->ray->planx = 0.66;
+	if (data->map->player == 'W')
+		data->ray->planx = -0.66;
+	printf("ray == %f\n", data->ray->plany);
+	printf("ray == %f\n", data->ray->planx);
+	printf("ray == %f\n", data->ray->diry);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	*data;
@@ -183,6 +223,7 @@ int	main(int ac, char **av)
 		free_data(data);
 		return (FAILURE);
 	}
+	init_ray(data);
 	init_window(data);
 	if (ft_create_textures(data) == FAILURE)
 		return (free_win_and_data(data));

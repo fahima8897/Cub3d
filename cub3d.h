@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/21 09:46:16 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/21 14:45:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,43 @@ typedef struct s_map
 	char	**map_2;
 	int		fd;
 	int		count_line;
-	int		player;
+	char	player;
+	int		p_pos_x;
+	int		p_pos_y;
 	int		space_in_map_2;
 }	t_map;
+
+typedef struct		s_ray
+{
+	double			posx;
+	double			posy;
+	double			dirx;
+	double			diry;
+	double			planx;
+	double			plany;
+	double			raydirx;
+	double			raydiry;
+	double			camerax;
+	int				mapx;
+	int				mapy;
+	double			sidedistx;
+	double			sidedisty;
+	double			deltadistx;
+	double			deltadisty;
+
+	int				stepx;
+	int				stepy;
+	int				hit;
+	int				side;
+	double			perpwalldist;
+	int				lineheight;
+	int				drawstart;
+	int				drawend;
+	double			movespeed;
+	double			rotspeed;
+	int				x;
+	int				texture;
+}					t_ray;
 
 typedef struct s_data
 {
@@ -63,6 +97,7 @@ typedef struct s_data
 	int			win_width;
 	t_map		*map;
 	t_map_info	*map_info;
+	t_ray		*ray;
 }	t_data;
 
 typedef struct s_verif
