@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/21 12:52:41 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/26 16:39:24 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,26 @@ int	close_redx(t_data *data)
 	exit(0);
 }
 
+int	init_display(t_data *data)
+{
+	data->tx->img = mlx_new_image(data->mlx, data->win_width, data->win_height);
+	if (!data->tx->img)
+		return (return_failure("Error\nInit display\n"));
+	data->tx->addr = mlx_get_data_addr(data->tx->img, &data->tx->bpp,
+			&data->tx->line, &data->tx->endian);
+	if (!data->tx->addr)
+		return (return_failure("Error\nInit display\n"));
+	printf("COUCOU\n");
+	return (SUCCESS);
+}
+
 /*initialisation de width et height juste pour tester
 A initialiser comme il faut quand dans une fonction 
 	et quand on aura la taille de la map*/
 int	init_window(t_data *data)
 {
-	data->win_width = 24 * 48;
-	data->win_height = 10 * 48;
+	data->win_width = 1920;
+	data->win_height = 1000;
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		return (FAILURE);
@@ -66,12 +79,23 @@ int	init_window(t_data *data)
 		free(data);
 		return (FAILURE);
 	}
+	if (init_display(data) == FAILURE)
+		return (FAILURE);
 	return (SUCCESS);
+}
+
+int	loop_raycast(t_data *data)
+{
+//	key_hook(data);
+	draw(data);
+	return (0);
 }
 
 void	loop(t_data *data)
 {
+	mlx_loop_hook(data->mlx, loop_raycast, data);
 	mlx_hook(data->mlx_win, 2, 1L << 0, &close_escape, data);
 	mlx_hook(data->mlx_win, 17, 0L, &close_redx, data);
+	mlx_do_sync(data->mlx);
 	mlx_loop(data->mlx);
 }

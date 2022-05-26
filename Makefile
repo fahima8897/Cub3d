@@ -6,7 +6,7 @@
 #    By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 16:11:35 by fboumell          #+#    #+#              #
-#    Updated: 2022/05/20 19:54:43 by adaloui          ###   ########.fr        #
+#    Updated: 2022/05/26 15:24:47 by adaloui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,9 @@ SRCS	= main.c \
 		get_rest_of_map.c \
 		t_verif.c \
 		get_all_map_info.c \
+		init_player.c \
+		raycast.c \
+		draw.c \
 		
 
 OBJS = ${SRCS:.c=.o}

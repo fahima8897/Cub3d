@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:39:58 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/21 14:00:25 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/26 14:56:10 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,35 @@ void	free_map_info(t_map_info *map_info, t_data *data)
 	free(map_info);
 }
 
+void	free_tx(t_data *data)
+{
+	printf("COUCOU\n");
+	printf("img = %p\n", data->tx->img);
+	if (data->tx->img)
+	{
+		printf("FREE IMG\n");
+		free(data->tx->img);
+	}
+	printf("img = %p\n", data->tx->img);
+//	if (data->tx->addr)
+//		free(data->tx->addr);
+/*	if (data->tx->img != NULL)
+	{
+		mlx_destroy_image(data->mlx, data->tx->img);
+		data->tx->img = NULL;
+	}*/
+	if (data->tx)
+		free(data->tx);
+}
+
 void	free_data(t_data *data)
 {
 	if (data->map)
 		free_struct(data->map);
 	if (data->ray)
 		free(data->ray);
+	if (data->tx)
+		free_tx(data);
 	if (data != NULL)
 		free(data);
 }

@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:08:18 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/20 16:29:56 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/26 14:18:50 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ int	check_player_nb(t_map *map)
 {
 	int	i;
 	int	j;
+	int	p_nb;
 
 	i = 0;
+	p_nb = 0;
 	while (map->map_2[i])
 	{
 		j = 0;
@@ -48,12 +50,12 @@ int	check_player_nb(t_map *map)
 		{
 			if (map->map_2[i][j] == 'N' || map->map_2[i][j] == 'E'
 				|| map->map_2[i][j] == 'S' || map->map_2[i][j] == 'W')
-				map->player++;
+				p_nb++;
 			j++;
 		}
 		i++;
 	}
-	if (map->player != 1)
+	if (p_nb != 1)
 		return (return_failure("Error\nWrong number of player."));
 	return (SUCCESS);
 }

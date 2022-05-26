@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/21 14:45:17 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/26 15:38:43 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,34 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include "libft/libft.h"
+# include <math.h>
 
 # ifndef O_DIRECTORY
 #  define O_DIRECTORY 00200000
 # endif
+
+# define NO 0
+# define SO 1
+# define WE 2
+# define EA 3
+
+typedef struct s_coord
+{
+	double		x;
+	double		y;
+}				t_coord;
+
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		height;
+	int		width;
+	int		endian;
+	int		line;
+	int		status;
+}				t_img;
 
 typedef struct s_map_info
 {
@@ -35,6 +59,10 @@ typedef struct s_map_info
 	int		c_red;
 	int		c_green;
 	int		c_blue;
+	t_img	north;
+	t_img	south;
+	t_img	east;
+	t_img	west;
 	char	*no_texture;
 	char	*so_texture;
 	char	*ea_texture;
@@ -45,49 +73,43 @@ typedef struct s_map_info
 	void	*mlx_we;
 }	t_map_info;
 
+typedef struct s_player
+{
+	char	p_dir;
+	t_coord	p_pos;
+	t_coord	dir_pos;
+	t_coord	plane_pos;
+}		t_player;
+
 typedef struct s_map
 {
-	char	**map;
-	char	**map_2;
-	int		fd;
-	int		count_line;
-	char	player;
-	int		p_pos_x;
-	int		p_pos_y;
-	int		space_in_map_2;
+	char		**map;
+	char		**map_2;
+	int			fd;
+	int			count_line;
+	t_player	player;
+	int			space_in_map_2;
 }	t_map;
 
-typedef struct		s_ray
+typedef struct s_ray
 {
-	double			posx;
-	double			posy;
-	double			dirx;
-	double			diry;
-	double			planx;
-	double			plany;
-	double			raydirx;
-	double			raydiry;
-	double			camerax;
-	int				mapx;
-	int				mapy;
-	double			sidedistx;
-	double			sidedisty;
-	double			deltadistx;
-	double			deltadisty;
-
-	int				stepx;
-	int				stepy;
-	int				hit;
-	int				side;
-	double			perpwalldist;
-	int				lineheight;
-	int				drawstart;
-	int				drawend;
-	double			movespeed;
-	double			rotspeed;
-	int				x;
-	int				texture;
-}					t_ray;
+	t_coord		dir;
+	t_coord		map;
+	int			mapx;
+	int			mapy;
+	t_coord		delta_dist;
+	t_coord		side_dist;
+	t_coord		cam;
+	int			hit;
+	int			stepx;
+	int			stepy;
+	int			side;
+	double		wall_dist;
+	int			line_height;
+	int			wall_start;
+	int			wall_end;
+	double		wall_x;
+}				t_ray;
 
 typedef struct s_data
 {
@@ -97,6 +119,7 @@ typedef struct s_data
 	int			win_width;
 	t_map		*map;
 	t_map_info	*map_info;
+	t_img		*tx;
 	t_ray		*ray;
 }	t_data;
 
@@ -195,5 +218,14 @@ int		check_verif_2(t_verif tab);
 
 /*		get_all_map_info.c		*/
 t_map_info	*get_all_map_info(t_data *data);
+
+/*		init_player.c		*/
+void	init_player(t_data *data, int x, int y, char dir);
+
+/*		raycats.c		*/
+int		draw(t_data *data);
+
+/*		draw.c		*/
+void	put_in_display(t_data *data, int x);
 
 #endif

@@ -1,0 +1,16 @@
+		= tex->addr[(int)(data->ray->wall_x * tex->width) * (tex->bpp >> 3)
+		+ (int)((y - data->ray->wall_start * 1.0) / data->ray->line_height
+		= tex->addr[(int)(data->ray->wall_x * tex->width) * (tex->bpp >> 3)
+		+ 1 + (int)((y - data->ray->wall_start * 1.0)
+			/ data->ray->line_height * tex->height) *tex->line];
+		= tex->addr[(int)(data->ray->wall_x * tex->width) * (tex->bpp >> 3)
+		+ 2 + (int)((y - data->ray->wall_start * 1.0)
+			/ data->ray->line_height * tex->height) *tex->line];
+	if (data->ray->side == NO)
+	else if (data->ray->side == SO)
+	else if (data->ray->side == WE)
+	else if (data->ray->side == EA)
+	if (data->ray->wall_start < 0)
+		*start = data->ray->wall_start;
+	if (data->ray->wall_end >= data->win_height)
+		*end = data->ray->wall_end;

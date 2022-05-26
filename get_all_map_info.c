@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_all_map_info.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 19:33:44 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/21 14:46:45 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/26 14:23:08 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ t_map_info	*get_colors_cf(char **map, t_map_info *map_info)
 	return (map_info);
 }
 
-char	get_player_pos(t_data *data)
+char	get_player_dir(t_data *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (data->map->map_2[i])
@@ -83,30 +83,58 @@ char	get_player_pos(t_data *data)
 		while (data->map->map_2[i][j])
 		{
 			if (data->map->map_2[i][j] == 'E')
-			{
-				data->map->player = 'E';
-				data->map->p_pos_x = i;
-				data->map->p_pos_y = j;
-			}
+				data->map->player.p_dir = 'E';
 			if (data->map->map_2[i][j] == 'W')
-				data->map->player = 'W';
+				data->map->player.p_dir = 'W';
 			if (data->map->map_2[i][j] == 'S')
-				data->map->player = 'S';
+				data->map->player.p_dir = 'S';
 			if (data->map->map_2[i][j] == 'N')
-				data->map->player = 'N';
+				data->map->player.p_dir = 'N';
 			j++;
 		}
 		i++;
 	}
-	return (data->map->player);
+	return (data->map->player.p_dir);
+}
+
+t_coord	get_player_pos(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (data->map->map_2[i])
+	{
+		j = 0;
+		while (data->map->map_2[i][j])
+		{
+			if (data->map->map_2[i][j] == 'E' || data->map->map_2[i][j] == 'W'
+			|| data->map->map_2[i][j] == 'S' || data->map->map_2[i][j] == 'N')
+			{
+				data->map->player.p_pos.x = j;
+				data->map->player.p_pos.y = i;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (data->map->player.p_pos);
 }
 
 t_map_info	*get_all_map_info(t_data *data)
 {
 	data->map_info = get_textures(data->map->map, data->map_info);
 	data->map_info = get_colors_cf(data->map->map, data->map_info);
-	data->map->player = get_player_pos(data);
-	printf("%c\n", data->map->player);
-
+	data->map->player.p_dir = get_player_dir(data);
+	data->map->player.p_pos = get_player_pos(data);
+	init_player(data, data->map->player.p_pos.x, data->map->player.p_pos.y,
+		data->map->player.p_dir);
+	printf("%c\n", data->map->player.p_dir);
+	printf("x = %f\n", data->map->player.p_pos.x);
+	printf("y = %f\n", data->map->player.p_pos.y);
+	printf("x = %f\n", data->map->player.dir_pos.x);
+	printf("y = %f\n", data->map->player.dir_pos.y);
+	printf("x = %f\n", data->map->player.plane_pos.x);
+	printf("y = %f\n", data->map->player.plane_pos.y);
 	return (data->map_info);
 }
