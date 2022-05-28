@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/28 16:13:08 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/28 17:40:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,10 @@ typedef struct s_data
 	t_map_info	*map_info;
 	t_img		tx;
 	t_ray		ray;
+	t_img		north;
+	t_img		south;
+	t_img		east;
+	t_img		west;
 }	t_data;
 
 typedef struct s_verif
@@ -223,5 +227,10 @@ int		draw(t_data *data);
 
 /*		draw.c		*/
 void	put_in_display(t_data *data, int x);
+
+/*		create_texture.c		*/
+int create_textures_wall(t_data *data);
+/* GERER LES ERREURS DANS LE CAS OU !TXT.IMG ou !TXT_ADDR*/
+
 
 #endif

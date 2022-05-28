@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 16:11:35 by fboumell          #+#    #+#              #
-#    Updated: 2022/05/28 16:12:18 by user42           ###   ########.fr        #
+#    Updated: 2022/05/28 17:13:21 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS	= main.c \
 		init_player.c \
 		raycast.c \
 		draw.c \
+		create_textures.c \
 		
 
 OBJS = ${SRCS:.c=.o}

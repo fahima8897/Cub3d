@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:24:25 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/28 16:17:19 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/28 17:29:45 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,22 @@ void	draw_wall(t_data *data, t_img *tex, int y, int x)
 
 void	draw_tmp(t_data *data, int y, int x)
 {
-	if (data->ray.side == NO)
+/*	if (data->ray.side == NO)
 		draw_wall(data, &data->map_info->north, y, x);
 	else if (data->ray.side == SO)
 		draw_wall(data, &data->map_info->south, y, x);
 	else if (data->ray.side == WE)
 		draw_wall(data, &data->map_info->west, y, x);
 	else if (data->ray.side == EA)
-		draw_wall(data, &data->map_info->east, y, x);
+		draw_wall(data, &data->map_info->east, y, x);*/
+	if (data->ray.side == NO)
+		draw_wall(data, &data->north, y, x);
+	else if (data->ray.side == SO)
+		draw_wall(data, &data->south, y, x);
+	else if (data->ray.side == WE)
+		draw_wall(data, &data->west, y, x);
+	else if (data->ray.side == EA)
+		draw_wall(data, &data->east, y, x);
 }
 
 void	set_stop(t_data *data, int *start, int *end)

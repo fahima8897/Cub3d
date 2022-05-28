@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:39:58 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/28 16:46:10 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/28 17:39:35 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	free_struct(t_map *map)
 void	free_map_info(t_map_info *map_info, t_data *data)
 {
 	(void)data;
-//	if (map_info->no_texture)
-//		free(map_info->no_texture);
-//	if (map_info->so_texture)
-//		free(map_info->so_texture);
-//	if (map_info->ea_texture)
-//		free(map_info->ea_texture);
-//	if (map_info->we_texture)
-//		free(map_info->we_texture);
+/*	if (map_info->no_texture)
+		free(map_info->no_texture);
+	if (map_info->so_texture)
+		free(map_info->so_texture);
+	if (map_info->ea_texture)
+		free(map_info->ea_texture);
+	if (map_info->we_texture)
+		free(map_info->we_texture);*/
 /*	free(data->map_info->east.img);
 	free(data->map_info->west.img);
 	free(data->map_info->north.img);

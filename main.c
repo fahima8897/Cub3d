@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/28 15:55:51 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/28 17:17:32 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	check_arguments(int ac, char *av)
 int	ft_create_textures(t_data *data)
 {
 	data->map_info->east.img = mlx_xpm_file_to_image(data->mlx, /*ICI*/
-			data->map_info->we_texture, &data->map_info->east.width, &data->map_info->east.height);
+			data->map_info->ea_texture, &data->map_info->east.width, &data->map_info->east.height);
 	if (!data->map_info->east.img)
 		return (return_failure("Error\nxpm to image failed for EA."));
 	data->map_info->west.img = mlx_xpm_file_to_image(data->mlx,
@@ -94,11 +94,11 @@ int	ft_create_textures(t_data *data)
 	if (!data->map_info->west.img)
 		return (return_failure("Error\nxpm to image failed for WE."));
 	data->map_info->north.img = mlx_xpm_file_to_image(data->mlx,
-			data->map_info->we_texture, &data->map_info->north.width, &data->map_info->north.height);
+			data->map_info->no_texture, &data->map_info->north.width, &data->map_info->north.height);
 	if (!data->map_info->north.img)
 		return (return_failure("Error\nxpm to image failed for NO."));
 	data->map_info->south.img = mlx_xpm_file_to_image(data->mlx,
-			data->map_info->we_texture, &data->map_info->south.width, &data->map_info->south.height);
+			data->map_info->so_texture, &data->map_info->south.width, &data->map_info->south.height);
 	if (!data->map_info->south.img)
 		return (return_failure("Error\nxpm to image failed for SO."));
 	
@@ -161,7 +161,9 @@ int	main(int ac, char **av)
 		return (FAILURE);
 	}
 	init_window(data);
-	if (ft_create_textures(data) == FAILURE)
+	/*if (ft_create_textures(data) == FAILURE)
+		return (free_win_and_data(data));*/
+	if (create_textures_wall(data) == FAILURE)
 		return (free_win_and_data(data));
 	loop(data);
 	return (SUCCESS);
