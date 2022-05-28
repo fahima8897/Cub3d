@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:24:25 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/26 16:45:45 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/28 16:17:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,67 +14,67 @@
 
 void	draw_rgb(t_data *data, int y, int x)
 {
-	if (data->tx->endian == 1)
+	if (data->tx.endian == 1)
 	{
-		data->tx->addr[(x * data->tx->bpp >> 3)
-			+ y * data->tx->line] = data->map_info->f_red;
-		data->tx->addr[(x * data->tx->bpp >> 3)
-			+ 1 + y * data->tx->line] = data->map_info->f_green;
-		data->tx->addr[(x * data->tx->bpp >> 3)
-			+ 2 + y * data->tx->line] = data->map_info->f_blue;
+		data->tx.addr[(x * data->tx.bpp >> 3)
+			+ y * data->tx.line] = data->map_info->f_red;
+		data->tx.addr[(x * data->tx.bpp >> 3)
+			+ 1 + y * data->tx.line] = data->map_info->f_green;
+		data->tx.addr[(x * data->tx.bpp >> 3)
+			+ 2 + y * data->tx.line] = data->map_info->f_blue;
 	}
 	else
 	{
-		data->tx->addr[(x * data->tx->bpp >> 3)
-			+ y * data->tx->line] = data->map_info->c_blue;
-		data->tx->addr[(x * data->tx->bpp >> 3)
-			+ 1 + y * data->tx->line] = data->map_info->c_green;
-		data->tx->addr[(x * data->tx->bpp >> 3)
-			+ 2 + y * data->tx->line] = data->map_info->c_red;
+		data->tx.addr[(x * data->tx.bpp >> 3)
+			+ y * data->tx.line] = data->map_info->c_blue;
+		data->tx.addr[(x * data->tx.bpp >> 3)
+			+ 1 + y * data->tx.line] = data->map_info->c_green;
+		data->tx.addr[(x * data->tx.bpp >> 3)
+			+ 2 + y * data->tx.line] = data->map_info->c_red;
 	}
 }
 
 void	draw_wall(t_data *data, t_img *tex, int y, int x)
 {
-	data->tx->addr[(x * data->tx->bpp >> 3)
-		+ y * data->tx->line]
-		= tex->addr[(int)(data->ray->wall_x * tex->width) * (tex->bpp >> 3)
-		+ (int)((y - data->ray->wall_start * 1.0) / data->ray->line_height
+	data->tx.addr[(x * data->tx.bpp >> 3)
+		+ y * data->tx.line]
+		= tex->addr[(int)(data->ray.wall_x * tex->width) * (tex->bpp >> 3)
+		+ (int)((y - data->ray.wall_start * 1.0) / data->ray.line_height
 			* tex->height) *tex->line];
-	data->tx->addr[(x * data->tx->bpp >> 3)
-		+ 1 + y * data->tx->line]
-		= tex->addr[(int)(data->ray->wall_x * tex->width) * (tex->bpp >> 3)
-		+ 1 + (int)((y - data->ray->wall_start * 1.0)
-			/ data->ray->line_height * tex->height) *tex->line];
-	data->tx->addr[(x * data->tx->bpp >> 3)
-		+ 2 + y * data->tx->line]
-		= tex->addr[(int)(data->ray->wall_x * tex->width) * (tex->bpp >> 3)
-		+ 2 + (int)((y - data->ray->wall_start * 1.0)
-			/ data->ray->line_height * tex->height) *tex->line];
+	data->tx.addr[(x * data->tx.bpp >> 3)
+		+ 1 + y * data->tx.line]
+		= tex->addr[(int)(data->ray.wall_x * tex->width) * (tex->bpp >> 3)
+		+ 1 + (int)((y - data->ray.wall_start * 1.0)
+			/ data->ray.line_height * tex->height) *tex->line];
+	data->tx.addr[(x * data->tx.bpp >> 3)
+		+ 2 + y * data->tx.line]
+		= tex->addr[(int)(data->ray.wall_x * tex->width) * (tex->bpp >> 3)
+		+ 2 + (int)((y - data->ray.wall_start * 1.0)
+			/ data->ray.line_height * tex->height) *tex->line];
 }
 
 void	draw_tmp(t_data *data, int y, int x)
 {
-	if (data->ray->side == NO)
+	if (data->ray.side == NO)
 		draw_wall(data, &data->map_info->north, y, x);
-	else if (data->ray->side == SO)
+	else if (data->ray.side == SO)
 		draw_wall(data, &data->map_info->south, y, x);
-	else if (data->ray->side == WE)
+	else if (data->ray.side == WE)
 		draw_wall(data, &data->map_info->west, y, x);
-	else if (data->ray->side == EA)
+	else if (data->ray.side == EA)
 		draw_wall(data, &data->map_info->east, y, x);
 }
 
 void	set_stop(t_data *data, int *start, int *end)
 {
-	if (data->ray->wall_start < 0)
+	if (data->ray.wall_start < 0)
 		*start = 0;
 	else
-		*start = data->ray->wall_start;
-	if (data->ray->wall_end >= data->win_height)
+		*start = data->ray.wall_start;
+	if (data->ray.wall_end >= data->win_height)
 		*end = data->win_height - 1;
 	else
-		*end = data->ray->wall_end;
+		*end = data->ray.wall_end;
 }
 
 void	put_in_display(t_data *data, int x)

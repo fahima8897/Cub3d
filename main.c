@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/26 16:35:39 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/28 15:55:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,28 +85,25 @@ void	check_arguments(int ac, char *av)
 
 int	ft_create_textures(t_data *data)
 {
-	int	a;
-	int	b;
-
-	a = data->win_width;
-	b = data->win_height;
-	
-	data->map_info->east.img = mlx_xpm_file_to_image(data->mlx,
-			data->map_info->we_texture, &a, &b);
+	data->map_info->east.img = mlx_xpm_file_to_image(data->mlx, /*ICI*/
+			data->map_info->we_texture, &data->map_info->east.width, &data->map_info->east.height);
 	if (!data->map_info->east.img)
 		return (return_failure("Error\nxpm to image failed for EA."));
 	data->map_info->west.img = mlx_xpm_file_to_image(data->mlx,
-			data->map_info->we_texture, &a, &b);
+			data->map_info->we_texture, &data->map_info->west.width, &data->map_info->west.height);
 	if (!data->map_info->west.img)
 		return (return_failure("Error\nxpm to image failed for WE."));
 	data->map_info->north.img = mlx_xpm_file_to_image(data->mlx,
-			data->map_info->we_texture, &a, &b);
+			data->map_info->we_texture, &data->map_info->north.width, &data->map_info->north.height);
 	if (!data->map_info->north.img)
 		return (return_failure("Error\nxpm to image failed for NO."));
 	data->map_info->south.img = mlx_xpm_file_to_image(data->mlx,
-			data->map_info->we_texture, &a, &b);
+			data->map_info->we_texture, &data->map_info->south.width, &data->map_info->south.height);
 	if (!data->map_info->south.img)
 		return (return_failure("Error\nxpm to image failed for SO."));
+	
+	
+	
 	data->map_info->east.addr = mlx_get_data_addr(data->map_info->east.img,
 			&data->map_info->east.bpp, &data->map_info->east.line,
 			&data->map_info->east.endian);
@@ -127,6 +124,10 @@ int	ft_create_textures(t_data *data)
 			&data->map_info->south.endian);
 	if (!data->map_info->south.addr)
 		return (return_failure("Error\nxpm to image failed for EA."));
+	data->map_info->east.status = 1;
+	data->map_info->west.status = 1;
+	data->map_info->north.status = 1;
+	data->map_info->south.status = 1;
 	return (SUCCESS);
 }
 

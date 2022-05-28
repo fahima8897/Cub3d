@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/26 16:39:24 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/28 16:17:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ int	close_redx(t_data *data)
 
 int	init_display(t_data *data)
 {
-	data->tx->img = mlx_new_image(data->mlx, data->win_width, data->win_height);
-	if (!data->tx->img)
+	data->tx.img = mlx_new_image(data->mlx, data->win_width, data->win_height);
+	if (!data->tx.img)
 		return (return_failure("Error\nInit display\n"));
-	data->tx->addr = mlx_get_data_addr(data->tx->img, &data->tx->bpp,
-			&data->tx->line, &data->tx->endian);
-	if (!data->tx->addr)
+	data->tx.addr = mlx_get_data_addr(data->tx.img, &data->tx.bpp,
+			&data->tx.line, &data->tx.endian);
+	if (!data->tx.addr)
 		return (return_failure("Error\nInit display\n"));
 	printf("COUCOU\n");
 	return (SUCCESS);

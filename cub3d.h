@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/26 15:38:43 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/28 16:13:08 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,6 @@ typedef struct s_map_info
 	char	*so_texture;
 	char	*ea_texture;
 	char	*we_texture;
-	void	*mlx_no;
-	void	*mlx_so;
-	void	*mlx_ea;
-	void	*mlx_we;
 }	t_map_info;
 
 typedef struct s_player
@@ -119,8 +115,8 @@ typedef struct s_data
 	int			win_width;
 	t_map		*map;
 	t_map_info	*map_info;
-	t_img		*tx;
-	t_ray		*ray;
+	t_img		tx;
+	t_ray		ray;
 }	t_data;
 
 typedef struct s_verif
