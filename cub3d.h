@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/28 18:14:01 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/29 21:39:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,24 @@ typedef struct s_map_info
 	char	*we_texture;
 }	t_map_info;
 
+typedef struct s_gameplay
+{
+	int forward;
+	int backward;
+	int left;
+	int right;
+	int look_left;
+	int look_right;
+	int escape;
+}		t_gameplay;
+
 typedef struct s_player
 {
 	char	p_dir;
 	t_coord	p_pos;
 	t_coord	dir_pos;
 	t_coord	plane_pos;
+	t_gameplay gamplay;
 }		t_player;
 
 typedef struct s_map
@@ -228,5 +240,7 @@ void	put_in_display(t_data *data, int x);
 int create_textures_wall(t_data *data);
 /* GERER LES ERREURS DANS LE CAS OU !TXT.IMG ou !TXT_ADDR*/
 
+/*		gameplay.c		*/
+int	keyboard_gameplay(t_data *data);
 
 #endif

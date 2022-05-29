@@ -1,7 +1,7 @@
-NO ./ressources/stone_wall.xpm
-SO ./ressources/redbrick.xpm
-WE ./ressources/greystone.xpm
-EA ./ressources/grass.xpm
+NO ./ressources/A-brown4.xpm
+SO ./ressources/WoodSkul.xpm
+WE ./ressources/gstfont1.xpm
+EA ./ressources/zzwolf10.xpm
 
 F 61,226,95
 C 93,171,222

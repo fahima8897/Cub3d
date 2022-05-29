@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:38:08 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/29 11:00:09 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/29 21:39:48 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,12 @@ void	init_data(t_data *data)
 	data->south.status = 0;
 	data->south.img = NULL;
 	data->south.addr = NULL;
+
+	data->map->player.gamplay.forward = 0;
+	data->map->player.gamplay.backward = 0;
+	data->map->player.gamplay.left = 0;
+	data->map->player.gamplay.right = 0;
+	data->map->player.gamplay.look_left = 0;
+	data->map->player.gamplay.look_right = 0;
+	data->map->player.gamplay.escape = 0;
 }

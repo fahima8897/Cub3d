@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/29 10:43:57 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/29 21:43:15 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	close_escape(int keycode, t_data *data)
 		free(data);
 		exit(0);
 	}
-	if (keycode == 100 || keycode == 97 || keycode == 115 || keycode == 119)
-		printf("coucou\n");
+/*	if (keycode == 100 || keycode == 97 || keycode == 115 || keycode == 119)
+		printf("coucou\n");*/
 	return (SUCCESS);
 }
 
@@ -61,7 +61,6 @@ int	init_display(t_data *data)
 			&data->tx.line, &data->tx.endian);
 	if (!data->tx.addr)
 		return (return_failure("Error\nInit display\n"));
-	printf("COUCOU\n");
 	return (SUCCESS);
 }
 
@@ -88,9 +87,35 @@ int	init_window(t_data *data)
 	return (SUCCESS);
 }
 
+int press_keyboard(int key, t_data *data)
+{
+	if (key == 119)
+		data->map->player.gamplay.forward = 1;
+	else if (key == 115)
+		data->map->player.gamplay.backward = 1;
+	else if (key == XK_Escape)
+		data->map->player.gamplay.escape = 1;
+	else
+		printf("No action is on this key\n");
+	return (SUCCESS);
+}
+
+int release_keyboard(int key, t_data *data)
+{
+	if (key == 119)
+		data->map->player.gamplay.forward = 0;
+	else if (key == 115)
+		data->map->player.gamplay.backward = 0;
+	else if (key == XK_Escape)
+		data->map->player.gamplay.escape = 0;
+	else
+		printf("No action is on this key\n");
+	return (SUCCESS);
+}
+
 int	loop_raycast(t_data *data)
 {
-//	key_hook(data);
+	keyboard_gameplay(data);
 	draw(data);
 	return (0);
 }
@@ -98,8 +123,10 @@ int	loop_raycast(t_data *data)
 void	loop(t_data *data)
 {
 	mlx_loop_hook(data->mlx, loop_raycast, data);
-	mlx_hook(data->mlx_win, 2, 1L << 0, &close_escape, data);
+	mlx_hook(data->mlx_win, 2, 1L << 0, &press_keyboard, data);
+	mlx_hook(data->mlx_win, 3, 1L << 1, &release_keyboard, data);
+	//mlx_hook(data->mlx_win, 2, 1L << 0, &close_escape, data);
 	mlx_hook(data->mlx_win, 17, 0L, &close_redx, data);
-	mlx_do_sync(data->mlx);
+//	mlx_do_sync(data->mlx);
 	mlx_loop(data->mlx);
 }
