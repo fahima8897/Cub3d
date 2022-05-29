@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 16:30:43 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/29 21:38:47 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/29 23:40:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,28 @@ void	back(t_data *data)
 
 void	left(t_data *data)
 {
-	(void)data;
-	return ;
+	if (data->map->map_2[(int)(data->map->player.p_pos.x - data->map->player.plane_pos.x * \
+	0.4)][(int)(data->map->player.p_pos.y)] == '0' || data->map->map_2[(int)(data->map->player.p_pos.x - \
+	data->map->player.plane_pos.x * 0.4)][(int)(data->map->player.p_pos.y)] == data->map->player.p_dir)
+		data->map->player.p_pos.x += -(data->map->player.plane_pos.x * 0.4);
+	if (data->map->map_2[(int)(data->map->player.p_pos.x)][(int)(data->map->player.p_pos.y - \
+	data->map->player.plane_pos.y * 0.4)] == '0' || \
+	data->map->map_2[(int)(data->map->player.p_pos.x)][(int)(data->map->player.p_pos.y - \
+	data->map->player.plane_pos.y * 0.4)] == data->map->player.p_dir)
+		data->map->player.p_pos.y += -(data->map->player.plane_pos.y * 0.4);
 }
 
 void	right(t_data *data)
 {
-	(void)data;
-	return ;
+	if (data->map->map_2[(int)(data->map->player.p_pos.x + data->map->player.plane_pos.x * \
+	0.4)][(int)(data->map->player.p_pos.y)] == '0' || data->map->map_2[(int)(data->map->player.p_pos.x + \
+	data->map->player.plane_pos.x * 0.4)][(int)(data->map->player.p_pos.y)] == data->map->player.p_dir)
+		data->map->player.p_pos.x += data->map->player.plane_pos.x * 0.4;
+	if (data->map->map_2[(int)(data->map->player.p_pos.x)][(int)(data->map->player.p_pos.y + \
+	data->map->player.plane_pos.y * 0.4)] == '0' || \
+	data->map->map_2[(int)(data->map->player.p_pos.x)][(int)(data->map->player.p_pos.y + \
+	data->map->player.plane_pos.y * 0.4)] == data->map->player.p_dir)
+		data->map->player.p_pos.y += data->map->player.plane_pos.y * 0.4;
 }
 
 void	escape(t_data *data)
@@ -64,9 +78,16 @@ int	keyboard_gameplay(t_data *data)
 		forward(data);
 	if (data->map->player.gamplay.backward == 1)
 		back(data);
+	if (data->map->player.gamplay.left == 1)
+		left(data);
+	if (data->map->player.gamplay.right == 1)
+		right(data);
 	if (data->map->player.gamplay.escape == 1)
 		escape(data);
-	if (data->map->player.gamplay.forward == 0 && data->map->player.gamplay.backward == 0)
+	if (data->map->player.gamplay.forward == 0 &&
+	data->map->player.gamplay.backward == 0
+	&& data->map->player.gamplay.left == 0
+	&& data->map->player.gamplay.right == 0)
 		return (SUCCESS);
 	return (FAILURE);
 }

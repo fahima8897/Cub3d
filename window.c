@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/29 22:23:35 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/29 23:44:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ A initialiser comme il faut quand dans une fonction
 	et quand on aura la taille de la map*/
 int	init_window(t_data *data)
 {
-	data->win_width = 1920;
-	data->win_height = 1000;
+	data->win_width = 800;
+	data->win_height = 600;
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		return (FAILURE);
@@ -93,6 +93,14 @@ int press_keyboard(int key, t_data *data)
 		data->map->player.gamplay.forward = 1;
 	else if (key == XK_s)
 		data->map->player.gamplay.backward = 1;
+	else if (key == XK_a)
+		data->map->player.gamplay.left = 1;
+	else if (key == XK_d)
+		data->map->player.gamplay.right = 1;
+	else if (key == XK_Left)
+		data->map->player.gamplay.look_left = 1;
+	else if (key == XK_Right)
+		data->map->player.gamplay.look_right = 1;
 	else if (key == XK_Escape)
 		data->map->player.gamplay.escape = 1;
 	else
@@ -106,10 +114,16 @@ int release_keyboard(int key, t_data *data)
 		data->map->player.gamplay.forward = 0;
 	else if (key == XK_s)
 		data->map->player.gamplay.backward = 0;
+	else if (key == XK_a)
+		data->map->player.gamplay.left = 0;
+	else if (key == XK_d)
+		data->map->player.gamplay.right = 0;
+	else if (key == XK_Left)
+		data->map->player.gamplay.look_left = 0;
+	else if (key == XK_Right)
+		data->map->player.gamplay.look_right = 0;
 	else if (key == XK_Escape)
 		data->map->player.gamplay.escape = 0;
-	else
-		printf("No action is on this key\n");
 	return (SUCCESS);
 }
 
