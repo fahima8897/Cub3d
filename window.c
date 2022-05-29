@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/28 16:17:55 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/29 10:43:57 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ int	close_escape(int keycode, t_data *data)
 		if (data->mlx_win)
 		{
 			free_map_info(data->map_info, data);
+			free_data(data);
 			mlx_destroy_window(data->mlx, data->mlx_win);
 			mlx_destroy_display(data->mlx);
 			data->mlx_win = NULL;
 		}
 		free(data->mlx);
-		free_data(data);
+	if (data != NULL)
+		free(data);
 		exit(0);
 	}
 	if (keycode == 100 || keycode == 97 || keycode == 115 || keycode == 119)
@@ -39,12 +41,14 @@ int	close_redx(t_data *data)
 	if (data->mlx_win)
 	{
 		free_map_info(data->map_info, data);
+		free_data(data);
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		mlx_destroy_display(data->mlx);
 		data->mlx_win = NULL;
 	}
 	free(data->mlx);
-	free_data(data);
+	if (data != NULL)
+		free(data);
 	exit(0);
 }
 

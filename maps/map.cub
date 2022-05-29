@@ -3,8 +3,8 @@ SO ./ressources/redbrick.xpm
 WE ./ressources/greystone.xpm
 EA ./ressources/wood.xpm
 
-F 72,223,221
-C 55,56,16
+F 222,223,221
+C 14,215,16
 
 111111
 100001

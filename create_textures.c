@@ -11,7 +11,6 @@ t_img get_xpm_to_img(t_data *data, char *texture, t_img txt)
 //	if (!txt.addr)
 //		return (return_failure("Error\nmlx_get_data_addr failed."));
     txt.status = 1;
-	printf("ICI\n");
 	return (txt);
 }
 

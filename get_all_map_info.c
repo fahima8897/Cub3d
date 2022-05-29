@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_all_map_info.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 19:33:44 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/26 14:23:08 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/28 18:23:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	get_color_cd_reduce(char **s_byspace, t_map_info *map_info)
 	if (ft_strncmp(s_byspace[0], "F", 2) == 0)
 	{
 		s_bycomma = ft_split(s_byspace[1], ',');
+		printf("F = s_bycomma = %s,%s,%s\n", s_bycomma[0], s_bycomma[1], s_bycomma[2]);
 		map_info->f_red = ft_atoi(s_bycomma[0]);
 		map_info->f_green = ft_atoi(s_bycomma[1]);
 		map_info->f_blue = ft_atoi(s_bycomma[2]);
@@ -49,6 +50,7 @@ void	get_color_cd_reduce(char **s_byspace, t_map_info *map_info)
 	if (ft_strncmp(s_byspace[0], "C", 2) == 0)
 	{
 		s_bycomma = ft_split(s_byspace[1], ',');
+		printf("C = s_bycomma = %s,%s,%s\n", s_bycomma[0], s_bycomma[1], s_bycomma[2]);
 		map_info->c_red = ft_atoi(s_bycomma[0]);
 		map_info->c_green = ft_atoi(s_bycomma[1]);
 		map_info->c_blue = ft_atoi(s_bycomma[2]);

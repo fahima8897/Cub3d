@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/28 17:40:16 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/28 18:14:01 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,6 @@ typedef struct s_map_info
 	int		c_red;
 	int		c_green;
 	int		c_blue;
-	t_img	north;
-	t_img	south;
-	t_img	east;
-	t_img	west;
 	char	*no_texture;
 	char	*so_texture;
 	char	*ea_texture;

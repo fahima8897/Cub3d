@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:24:25 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/28 17:29:45 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/28 18:35:45 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	draw_rgb(t_data *data, int y, int x)
 {
+//	printf("tx.endian %d\n", data->tx.endian);
 	if (data->tx.endian == 1)
 	{
+		//printf("Je rentre dans IF DE COLOR\n");
 		data->tx.addr[(x * data->tx.bpp >> 3)
 			+ y * data->tx.line] = data->map_info->f_red;
 		data->tx.addr[(x * data->tx.bpp >> 3)
@@ -25,6 +27,7 @@ void	draw_rgb(t_data *data, int y, int x)
 	}
 	else
 	{
+	//	data->tx.endian = 1;
 		data->tx.addr[(x * data->tx.bpp >> 3)
 			+ y * data->tx.line] = data->map_info->c_blue;
 		data->tx.addr[(x * data->tx.bpp >> 3)
@@ -55,14 +58,6 @@ void	draw_wall(t_data *data, t_img *tex, int y, int x)
 
 void	draw_tmp(t_data *data, int y, int x)
 {
-/*	if (data->ray.side == NO)
-		draw_wall(data, &data->map_info->north, y, x);
-	else if (data->ray.side == SO)
-		draw_wall(data, &data->map_info->south, y, x);
-	else if (data->ray.side == WE)
-		draw_wall(data, &data->map_info->west, y, x);
-	else if (data->ray.side == EA)
-		draw_wall(data, &data->map_info->east, y, x);*/
 	if (data->ray.side == NO)
 		draw_wall(data, &data->north, y, x);
 	else if (data->ray.side == SO)
