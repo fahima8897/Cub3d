@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:38:08 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/29 10:06:08 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/29 11:00:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ void	init_data(t_data *data)
 	data->ray.mapy = 1;
 	data->ray.line_height = 0;
 
-	data->tx.bpp = 0;
-	data->tx.height = 0;
-	data->tx.width = 0;
-	data->tx.endian = 0;
-	data->tx.line = 0;
-	data->tx.status = 0;
+//	data->tx.bpp = 0;
+//	data->tx.height = 0;
+//	data->tx.width = 0;
+//	data->tx.endian = 0;
+//	data->tx.line = 0;
+//	data->tx.status = 0;
 	data->tx.img = NULL;
 	data->tx.addr = NULL;
 

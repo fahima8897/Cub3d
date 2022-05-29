@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 14:06:10 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/26 14:21:34 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/29 15:27:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ void	west_east(t_data *data, char dir)
 
 void	init_player(t_data *data, int h, int w, char dir)
 {
-	(void)h;
-	(void) w;
 	if (dir == 'N')
 	{
 		set_dir(data, -1, 0);
