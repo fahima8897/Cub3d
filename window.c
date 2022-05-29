@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/29 21:43:15 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/29 22:23:35 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ int	init_window(t_data *data)
 
 int press_keyboard(int key, t_data *data)
 {
-	if (key == 119)
+	if (key == XK_w)
 		data->map->player.gamplay.forward = 1;
-	else if (key == 115)
+	else if (key == XK_s)
 		data->map->player.gamplay.backward = 1;
 	else if (key == XK_Escape)
 		data->map->player.gamplay.escape = 1;
@@ -102,9 +102,9 @@ int press_keyboard(int key, t_data *data)
 
 int release_keyboard(int key, t_data *data)
 {
-	if (key == 119)
+	if (key == XK_w)
 		data->map->player.gamplay.forward = 0;
-	else if (key == 115)
+	else if (key == XK_s)
 		data->map->player.gamplay.backward = 0;
 	else if (key == XK_Escape)
 		data->map->player.gamplay.escape = 0;
