@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 00:48:41 by user42           ###   ########.fr       */
+/*   Updated: 2022/06/01 01:02:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,12 +173,6 @@ int		ret_free(char *error_str, char **tab);
 int		ret_free2(char *error_str, char **tab, char*tmp);
 int		ret_free_txt(char *error_str, char **s_byspace, t_data *data);
 
-	/* check_opt_argv.c */
-t_verif	verif_init(void);
-int		check_map_content(t_map *map);
-int		check_opt_argv_map(char *argv, t_data *data);
-int		check_line_content(t_map *map);
-
 	/* main.c */
 int		main(int ac, char **av);
 
@@ -261,6 +255,11 @@ int		check_arguments(int ac, char *av);
 int		check_file_existence(char *av);
 int		check_directory(char *av);
 int		check_extension(char *av);
+
+	/* second_step_parse.c */
+int		check_map_content(t_map *map);
+int		check_file_content(char *argv, t_data *data);
+int		check_line_content(t_map *map);
 
 /*		draw_utils.c	*/
 void	tab_init(t_data *data, int *tab_floor, int *tab_ceiling);
