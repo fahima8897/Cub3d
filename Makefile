@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+         #
+#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 16:11:35 by fboumell          #+#    #+#              #
-#    Updated: 2022/05/31 19:34:28 by adaloui          ###   ########.fr        #
+#    Updated: 2022/06/01 00:49:05 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS	= main.c \
 		gameplay_camera.c \
 		gameplay_utils.c \
 		first_step_parse.c \
+		draw_utils.c \
 		
 
 OBJS = ${SRCS:.c=.o}

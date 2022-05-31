@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:24:25 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/31 19:41:10 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 00:47:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_rgb(t_data *data, int y, int x)
+void	draw_rgb(t_data *data, int *tab, int y, int x)
 {
 	if (data->tx.endian == 1)
 	{
 		data->tx.addr[(x * data->tx.bpp >> 3)
-			+ y * data->tx.line] = data->map_info->f_red;
+			+ y * data->tx.line] = tab[0];
 		data->tx.addr[(x * data->tx.bpp >> 3)
-			+ 1 + y * data->tx.line] = data->map_info->f_green;
+			+ 1 + y * data->tx.line] = tab[1];
 		data->tx.addr[(x * data->tx.bpp >> 3)
-			+ 2 + y * data->tx.line] = data->map_info->f_blue;
+			+ 2 + y * data->tx.line] = tab[2];
 	}
 	else
 	{
 		data->tx.addr[(x * data->tx.bpp >> 3)
-			+ y * data->tx.line] = data->map_info->c_blue;
+			+ y * data->tx.line] = tab[2];
 		data->tx.addr[(x * data->tx.bpp >> 3)
-			+ 1 + y * data->tx.line] = data->map_info->c_green;
+			+ 1 + y * data->tx.line] = tab[1];
 		data->tx.addr[(x * data->tx.bpp >> 3)
-			+ 2 + y * data->tx.line] = data->map_info->c_red;
+			+ 2 + y * data->tx.line] = tab[0];
 	}
 }
 
@@ -82,12 +82,15 @@ void	put_in_display(t_data *data, int x)
 	int	y;
 	int	start;
 	int	end;
+	int tab_floor[3];
+	int tab_ceiling[3];
 
 	y = 0;
 	set_stop(data, &start, &end);
+	tab_init(data, tab_floor, tab_ceiling);
 	while (y < start)
 	{
-		draw_rgb(data, y, x);
+		draw_rgb(data, tab_ceiling, y, x);
 		y++;
 	}
 	while (y < end)
@@ -97,7 +100,7 @@ void	put_in_display(t_data *data, int x)
 	}
 	while (y < data->win_height - 1)
 	{
-		draw_rgb(data, y, x);
+		draw_rgb(data, tab_floor, y, x);
 		y++;
 	}
 }

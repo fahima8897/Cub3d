@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/31 20:08:13 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 00:48:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,5 +261,8 @@ int		check_arguments(int ac, char *av);
 int		check_file_existence(char *av);
 int		check_directory(char *av);
 int		check_extension(char *av);
+
+/*		draw_utils.c	*/
+void	tab_init(t_data *data, int *tab_floor, int *tab_ceiling);
 
 #endif

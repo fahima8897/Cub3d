@@ -4,8 +4,8 @@ WE ./ressources/pancase1.xpm
 EA ./ressources/panel1.xpm
 
 
-F 250,100,177
-C 111,176,234
+F 255,255,0
+C 155,33,33
 
 111111
 100101
