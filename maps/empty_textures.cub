@@ -1,8 +1,9 @@
-NO ./path_to_the_north_texture.xpm
-SO ./path_to_the_south_texture.xpm
-WE ./path_to_the_west_texture.xpm
+NO ./ressources/panblack.xpm
+SO ./ressources/panbook.xpm
+WE ./ressources/pancase1.xpm
 EA ./path_to_the_east_texture.xpm
-   
+
+
 C 255,255,255
 F 220,255,255
 

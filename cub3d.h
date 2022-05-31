@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/29 21:39:29 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/31 20:08:13 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define SO 1
 # define WE 2
 # define EA 3
+
 
 typedef struct s_coord
 {
@@ -157,6 +158,7 @@ void	free_tab(char **str);
 void	free_struct(t_map *map);
 void	free_data(t_data *data);
 void	free_map_info(t_map_info *map_info, t_data *data);
+void	free_loading_txt_failed(t_data *data, char **s_byspace);
 
 	/* window.c */
 void	loop(t_data *data);
@@ -169,6 +171,7 @@ void	write_errors(char *error_str);
 int		return_failure(char *error_str);
 int		ret_free(char *error_str, char **tab);
 int		ret_free2(char *error_str, char **tab, char*tmp);
+int		ret_free_txt(char *error_str, char **s_byspace, t_data *data);
 
 	/* check_opt_argv.c */
 t_verif	verif_init(void);
@@ -177,10 +180,6 @@ int		check_opt_argv_map(char *argv, t_data *data);
 int		check_line_content(t_map *map);
 
 	/* main.c */
-int		check_extension(char *av);
-int		check_directory(char *av);
-int		check_file_existence(char *av);
-void	check_arguments(int ac, char *av);
 int		main(int ac, char **av);
 
 	/* get_map_content.c */
@@ -225,7 +224,7 @@ int		check_verif(t_verif tab);
 int		check_verif_2(t_verif tab);
 
 /*		get_all_map_info.c		*/
-t_map_info	*get_all_map_info(t_data *data);
+t_map_info		*get_all_map_info(t_data *data);
 
 /*		init_player.c		*/
 void	init_player(t_data *data, int x, int y, char dir);
@@ -237,10 +236,30 @@ int		draw(t_data *data);
 void	put_in_display(t_data *data, int x);
 
 /*		create_texture.c		*/
-int create_textures_wall(t_data *data);
+int		create_textures_wall(t_data *data);
 /* GERER LES ERREURS DANS LE CAS OU !TXT.IMG ou !TXT_ADDR*/
 
 /*		gameplay.c		*/
-int	keyboard_gameplay(t_data *data);
+void	keyboard_gameplay(t_data *data);
+void	forward(t_data *data);
+void	back(t_data *data);
+void	left(t_data *data);
+void	right(t_data *data);
+void	escape(t_data *data);
+
+/*		gameplay_camera.c	*/
+int		look_left(t_data *data);
+int		look_right(t_data *data);
+
+/*		gameplay_utils.c	*/
+int		release_keyboard(int key, t_data *data);
+int		press_keyboard(int key, t_data *data);
+int		loop_raycast(t_data *data);
+
+/*		first_step_parse.c */
+int		check_arguments(int ac, char *av);
+int		check_file_existence(char *av);
+int		check_directory(char *av);
+int		check_extension(char *av);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:08:18 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/26 14:18:50 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/31 19:17:25 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,6 @@ int	check_player_nb(t_map *map)
 	if (p_nb != 1)
 		return (return_failure("Error\nWrong number of player."));
 	return (SUCCESS);
-}
-
-int	ft_strlen_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		i++;
-	return (i);
 }
 
 int	check_walls_top_bottom(char **map)

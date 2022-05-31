@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:24:25 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/28 18:35:45 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/31 19:41:10 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	draw_rgb(t_data *data, int y, int x)
 {
-//	printf("tx.endian %d\n", data->tx.endian);
 	if (data->tx.endian == 1)
 	{
-		//printf("Je rentre dans IF DE COLOR\n");
 		data->tx.addr[(x * data->tx.bpp >> 3)
 			+ y * data->tx.line] = data->map_info->f_red;
 		data->tx.addr[(x * data->tx.bpp >> 3)
@@ -27,7 +25,6 @@ void	draw_rgb(t_data *data, int y, int x)
 	}
 	else
 	{
-	//	data->tx.endian = 1;
 		data->tx.addr[(x * data->tx.bpp >> 3)
 			+ y * data->tx.line] = data->map_info->c_blue;
 		data->tx.addr[(x * data->tx.bpp >> 3)

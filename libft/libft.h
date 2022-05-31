@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 13:47:17 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 16:52:12 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/05/31 19:18:50 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstlast(t_list *lst);
 t_list			*ft_lstnew(void *content);
 int				ft_lstsize(t_list *lst);
+int				ft_strlen_tab(char **tab);
 
 #endif

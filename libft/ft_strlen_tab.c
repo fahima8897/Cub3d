@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlen_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/14 18:18:01 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/31 19:27:36 by adaloui          ###   ########.fr       */
+/*   Created: 2022/05/31 19:17:12 by adaloui           #+#    #+#             */
+/*   Updated: 2022/05/31 19:17:31 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dest, char *src)
+int	ft_strlen_tab(char **tab)
 {
 	int	i;
 
 	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
+	while (tab[i])
 		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	return (i);
 }

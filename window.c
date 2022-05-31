@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/29 23:44:23 by user42           ###   ########.fr       */
+/*   Updated: 2022/05/31 19:04:18 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// penser a destroy image ou texture et a free le double tableau de la map
 int	close_escape(int keycode, t_data *data)
 {
 	if (keycode == XK_Escape)
@@ -26,16 +25,12 @@ int	close_escape(int keycode, t_data *data)
 			data->mlx_win = NULL;
 		}
 		free(data->mlx);
-	if (data != NULL)
 		free(data);
 		exit(0);
 	}
-/*	if (keycode == 100 || keycode == 97 || keycode == 115 || keycode == 119)
-		printf("coucou\n");*/
 	return (SUCCESS);
 }
 
-// penser a destroy image ou texture et a free le double tableau de la map
 int	close_redx(t_data *data)
 {
 	if (data->mlx_win)
@@ -52,7 +47,7 @@ int	close_redx(t_data *data)
 	exit(0);
 }
 
-int	init_display(t_data *data)
+int	put_new_image_on_screen(t_data *data)
 {
 	data->tx.img = mlx_new_image(data->mlx, data->win_width, data->win_height);
 	if (!data->tx.img)
@@ -64,9 +59,6 @@ int	init_display(t_data *data)
 	return (SUCCESS);
 }
 
-/*initialisation de width et height juste pour tester
-A initialiser comme il faut quand dans une fonction 
-	et quand on aura la taille de la map*/
 int	init_window(t_data *data)
 {
 	data->win_width = 800;
@@ -82,56 +74,9 @@ int	init_window(t_data *data)
 		free(data);
 		return (FAILURE);
 	}
-	if (init_display(data) == FAILURE)
+	if (put_new_image_on_screen(data) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
-}
-
-int press_keyboard(int key, t_data *data)
-{
-	if (key == XK_w)
-		data->map->player.gamplay.forward = 1;
-	else if (key == XK_s)
-		data->map->player.gamplay.backward = 1;
-	else if (key == XK_a)
-		data->map->player.gamplay.left = 1;
-	else if (key == XK_d)
-		data->map->player.gamplay.right = 1;
-	else if (key == XK_Left)
-		data->map->player.gamplay.look_left = 1;
-	else if (key == XK_Right)
-		data->map->player.gamplay.look_right = 1;
-	else if (key == XK_Escape)
-		data->map->player.gamplay.escape = 1;
-	else
-		printf("No action is on this key\n");
-	return (SUCCESS);
-}
-
-int release_keyboard(int key, t_data *data)
-{
-	if (key == XK_w)
-		data->map->player.gamplay.forward = 0;
-	else if (key == XK_s)
-		data->map->player.gamplay.backward = 0;
-	else if (key == XK_a)
-		data->map->player.gamplay.left = 0;
-	else if (key == XK_d)
-		data->map->player.gamplay.right = 0;
-	else if (key == XK_Left)
-		data->map->player.gamplay.look_left = 0;
-	else if (key == XK_Right)
-		data->map->player.gamplay.look_right = 0;
-	else if (key == XK_Escape)
-		data->map->player.gamplay.escape = 0;
-	return (SUCCESS);
-}
-
-int	loop_raycast(t_data *data)
-{
-	keyboard_gameplay(data);
-	draw(data);
-	return (0);
 }
 
 void	loop(t_data *data)
@@ -139,8 +84,6 @@ void	loop(t_data *data)
 	mlx_loop_hook(data->mlx, loop_raycast, data);
 	mlx_hook(data->mlx_win, 2, 1L << 0, &press_keyboard, data);
 	mlx_hook(data->mlx_win, 3, 1L << 1, &release_keyboard, data);
-	//mlx_hook(data->mlx_win, 2, 1L << 0, &close_escape, data);
 	mlx_hook(data->mlx_win, 17, 0L, &close_redx, data);
-//	mlx_do_sync(data->mlx);
 	mlx_loop(data->mlx);
 }
