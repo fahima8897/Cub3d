@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   utils_check_line_content.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:42:39 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/19 15:12:49 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 14:31:40 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	check_whitespace(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] <= 32)
+			return (SUCCESS);
+		i++;
+	}
+	return (FAILURE);
+}
 
 int	reduce_check_filled_lines(char **split_byspace)
 {

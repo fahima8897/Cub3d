@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_line_content.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 19:12:05 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/19 16:01:23 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 14:33:36 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,6 @@ int	compare_and_check_number_line(char **split_byspace, t_verif *check)
 			return (FAILURE);
 	}
 	return (SUCCESS);
-}
-
-int	check_whitespace(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] <= 32)
-			return (SUCCESS);
-		i++;
-	}
-	return (FAILURE);
 }
 
 int	check_filled_lines(char **map, t_verif *check)
