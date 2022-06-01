@@ -1,0 +1,51 @@
+norminette gnl/*.c gnl/*.h libft/*.c libft/*.h *.h *.c
+make bonus
+echo "\033[1;33m====  OPENING A DIRECTORY  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/folder_test
+echo "\033[1;33m====  OPENING A DIRECTORY.cub  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/folder_test.cub
+echo "\033[1;33m====  OPENING A FILE.cu  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/map_error01.cu
+echo "\033[1;33m====  OPENING A FILE..cub  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/map_error02..cub
+echo "\033[1;33m====  OPENING A NAMELESS FILE.cub  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/.cub
+echo "\033[1;33m====  OPENING A FILEcub  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/map_error04cub
+echo "\033[1;33m====  OPENING A NAMELESS FILEcub.c  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/map_error05cub.c
+
+echo "\033[1;33m====  OPENING EMPTY TEXTURE FILE EA ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/empty_textures_EA.cub
+echo "\033[1;33m====  OPENING EMPTY TEXTURE FILE NO ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/empty_textures_NO.cub
+echo "\033[1;33m====  OPENING EMPTY TEXTURE FILE WE ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/empty_textures_WE.cub
+echo "\033[1;33m====  OPENING EMPTY TEXTURE FILE SO ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/empty_textures_SO.cub
+echo "\033[1;33m====  OPENING EMPTY TXT EA FILE  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/notxtEA.cub
+echo "\033[1;33m====  OPENING EMPTY TXT NO FILE  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/notxtNO.cub
+echo "\033[1;33m====  OPENING EMPTY TXT WE FILE  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/notxtWE.cub
+echo "\033[1;33m====  OPENING EMPTY TXT SO FILE  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/notxtSO.cub
+
+echo "\033[1;33m====  OPENING NO EA FILE  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/maps_noEA.cub
+echo "\033[1;33m====  OPENING NO NO FILE  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/maps_noNO.cub
+echo "\033[1;33m====  OPENING NO WE FILE  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/maps_noWE.cub
+echo "\033[1;33m====  OPENING NO SO FILE  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/maps_noSO.cub
+echo "\033[1;33m====  OPENING NO C FILE  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/maps_noC.cub
+echo "\033[1;33m====  OPENING NO F FILE  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/maps_noF.cub
+echo "\033[1;33m====  TEST FINAL  ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D_bonus maps/map2.cub
+
+
+
