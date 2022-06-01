@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 01:02:03 by user42           ###   ########.fr       */
+/*   Updated: 2022/06/01 11:55:46 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,5 +263,13 @@ int		check_line_content(t_map *map);
 
 /*		draw_utils.c	*/
 void	tab_init(t_data *data, int *tab_floor, int *tab_ceiling);
+
+
+
+/*		BONUS FILES		*/
+/*		gameplay_camera_mouse_bonus.c	*/
+int		mouse_handler(int x, int y, t_data *data); //bonus
+void	rot_right(t_data *data); //bonus
+void	rot_left(t_data *data); //bonus
 
 #endif
