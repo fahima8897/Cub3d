@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 19:12:05 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 14:33:36 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:46:40 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	compare_and_check_number_line(char **split_byspace, t_verif *check)
 	{
 		check->f++;
 		if (check_verif(*check) == FAILURE)
-			return (return_failure("Error\nYou have too much F."));
+			return (return_failure("Error\nError Parsing."));
 		if (reduce_compare_and_check_line_f(split_byspace[1]) == FAILURE)
 			return (FAILURE);
 	}
@@ -51,10 +51,26 @@ int	compare_and_check_number_line(char **split_byspace, t_verif *check)
 	{
 		check->c++;
 		if (check_verif(*check) == FAILURE)
-			return (return_failure("Error\nYou have too much C."));
+			return (return_failure("Error\nError Parsing."));
 		if (reduce_compare_and_check_line_c(split_byspace[1]) == FAILURE)
 			return (FAILURE);
 	}
+	return (SUCCESS);
+}
+
+int	reduce_fonction_above(char **s_byspa, t_verif *check, char *str)
+{
+	if (s_byspa[1])
+	{
+		if (compare_and_open_line(s_byspa, check, str) == -1)
+			return (reduce_check_filled_lines(s_byspa));
+		if (compare_and_check_number_line(s_byspa, check) == FAILURE)
+			return (reduce_check_filled_lines(s_byspa));
+	}
+	if (s_byspa[2])
+		return (ret_free("Error\nError Parsing.", s_byspa));
+	else
+		free_tab(s_byspa);
 	return (SUCCESS);
 }
 
@@ -64,27 +80,19 @@ int	check_filled_lines(char **map, t_verif *check)
 	char	**s_byspa;
 
 	i = -1;
+	s_byspa = NULL;
 	while (map[++i])
 	{
 		if (check_whitespace(map[i]) == SUCCESS)
 		{
 			s_byspa = ft_split(map[i], ' ');
 			if (!s_byspa[1])
-				return (ret_free("Error\nWrong syntax.", s_byspa));
-			if (s_byspa[1])
-			{
-				if (compare_and_open_line(s_byspa, check, s_byspa[1]) == -1)
-					return (reduce_check_filled_lines(s_byspa));
-				if (compare_and_check_number_line(s_byspa, check) == FAILURE)
-					return (reduce_check_filled_lines(s_byspa));
-			}
-			if (s_byspa[2])
-				return (ret_free("Error\nToo much words", s_byspa));
-			else
-				free_tab(s_byspa);
+				return (ret_free("Error\nError Parsing.", s_byspa));
+			if (reduce_fonction_above(s_byspa, check, s_byspa[1]) == -1)
+				return (FAILURE);
 		}
 		else
-			return (return_failure("Error\nCharacter without space"));
+			return (return_failure("Error\nError Parsing."));
 	}
 	return (SUCCESS);
 }
@@ -95,8 +103,8 @@ int	check_line_content(t_map *map)
 
 	check = verif_init();
 	if (check_filled_lines(map->map, &check) == FAILURE)
-		return (return_failure("Error\nProblem in line."));
+		return (return_failure("Error\nError Parsing."));
 	if (check_verif_2(check) == FAILURE)
-		return (return_failure("Error\nAt least one ressource is not present."));
+		return (return_failure("Error\nError Parsing."));
 	return (SUCCESS);
 }

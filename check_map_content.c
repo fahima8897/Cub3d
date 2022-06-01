@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:08:18 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 14:49:44 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:47:33 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ int	check_walls_top_bottom(char **map)
 	while (map[0][j])
 	{
 		if (map[0][j] != '1' && map[0][j] != '\n' && map[0][j] != ' ')
-			return (return_failure("Error\nThere's hole on the top."));
+			return (return_failure("Error\nError Parsing."));
 		j++;
 	}
 	j = 0;
 	while (map[size][j])
 	{
 		if (map[size][j] != '1' && map[size][j] != '\n' && map[size][j] != ' ')
-			return (return_failure("Error\nThere's hole ont the bottom."));
+			return (return_failure("Error\nError Parsing."));
 		j++;
 	}
 	return (SUCCESS);
@@ -89,13 +89,13 @@ int	check_walls_right(char **map)
 	{
 		size = ft_strlen(map[i]);
 		if (map[i][size - 1] == '0')
-			return (return_failure("Error\nThere is a hole on the right"));
+			return (return_failure("Error\nError Parsing."));
 		if (ft_strlen(map[i]) < ft_strlen(map[i + 1]))
 			if (check_right_hole(map[i + 1], ft_strlen(map[i]) - 1) == FAILURE)
-				return (return_failure("Error\nThere is a hole on the right"));
+				return (return_failure("Error\nError Parsing."));
 		if (ft_strlen(map[i]) > ft_strlen(map[i + 1]))
 			if (check_right_hole(map[i], ft_strlen(map[i + 1]) - 1) == FAILURE)
-				return (return_failure("Error\nThere is a hole on the right"));
+				return (return_failure("Error\nError Parsing."));
 		i++;
 	}
 	return (SUCCESS);
@@ -106,11 +106,11 @@ int	check_map_content_characters(t_data *data)
 	if (check_walls_top_bottom(data->map->map_2) == FAILURE)
 		return (FAILURE);
 	if (check_walls_left(data->map->map_2) == FAILURE)
-		return (return_failure("Error\nThere is a hole on the left"));
+		return (return_failure("Error\nError Parsing."));
 	if (check_walls_right(data->map->map_2) == FAILURE)
 		return (FAILURE);
 	if (check_hole_inside_map(data->map->map_2) == FAILURE)
-		return (return_failure("Error\nThere's a hole inside the map."));
+		return (return_failure("Error\nError Parsing."));
 	if (check_player_nb(data->map) == FAILURE)
 		return (FAILURE);
 	if (check_forbidden_character(data->map->map_2) == FAILURE)

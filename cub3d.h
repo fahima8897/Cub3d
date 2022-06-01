@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 15:08:00 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:42:58 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,7 @@ void		init_data(t_data *data);
 int			compare_and_open_line(char **split_byspace, t_verif *check, \
 			char *tmp);
 int			compare_and_check_number_line(char **split_byspace, t_verif *check);
+int			reduce_fonction_above(char **s_byspa, t_verif *check, char *str);
 int			check_filled_lines(char **map, t_verif *check);
 int			check_line_content(t_map *map);
 
@@ -225,6 +226,7 @@ int			check_hole_inside_map(char **map);
 int			check_get_next_line2(char *line);
 int			reduce_return_size_of_map(int fd);
 int			return_size_of_file(char *s);
+t_map		*reduce_cl_for_map(t_data *data, int fd, int cl);
 t_map		*count_line_for_map(char *s, t_data *data);
 
 	/* t_verif.c */
@@ -236,6 +238,9 @@ int			check_verif_2(t_verif tab);
 t_map_info	*get_all_map_info(t_data *data);
 
 	/* init_player.c */
+void		set_plane(t_data *data, double dx, double dy);
+void		set_dir(t_data *data, double x, double y);
+void		west_east(t_data *data, char dir);
 void		init_player(t_data *data, int x, int y, char dir);
 
 	/* raycats.c */

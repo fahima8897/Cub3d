@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:07:41 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 14:08:26 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:48:15 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_file_content(char *argv, t_data *data)
 		return (FAILURE);
 	data->map = count_line_for_map(argv, data);
 	if (data->map->space_in_map_2 == 1)
-		return (return_failure("Error\nNo empty line allowed for map."));
+		return (return_failure("Error\nError Parsing."));
 	if (check_map_content_characters(data) == FAILURE)
 		return (FAILURE);
 	data->map_info = get_all_map_info(data);

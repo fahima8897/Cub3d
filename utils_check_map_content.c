@@ -6,7 +6,7 @@
 /*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:36:03 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 15:07:20 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:54:37 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_forbidden_character(char **map)
 				&& map[i][j] != 'N' && map[i][j] != 'E'
 				&& map[i][j] != 'S' && map[i][j] != 'W'
 				&& map[i][j] != ' ' && map[i][j] != '\n')
-				return (return_failure("Error\nWrong character."));
+				return (return_failure("Error\nError Parsing."));
 			j++;
 		}
 		i++;
