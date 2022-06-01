@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:24:25 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 00:47:51 by user42           ###   ########.fr       */
+/*   Updated: 2022/06/01 19:14:23 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void	put_in_display(t_data *data, int x)
 	int	y;
 	int	start;
 	int	end;
-	int tab_floor[3];
-	int tab_ceiling[3];
+	int	tab_floor[3];
+	int	tab_ceiling[3];
 
 	y = 0;
 	set_stop(data, &start, &end);

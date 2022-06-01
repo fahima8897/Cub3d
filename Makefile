@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+         #
+#    By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 16:11:35 by fboumell          #+#    #+#              #
-#    Updated: 2022/06/01 14:36:38 by fboumell         ###   ########.fr        #
+#    Updated: 2022/06/01 19:26:12 by adaloui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,9 @@ SRCS	= main.c \
 		check_line_content.c \
 		utils_check_line_content.c \
 		utils_check_line_content2.c \
-		check_map_content.c \
 		utils_check_map_content.c \
+		utils_get_all_map_info.c \
+		check_map_content.c \
 		get_rest_of_map.c \
 		t_verif.c \
 		get_all_map_info.c \

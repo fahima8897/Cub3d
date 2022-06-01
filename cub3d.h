@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 16:42:58 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/06/01 19:35:59 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 # define SO 1
 # define WE 2
 # define EA 3
-
 
 typedef struct s_coord
 {
@@ -189,12 +188,12 @@ void		init_south_north_and_player(t_data *data);
 void		init_data(t_data *data);
 
 	/* check_line_content.c */
-int			compare_and_open_line(char **split_byspace, t_verif *check, \
-			char *tmp);
+int			compare_and_open_line(char **s, t_verif *c, char *tmp, t_data *d);
 int			compare_and_check_number_line(char **split_byspace, t_verif *check);
-int			reduce_fonction_above(char **s_byspa, t_verif *check, char *str);
-int			check_filled_lines(char **map, t_verif *check);
-int			check_line_content(t_map *map);
+int			reduce_fonction_above(char **s_byspa, t_verif *check, char *str,
+				t_data *data);
+int			check_filled_lines(char **map, t_verif *check, t_data *data);
+int			check_line_content(t_map *map, t_data *data);
 
 	/* utils_check_line_content.c */
 int			check_whitespace(char *line);
@@ -203,10 +202,15 @@ int			reduce_compare_and_check_line_f(char *split_byspace);
 int			reduce_compare_and_check_line_c(char *split_byspace);
 
 	/* utils_check_line_content2.c */
-int			check_no(t_verif *check, char *tmp);
-int			check_so(t_verif *check, char *tmp);
-int			check_we(t_verif *check, char *tmp);
-int			check_ea(t_verif *check, char *tmp);
+int			check_no(t_verif *check, char *tmp, t_data *data);
+int			check_so(t_verif *check, char *tmp, t_data *data);
+int			check_we(t_verif *check, char *tmp, t_data *data);
+int			check_ea(t_verif *check, char *tmp, t_data *data);
+
+	/*	utils_get_all_map_info.c	*/
+t_coord		get_player_pos(t_data *data);
+char		get_player_dir(t_data *data);
+t_map_info	*get_colors_cf(char **map, t_map_info *map_info);
 
 	/* check_map_content.c	*/
 int			check_walls_top_bottom(char **map);
