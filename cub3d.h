@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 19:35:59 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 19:51:20 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,7 +255,6 @@ void		put_in_display(t_data *data, int x);
 
 	/* create_texture.c */
 int			create_textures_wall(t_data *data);
-/* GERER LES ERREURS DANS LE CAS OU !TXT.IMG ou !TXT_ADDR*/
 
 	/* gameplay.c */
 void		keyboard_gameplay(t_data *data);
@@ -285,12 +284,5 @@ int			check_file_content(char *argv, t_data *data);
 
 	/* draw_utils.c */
 void		tab_init(t_data *data, int *tab_floor, int *tab_ceiling);
-
-	/*		BONUS FILES		*/
-
-	/* gameplay_camera_mouse_bonus.c */
-int			mouse_handler(int x, int y, t_data *data); //bonus
-void		rot_right(t_data *data); //bonus
-void		rot_left(t_data *data); //bonus
 
 #endif
