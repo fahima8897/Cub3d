@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 11:54:22 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 17:18:36 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	close_escape(int keycode, t_data *data)
 		}
 		free(data->mlx);
 		free(data);
+		system("killall paplay");
 		exit(0);
 	}
 	return (SUCCESS);
@@ -42,6 +43,7 @@ int	close_redx(t_data *data)
 		data->mlx_win = NULL;
 	}
 	free(data->mlx);
+	system("killall paplay");
 	if (data != NULL)
 		free(data);
 	exit(0);
@@ -56,6 +58,7 @@ int	put_new_image_on_screen(t_data *data)
 			&data->tx.line, &data->tx.endian);
 	if (!data->tx.addr)
 		return (return_failure("Error\nInit display\n"));
+	data->tx.status = 1;
 	return (SUCCESS);
 }
 
@@ -86,7 +89,7 @@ void	loop(t_data *data)
 	mlx_hook(data->mlx_win, 3, 1L << 1, &release_keyboard, data);
 	mlx_hook(data->mlx_win, MotionNotify, PointerMotionMask, //Bonus
 		&mouse_handler, data); // bonus
-	mlx_mouse_hide(data->mlx, data->mlx_win); //bonus
 	mlx_hook(data->mlx_win, 17, 0L, &close_redx, data);
+	menu_and_music_bonus(data); //bonus
 	mlx_loop(data->mlx);
 }

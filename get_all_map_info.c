@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_all_map_info.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 19:33:44 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/29 15:33:30 by user42           ###   ########.fr       */
+/*   Updated: 2022/06/01 13:22:34 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,25 +123,11 @@ t_coord	get_player_pos(t_data *data)
 
 t_map_info	*get_all_map_info(t_data *data)
 {
-	/*printf("%c\n", data->map->player.p_dir);
-	printf("x = %f\n", data->map->player.p_pos.x);
-	printf("y = %f\n", data->map->player.p_pos.y);
-	printf("x = %f\n", data->map->player.dir_pos.x);
-	printf("y = %f\n", data->map->player.dir_pos.y);
-	printf("x = %f\n", data->map->player.plane_pos.x);
-	printf("y = %f\n", data->map->player.plane_pos.y);*/
 	data->map_info = get_textures(data->map->map, data->map_info);
 	data->map_info = get_colors_cf(data->map->map, data->map_info);
 	data->map->player.p_dir = get_player_dir(data);
 	data->map->player.p_pos = get_player_pos(data);
 	init_player(data, data->map->player.p_pos.x, data->map->player.p_pos.y,
 		data->map->player.p_dir);
-	printf("%c\n", data->map->player.p_dir);
-	printf("x = %f\n", data->map->player.p_pos.x);
-	printf("y = %f\n", data->map->player.p_pos.y);
-	printf("x = %f\n", data->map->player.dir_pos.x);
-	printf("y = %f\n", data->map->player.dir_pos.y);
-	printf("x = %f\n", data->map->player.plane_pos.x);
-	printf("y = %f\n", data->map->player.plane_pos.y);
 	return (data->map_info);
 }

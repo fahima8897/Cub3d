@@ -3,7 +3,7 @@
 int	check_file_content(char *argv, t_data *data)
 {
 	data->map = count_line(argv, data);
-	if (check_line_content(data->map) == FAILURE)
+	if (check_line_content(data->map, data) == FAILURE)
 		return (FAILURE);
 	data->map = count_line_for_map(argv, data);
 	if (data->map->space_in_map_2 == 1)

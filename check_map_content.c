@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:08:18 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/31 19:17:25 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 16:57:24 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,6 @@ int	check_walls_right(char **map)
 	i = 0;
 	while (map[i])
 	{
-		// printf("i : %d\n", i);
 		size = ft_strlen(map[i]);
 		if (map[i][size - 1] == '0')
 			return (return_failure("Error\nThere is a hole on the right"));
@@ -176,10 +175,6 @@ int	check_hole_inside_map(char **map)
 
 int	check_map_content_characters(t_data *data)
 {
-	/*Rajouter la conditions pour E W S N lorsqu'ils ont des espaces autour */
-	/* Considerer les espaces entourant la map comme mauvais quand il y'a un joueur*/
-	/* cas de figure [][][][][]1\0 lorsqu'il est avant la ligne d'au dessus*/
-	/* cas de figure ou E est en dehors de la map ex : 1010000000000001     E*/
 	if (check_walls_top_bottom(data->map->map_2) == FAILURE)
 		return (FAILURE);
 	if (check_walls_left(data->map->map_2) == FAILURE)

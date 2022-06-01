@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:38:08 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/31 19:15:18 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 16:57:44 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	init_data(t_data *data)
 	init_south_north_and_player(data);
 	init_east_west(data);
 	init_ray(data);
+	init_img(data);
 	data->map->map = NULL;
 	data->map->map_2 = NULL;
 	data->map->fd = 0;

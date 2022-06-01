@@ -6,7 +6,7 @@
 #    By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 16:11:35 by fboumell          #+#    #+#              #
-#    Updated: 2022/06/01 11:56:09 by adaloui          ###   ########.fr        #
+#    Updated: 2022/06/01 13:51:41 by adaloui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS	= main.c \
 		second_step_parse.c \
 		draw_utils.c \
 		gameplay_camera_mouse_bonus.c \
+		add_sound_bonus.c \
 		
 
 OBJS = ${SRCS:.c=.o}

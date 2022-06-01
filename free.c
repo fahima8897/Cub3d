@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:39:58 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/31 20:21:49 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 16:33:58 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,8 @@ void	free_map_info(t_map_info *map_info, t_data *data)
 	free(map_info);
 }
 
-void	free_loading_txt_failed(t_data *data, char **s_byspace)
+void	free_loading_txt_failed(t_data *data)
 {
-	free_tab(s_byspace);
 	if (data->map)
 		free_struct(data->map);
 	if (data->east.status == 1)
@@ -79,16 +78,16 @@ void	free_loading_txt_failed(t_data *data, char **s_byspace)
 
 void	free_data(t_data *data)
 {
-	if (data->east.img != NULL)
+	if (data->east.status == 1)
 		mlx_destroy_image(data->mlx, data->east.img);
-	if (data->west.img != NULL)
+	if (data->west.status == 1)
 		mlx_destroy_image(data->mlx, data->west.img);
-	if (data->south.img != NULL)
-		mlx_destroy_image(data->mlx, data->south.img);
-	if (data->north.img != NULL)
+	if (data->north.status == 1)
 		mlx_destroy_image(data->mlx, data->north.img);
-	if (data->tx.img != NULL)
-		mlx_destroy_image(data->mlx, data->tx.img);
+	if (data->south.status == 1)
+		mlx_destroy_image(data->mlx, data->south.img);
+	if (data->tx.status == 1)
+	 	mlx_destroy_image(data->mlx, data->tx.img);
 	if (data->map)
 		free_struct(data->map);
 }

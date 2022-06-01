@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 11:55:46 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 17:08:29 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,22 @@ typedef struct s_map_info
 
 typedef struct s_gameplay
 {
-	int forward;
-	int backward;
-	int left;
-	int right;
-	int look_left;
-	int look_right;
-	int escape;
+	int	forward;
+	int	backward;
+	int	left;
+	int	right;
+	int	look_left;
+	int	look_right;
+	int	escape;
 }		t_gameplay;
 
 typedef struct s_player
 {
-	char	p_dir;
-	t_coord	p_pos;
-	t_coord	dir_pos;
-	t_coord	plane_pos;
-	t_gameplay gamplay;
+	char		p_dir;
+	t_coord		p_pos;
+	t_coord		dir_pos;
+	t_coord		plane_pos;
+	t_gameplay	gamplay;
 }		t_player;
 
 typedef struct s_map
@@ -158,7 +158,7 @@ void	free_tab(char **str);
 void	free_struct(t_map *map);
 void	free_data(t_data *data);
 void	free_map_info(t_map_info *map_info, t_data *data);
-void	free_loading_txt_failed(t_data *data, char **s_byspace);
+void	free_loading_txt_failed(t_data *data);
 
 	/* window.c */
 void	loop(t_data *data);
@@ -186,10 +186,9 @@ void	init_data(t_data *data);
 
 	/* check_line_content.c */
 int		check_verif_content(char *str, t_verif *check);
-int		compare_and_open_line(char **split_byspace, t_verif *check, char *tmp);
+int		compare_and_open_line(char **s, t_verif *c, char *tmp, t_data *data);
 int		compare_and_check_number_line(char **split_byspace, t_verif *check);
-int		check_filled_lines(char **map, t_verif *check);
-int		check_line_content(t_map *map);
+int		check_filled_lines(char **map, t_verif *check, t_data *data);
 
 	/* utils_check_line_content.c */
 int		reduce_check_filled_lines(char **split_byspace);
@@ -197,10 +196,10 @@ int		reduce_compare_and_check_line_f(char *split_byspace);
 int		reduce_compare_and_check_line_c(char *split_byspace);
 
 	/* utils_check_line_content2.c */
-int		check_no(t_verif *check, char *tmp);
-int		check_so(t_verif *check, char *tmp);
-int		check_we(t_verif *check, char *tmp);
-int		check_ea(t_verif *check, char *tmp);
+int		check_no(t_verif *check, char *tmp, t_data *data);
+int		check_so(t_verif *check, char *tmp, t_data *data);
+int		check_we(t_verif *check, char *tmp, t_data *data);
+int		check_ea(t_verif *check, char *tmp, t_data *data);
 
 	/* check_map_content.c	*/
 int		check_map_content_characters(t_data *data);
@@ -231,6 +230,8 @@ void	put_in_display(t_data *data, int x);
 
 /*		create_texture.c		*/
 int		create_textures_wall(t_data *data);
+int		get_gun_on_screen(t_data *data); // bonus
+
 /* GERER LES ERREURS DANS LE CAS OU !TXT.IMG ou !TXT_ADDR*/
 
 /*		gameplay.c		*/
@@ -259,7 +260,7 @@ int		check_extension(char *av);
 	/* second_step_parse.c */
 int		check_map_content(t_map *map);
 int		check_file_content(char *argv, t_data *data);
-int		check_line_content(t_map *map);
+int		check_line_content(t_map *map, t_data *data);
 
 /*		draw_utils.c	*/
 void	tab_init(t_data *data, int *tab_floor, int *tab_ceiling);
@@ -271,5 +272,9 @@ void	tab_init(t_data *data, int *tab_floor, int *tab_ceiling);
 int		mouse_handler(int x, int y, t_data *data); //bonus
 void	rot_right(t_data *data); //bonus
 void	rot_left(t_data *data); //bonus
+
+/*		add_sound_bonus.c		*/
+int		play_sound_bonus(char *path, int volume);
+void	menu_and_music_bonus(t_data *data);
 
 #endif

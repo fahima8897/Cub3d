@@ -1,0 +1,17 @@
+NO ./ressources/panblack.xpm
+SO ./ressources/panbook.xpm
+EA ./ressources/panel1.xpm
+
+
+F 98,56,50
+C 67,30,25
+
+111111
+100101
+101001
+1100N1
+100001
+111101
+100001
+111101
+111111
