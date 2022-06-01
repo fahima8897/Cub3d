@@ -6,13 +6,13 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 13:50:50 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 16:35:03 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 19:55:51 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	play_sound_bonus(char *path, int volume) // bonus,mais fonction pas bonne
+int	play_sound_bonus(char *path, int volume)
 {
 	char	command[500];
 	char	*tmp;
@@ -32,7 +32,7 @@ int	play_sound_bonus(char *path, int volume) // bonus,mais fonction pas bonne
 
 void	menu_and_music_bonus(t_data *data)
 {
-	t_img menu;
+	t_img	menu;
 
 	menu.img = mlx_xpm_file_to_image(data->mlx, "./ressources/re4menu.xpm",
 			&menu.width, &menu.height);
@@ -50,9 +50,9 @@ void	menu_and_music_bonus(t_data *data)
 	}
 	menu.status = 1;
 	mlx_put_image_to_window(data->mlx, data->mlx_win, menu.img, -150, 0);
-	play_sound_bonus("./ressources/resident_evil_4.wav", 100); // bonus
+	play_sound_bonus("./ressources/resident_evil_4.wav", 100);
 	sleep(5);
 	if (menu.status == 1)
 		mlx_destroy_image(data->mlx, menu.img);
-	play_sound_bonus("./ressources/RE4_Save_Theme.wav", 30); // bonus
+	play_sound_bonus("./ressources/RE4_Save_Theme.wav", 30);
 }

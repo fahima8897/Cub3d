@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:39:58 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 16:33:58 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 19:58:17 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	free_data(t_data *data)
 	if (data->south.status == 1)
 		mlx_destroy_image(data->mlx, data->south.img);
 	if (data->tx.status == 1)
-	 	mlx_destroy_image(data->mlx, data->tx.img);
+		mlx_destroy_image(data->mlx, data->tx.img);
 	if (data->map)
 		free_struct(data->map);
 }

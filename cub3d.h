@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 17:08:29 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 20:00:23 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 # define SO 1
 # define WE 2
 # define EA 3
-
 
 typedef struct s_coord
 {
@@ -147,134 +146,141 @@ typedef struct s_verif
 # define FAILURE -1
 
 	/* utils.c */
-int		parse(char *av);
-char	*strdup_no_n(const char *s1);
-int		check_digit(char *str);
-int		check_digit_size(int nb);
-int		strlen_tab(char **str);
+int			parse(char *av);
+char		*strdup_no_n(const char *s1);
+int			check_digit(char *str);
+int			check_digit_size(int nb);
+int			strlen_tab(char **str);
 
 	/* free.c */
-void	free_tab(char **str);
-void	free_struct(t_map *map);
-void	free_data(t_data *data);
-void	free_map_info(t_map_info *map_info, t_data *data);
-void	free_loading_txt_failed(t_data *data);
+void		free_tab(char **str);
+void		free_struct(t_map *map);
+void		free_data(t_data *data);
+void		free_map_info(t_map_info *map_info, t_data *data);
+void		free_loading_txt_failed(t_data *data);
 
 	/* window.c */
-void	loop(t_data *data);
-int		close_escape(int keycode, t_data *data);
-int		close_redx(t_data *data);
-int		init_window(t_data *data);
+void		loop(t_data *data);
+int			close_escape(int keycode, t_data *data);
+int			close_redx(t_data *data);
+int			init_window(t_data *data);
 
 	/* error.c */
-void	write_errors(char *error_str);
-int		return_failure(char *error_str);
-int		ret_free(char *error_str, char **tab);
-int		ret_free2(char *error_str, char **tab, char*tmp);
-int		ret_free_txt(char *error_str, char **s_byspace, t_data *data);
+void		write_errors(char *error_str);
+int			return_failure(char *error_str);
+int			ret_free(char *error_str, char **tab);
+int			ret_free2(char *error_str, char **tab, char*tmp);
+int			ret_free_txt(char *error_str, char **s_byspace, t_data *data);
 
 	/* main.c */
-int		main(int ac, char **av);
+int			main(int ac, char **av);
 
 	/* get_map_content.c */
-int		check_get_next_line(char *line);	
-t_map	*reduce_count_line(t_data *data, int fd);
-t_map	*count_line(char *s, t_data *data);
+int			check_get_next_line(char *line);	
+t_map		*reduce_count_line(t_data *data, int fd);
+t_map		*count_line(char *s, t_data *data);
 
 	/* init.c */
-void	init_data(t_data *data);
+void		init_data(t_data *data);
 
 	/* check_line_content.c */
-int		check_verif_content(char *str, t_verif *check);
-int		compare_and_open_line(char **s, t_verif *c, char *tmp, t_data *data);
-int		compare_and_check_number_line(char **split_byspace, t_verif *check);
-int		check_filled_lines(char **map, t_verif *check, t_data *data);
+int			check_verif_content(char *str, t_verif *check);
+int			compare_and_open_line(char **s, t_verif *c, char *tmp,
+				t_data *data);
+int			compare_and_check_number_line(char **split_byspace, t_verif *check);
+int			check_filled_lines(char **map, t_verif *check, t_data *data);
 
 	/* utils_check_line_content.c */
-int		reduce_check_filled_lines(char **split_byspace);
-int		reduce_compare_and_check_line_f(char *split_byspace);
-int		reduce_compare_and_check_line_c(char *split_byspace);
+int			reduce_check_filled_lines(char **split_byspace);
+int			reduce_compare_and_check_line_f(char *split_byspace);
+int			reduce_compare_and_check_line_c(char *split_byspace);
+int			check_whitespace(char *line);
 
 	/* utils_check_line_content2.c */
-int		check_no(t_verif *check, char *tmp, t_data *data);
-int		check_so(t_verif *check, char *tmp, t_data *data);
-int		check_we(t_verif *check, char *tmp, t_data *data);
-int		check_ea(t_verif *check, char *tmp, t_data *data);
+int			check_no(t_verif *check, char *tmp, t_data *data);
+int			check_so(t_verif *check, char *tmp, t_data *data);
+int			check_we(t_verif *check, char *tmp, t_data *data);
+int			check_ea(t_verif *check, char *tmp, t_data *data);
+
+	/*	utils_get_all_map_info.c	*/
+t_coord		get_player_pos(t_data *data);
+char		get_player_dir(t_data *data);
+t_map_info	*get_colors_cf(char **map, t_map_info *map_info);
 
 	/* check_map_content.c	*/
-int		check_map_content_characters(t_data *data);
-int		check_forbidden_character(char **map);
+int			check_map_content_characters(t_data *data);
+int			check_forbidden_character(char **map);
+
+/*		utils_check_map_content.c	*/
+int			check_hole_inside_map(char **map);
+int			check_player_nb(t_map *map);
+int			check_forbidden_character(char **map);
 
 	/*get_rest_of_the_map.c	*/
-int		check_get_next_line2(char *line);
-int		reduce_return_size_of_map(int fd);
-int		return_size_of_file(char *s);
-t_map	*count_line_for_map(char *s, t_data *data);
+int			check_get_next_line2(char *line);
+int			reduce_return_size_of_map(int fd);
+int			return_size_of_file(char *s);
+t_map		*count_line_for_map(char *s, t_data *data);
 
 	/* t_verif.c */
-t_verif	verif_init(void);
-int		check_verif(t_verif tab);
-int		check_verif_2(t_verif tab);
+t_verif		verif_init(void);
+int			check_verif(t_verif tab);
+int			check_verif_2(t_verif tab);
 
 /*		get_all_map_info.c		*/
-t_map_info		*get_all_map_info(t_data *data);
+t_map_info	*get_all_map_info(t_data *data);
 
 /*		init_player.c		*/
-void	init_player(t_data *data, int x, int y, char dir);
+void		init_player(t_data *data, int x, int y, char dir);
 
 /*		raycats.c		*/
-int		draw(t_data *data);
+int			draw(t_data *data);
 
 /*		draw.c		*/
-void	put_in_display(t_data *data, int x);
+void		put_in_display(t_data *data, int x);
 
 /*		create_texture.c		*/
-int		create_textures_wall(t_data *data);
-int		get_gun_on_screen(t_data *data); // bonus
-
-/* GERER LES ERREURS DANS LE CAS OU !TXT.IMG ou !TXT_ADDR*/
+int			create_textures_wall(t_data *data);
 
 /*		gameplay.c		*/
-void	keyboard_gameplay(t_data *data);
-void	forward(t_data *data);
-void	back(t_data *data);
-void	left(t_data *data);
-void	right(t_data *data);
-void	escape(t_data *data);
+void		keyboard_gameplay(t_data *data);
+void		forward(t_data *data);
+void		back(t_data *data);
+void		left(t_data *data);
+void		right(t_data *data);
+void		escape(t_data *data);
 
 /*		gameplay_camera.c	*/
-int		look_left(t_data *data);
-int		look_right(t_data *data);
+int			look_left(t_data *data);
+int			look_right(t_data *data);
 
 /*		gameplay_utils.c	*/
-int		release_keyboard(int key, t_data *data);
-int		press_keyboard(int key, t_data *data);
-int		loop_raycast(t_data *data);
+int			release_keyboard(int key, t_data *data);
+int			press_keyboard(int key, t_data *data);
+int			loop_raycast(t_data *data);
 
 /*		first_step_parse.c */
-int		check_arguments(int ac, char *av);
-int		check_file_existence(char *av);
-int		check_directory(char *av);
-int		check_extension(char *av);
+int			check_arguments(int ac, char *av);
+int			check_file_existence(char *av);
+int			check_directory(char *av);
+int			check_extension(char *av);
 
 	/* second_step_parse.c */
-int		check_map_content(t_map *map);
-int		check_file_content(char *argv, t_data *data);
-int		check_line_content(t_map *map, t_data *data);
+int			check_map_content(t_map *map);
+int			check_file_content(char *argv, t_data *data);
+int			check_line_content(t_map *map, t_data *data);
 
 /*		draw_utils.c	*/
-void	tab_init(t_data *data, int *tab_floor, int *tab_ceiling);
-
-
+void		tab_init(t_data *data, int *tab_floor, int *tab_ceiling);
 
 /*		BONUS FILES		*/
 /*		gameplay_camera_mouse_bonus.c	*/
-int		mouse_handler(int x, int y, t_data *data); //bonus
-void	rot_right(t_data *data); //bonus
-void	rot_left(t_data *data); //bonus
+int			mouse_handler(int x, int y, t_data *data); //bonus
+void		rot_right(t_data *data); //bonus
+void		rot_left(t_data *data); //bonus
 
 /*		add_sound_bonus.c		*/
-int		play_sound_bonus(char *path, int volume);
-void	menu_and_music_bonus(t_data *data);
+int			play_sound_bonus(char *path, int volume);
+void		menu_and_music_bonus(t_data *data);
 
 #endif

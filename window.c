@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 17:18:36 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 18:58:11 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ void	loop(t_data *data)
 	mlx_loop_hook(data->mlx, loop_raycast, data);
 	mlx_hook(data->mlx_win, 2, 1L << 0, &press_keyboard, data);
 	mlx_hook(data->mlx_win, 3, 1L << 1, &release_keyboard, data);
-	mlx_hook(data->mlx_win, MotionNotify, PointerMotionMask, //Bonus
-		&mouse_handler, data); // bonus
+	mlx_hook(data->mlx_win, MotionNotify, PointerMotionMask,
+		&mouse_handler, data);
 	mlx_hook(data->mlx_win, 17, 0L, &close_redx, data);
-	menu_and_music_bonus(data); //bonus
+	menu_and_music_bonus(data);
 	mlx_loop(data->mlx);
 }

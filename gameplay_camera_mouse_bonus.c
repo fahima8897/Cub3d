@@ -6,13 +6,13 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 11:54:26 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 11:54:42 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 19:59:10 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	rot_left(t_data *data) //bonus
+void	rot_left(t_data *data)
 {
 	double		old_dirx;
 	double		old_planex;
@@ -29,7 +29,7 @@ void	rot_left(t_data *data) //bonus
 		+ data->map->player.plane_pos.y * cos(0.04);
 }
 
-void	rot_right(t_data *data) //bonus
+void	rot_right(t_data *data)
 {
 	double		old_dirx;
 	double		old_planex;
@@ -46,7 +46,7 @@ void	rot_right(t_data *data) //bonus
 		+ data->map->player.plane_pos.y * cos(-0.04);
 }
 
-int	mouse_handler(int x, int y, t_data *data) //bonus
+int	mouse_handler(int x, int y, t_data *data)
 {
 	if (x >= 0 && x < data->win_width && y >= 0 && y < data->win_height)
 	{
@@ -66,5 +66,5 @@ int	mouse_handler(int x, int y, t_data *data) //bonus
 			mlx_mouse_move(data->mlx, data->mlx_win,
 				x, data->win_height / 2);
 	}
-	return (0);
+	return (SUCCESS);
 }

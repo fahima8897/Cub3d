@@ -1,3 +1,4 @@
+norminette gnl/*.c gnl/*.h libft/*.c libft/*.h *.h *.c
 make
 echo "\033[1;33m====  OPENING A DIRECTORY  ===="
 valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D maps/folder_test
@@ -14,8 +15,14 @@ valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-or
 echo "\033[1;33m====  OPENING A NAMELESS FILEcub.c  ===="
 valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D maps/map_error05cub.c
 
-echo "\033[1;33m====  OPENING EMPTY TEXTURE FILE  ===="
-valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D maps/empty_textures.cub
+echo "\033[1;33m====  OPENING EMPTY TEXTURE FILE EA ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D maps/empty_textures_EA.cub
+echo "\033[1;33m====  OPENING EMPTY TEXTURE FILE NO ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D maps/empty_textures_NO.cub
+echo "\033[1;33m====  OPENING EMPTY TEXTURE FILE WE ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D maps/empty_textures_WE.cub
+echo "\033[1;33m====  OPENING EMPTY TEXTURE FILE SO ===="
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D maps/empty_textures_SO.cub
 echo "\033[1;33m====  OPENING EMPTY TXT EA FILE  ===="
 valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck --track-fds=yes ./cub3D maps/notxtEA.cub
 echo "\033[1;33m====  OPENING EMPTY TXT NO FILE  ===="

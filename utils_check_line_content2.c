@@ -6,13 +6,13 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 20:54:13 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 17:16:45 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 18:16:07 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int close_fd(char *str, int fd)
+int	close_fd(char *str, int fd)
 {
 	printf("\033[1;31m%s\n\033[0m", str);
 	close(fd);

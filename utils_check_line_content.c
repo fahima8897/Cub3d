@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:42:39 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/19 15:12:49 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 18:36:26 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,18 @@ int	reduce_compare_and_check_line_c(char *split_byspace)
 	}
 	free_tab(s_comma);
 	return (SUCCESS);
+}
+
+int	check_whitespace(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] <= 32)
+			return (SUCCESS);
+		i++;
+	}
+	return (FAILURE);
 }

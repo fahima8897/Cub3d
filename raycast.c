@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:09:26 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 16:33:01 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 19:49:52 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,8 @@ void	calcul_raydis(t_data *data)
 	else
 	{
 		data->ray.stepx = 1;
-		data->ray.side_dist.x
-			= (data->ray.mapx + 1.0 - data->map->player.p_pos.x)
-			* data->ray.delta_dist.x;
+		data->ray.side_dist.x = (data->ray.mapx + 1.0
+				- data->map->player.p_pos.x) * data->ray.delta_dist.x;
 	}
 	if (data->ray.dir.y < 0)
 	{
