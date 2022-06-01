@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_content.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:08:18 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/31 19:17:25 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/01 12:11:41 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,41 @@ int	check_forbidden_character(char **map)
 				&& map[i][j] != 'S' && map[i][j] != 'W'
 				&& map[i][j] != ' ' && map[i][j] != '\n')
 				return (return_failure("Error\nWrong character."));
+			j++;
+		}
+		i++;
+	}
+	return (SUCCESS);
+}
+
+
+int	check_player_inside_map(char **map)
+{
+	int	i;
+	int	j;
+	int	size;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 1;
+		while (map[i][j])
+		{
+			size = ft_strlen(map[i]) - 1;
+			if (map[i][0] == 'N' || map[i][0] == 'E' || map[i][0] == 'S'
+				|| map[i][0] == 'W')
+				return (FAILURE);
+			if (map[i][size] == 'N' || map[i][size] == 'E'
+				|| map[i][size] == 'S' || map[i][size] == 'W')
+				return (FAILURE);
+			if (map[i][j] == 'N' || map[i][j] == 'E' || map[i][j] == 'S'
+				|| map[i][j] == 'W')
+			{
+				if (map[i][j - 1] == ' ' || map[i][j + 1] == ' '
+					|| map[i - 1][j] == ' ' || map[i + 1][j] == ' '
+					|| map[i - 1][j] == '\0' || map[i + 1][j] == '\0')
+					return (FAILURE);
+			}
 			j++;
 		}
 		i++;
@@ -57,6 +92,11 @@ int	check_player_nb(t_map *map)
 	}
 	if (p_nb != 1)
 		return (return_failure("Error\nWrong number of player."));
+	if (p_nb == 1)
+	{
+		if (check_player_inside_map(map->map_2) == FAILURE)
+			return (return_failure("Error\nPlayer outside the wall"));
+	}
 	return (SUCCESS);
 }
 
@@ -176,10 +216,8 @@ int	check_hole_inside_map(char **map)
 
 int	check_map_content_characters(t_data *data)
 {
-	/*Rajouter la conditions pour E W S N lorsqu'ils ont des espaces autour */
 	/* Considerer les espaces entourant la map comme mauvais quand il y'a un joueur*/
 	/* cas de figure [][][][][]1\0 lorsqu'il est avant la ligne d'au dessus*/
-	/* cas de figure ou E est en dehors de la map ex : 1010000000000001     E*/
 	if (check_walls_top_bottom(data->map->map_2) == FAILURE)
 		return (FAILURE);
 	if (check_walls_left(data->map->map_2) == FAILURE)
