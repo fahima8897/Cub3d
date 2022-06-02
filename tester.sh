@@ -58,6 +58,12 @@ valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-or
 echo "\033[1;33m====  OPENING LONG LINE ===\033[0m"
 valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck ./cub3D maps/map_long_line6.cub
 
+echo "\033[1;33m====  CUT01 ===\033[0m"
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck ./cub3D maps/maps_cut01.cub
+echo "\033[1;33m====  CUT02 ===\033[0m"
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck ./cub3D maps/maps_cut02.cub
+echo "\033[1;33m====  CUT03 ===\033[0m"
+valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck ./cub3D maps/maps_cut03.cub
 
 echo "\033[1;33m====  TEST FINAL ===\033[0m"
 valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --track-origins=yes --tool=memcheck ./cub3D maps/map2.cub

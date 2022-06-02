@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:08:18 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/02 22:01:01 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/02 22:44:09 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	check_map_content_characters(t_data *data)
 {
 	char	**mapx;
 
-	mapx = change_space_to_3(data);
+	mapx = transform_sp_to_x(data);
 	if (mapx == NULL)
 		return (return_failure("Error\nmapx could not load."));
 	if (check_walls_top_bottom(data->map->map_2) == FAILURE)

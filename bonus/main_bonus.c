@@ -6,17 +6,19 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:40:37 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 20:28:16 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/02 22:36:18 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-int	main(int ac, char **av)
+int	main(int ac, char **av, char **env)
 {
 	t_data	*data;
 
 	data = NULL;
+	if (!(*env))
+		return (return_failure("Error\nNo environment."));
 	if (check_arguments(ac, av[1]) == FAILURE)
 		return (FAILURE);
 	data = malloc(sizeof(t_data));

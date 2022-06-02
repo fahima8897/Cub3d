@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:38:08 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 20:28:15 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/02 22:46:50 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,6 @@ void	init_data(t_data *data)
 	data->map_info->ea_texture = NULL;
 	data->map->player.p_pos.x = 0;
 	data->map->player.p_pos.y = 0;
+	data->map->gap = 0;
+	data->map->is_map = 0;
 }

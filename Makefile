@@ -6,7 +6,7 @@
 #    By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 16:11:35 by fboumell          #+#    #+#              #
-#    Updated: 2022/06/02 22:06:55 by adaloui          ###   ########.fr        #
+#    Updated: 2022/06/02 22:40:43 by adaloui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,8 @@ SRCS_BONUS = bonus/main_bonus.c \
 		bonus/draw_utils_bonus.c \
 		bonus/gameplay_camera_mouse_bonus.c \
 		bonus/add_sound_bonus.c \
+		bonus/utils_check_walls_left_bonus.c \
+		bonus/utils_2_bonus.c \
 
 SRCS	= mandatory/main.c \
 		mandatory/utils.c \

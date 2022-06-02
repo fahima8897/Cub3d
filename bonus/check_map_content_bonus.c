@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:08:18 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 20:28:09 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/02 22:48:56 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	check_walls_left(char **map)
 		{
 			if (map[i][j] == '0')
 			{
-				if (map[i - 1][j] == ' ' || map[i + 1][j] == ' ')
+				if (map[i - 1][j] == 'X' || map[i + 1][j] == 'X')
 					return (FAILURE);
 			}
 			j++;
@@ -103,17 +103,23 @@ int	check_walls_right(char **map)
 
 int	check_map_content_characters(t_data *data)
 {
+	char	**mapx;
+
+	mapx = transform_sp_to_x(data);
+	if (mapx == NULL)
+		return (return_failure("Error\nmapx could not load."));
 	if (check_walls_top_bottom(data->map->map_2) == FAILURE)
-		return (FAILURE);
-	if (check_walls_left(data->map->map_2) == FAILURE)
-		return (return_failure("Error\nError Parsing."));
+		return (ret_free("", mapx));
+	if (check_walls_left(mapx) == FAILURE)
+		return (ret_free("Error\nParsing.", mapx));
 	if (check_walls_right(data->map->map_2) == FAILURE)
-		return (FAILURE);
+		return (ret_free("", mapx));
 	if (check_hole_inside_map(data->map->map_2) == FAILURE)
-		return (return_failure("Error\nError Parsing."));
+		return (ret_free("Error\nParsing.", mapx));
 	if (check_player_nb(data->map) == FAILURE)
-		return (FAILURE);
+		return (ret_free("", mapx));
 	if (check_forbidden_character(data->map->map_2) == FAILURE)
-		return (FAILURE);
+		return (ret_free("", mapx));
+	free_tab(mapx);
 	return (SUCCESS);
 }

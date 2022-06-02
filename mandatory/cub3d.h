@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/02 22:29:28 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/02 22:43:56 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,7 +228,7 @@ int			check_player_nb(t_map *map);
 int			check_hole_inside_map(char **map);
 
 	/* utils_check_walls_left.c	*/
-char		**change_space_to_3(t_data *data);
+char		**transform_sp_to_x(t_data *data);
 
 	/*get_rest_of_the_map.c	*/
 int			check_get_next_line2(char *line, t_data *data);

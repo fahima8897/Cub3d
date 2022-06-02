@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 21:14:57 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/02 22:51:04 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ typedef struct s_map
 	int			count_line;
 	t_player	player;
 	int			space_in_map_2;
+	int			is_map;
+	int			gap;
 }	t_map;
 
 typedef struct s_ray
@@ -173,10 +175,9 @@ int			ret_free2(char *error_str, char **tab, char*tmp);
 int			ret_free_txt(char *error_str, char **s_byspace, t_data *data);
 
 	/* main.c */
-int			main(int ac, char **av);
+int			main(int ac, char **av, char **env);
 
 	/* get_map_content.c */
-int			check_get_next_line(char *line);	
 t_map		*reduce_count_line(t_data *data, int fd);
 t_map		*count_line(char *s, t_data *data);
 
@@ -217,8 +218,8 @@ int			check_player_nb(t_map *map);
 int			check_forbidden_character(char **map);
 
 	/*get_rest_of_the_map.c	*/
-int			check_get_next_line2(char *line);
-int			reduce_return_size_of_map(int fd);
+int			check_get_next_line2(char *line, t_data *data);
+int			reduce_return_size_of_map(int fd, t_data *data);
 int			return_size_of_file(char *s);
 t_map		*count_line_for_map(char *s, t_data *data);
 
@@ -270,16 +271,24 @@ int			check_map_content(t_map *map);
 int			check_file_content(char *argv, t_data *data);
 int			check_line_content(t_map *map, t_data *data);
 
-/*		draw_utils.c	*/
+	/*utils_2.c*/
+int			ft_one(char *str);
+void		reduce_reduce_cl_for_map(t_data *data, int i, char *line);
+void		reduce_reduce_cl_for_map_2(t_data *data, int i, char *line);
+
+	/* utils_check_walls_left.c	*/
+char		**transform_sp_to_x(t_data *data);
+
+	/*		draw_utils.c	*/
 void		tab_init(t_data *data, int *tab_floor, int *tab_ceiling);
 
-/*		BONUS FILES		*/
-/*		gameplay_camera_mouse_bonus.c	*/
+	/*		BONUS FILES		*/
+	/*		gameplay_camera_mouse_bonus.c	*/
 int			mouse_handler(int x, int y, t_data *data); //bonus
 void		rot_right(t_data *data); //bonus
 void		rot_left(t_data *data); //bonus
 
-/*		add_sound_bonus.c		*/
+	/*		add_sound_bonus.c		*/
 int			play_sound_bonus(char *path, int volume);
 void		menu_and_music_bonus(t_data *data);
 
