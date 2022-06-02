@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 19:28:34 by adaloui           #+#    #+#             */
-/*   Updated: 2022/05/31 19:37:20 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/02 21:47:08 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	check_arguments(int ac, char *av)
 		return (return_failure("Error.\nYou are trying to open a directory."));
 	ret = check_file_existence(av);
 	if (ret == FAILURE)
-		return (return_failure("Error.\nThe file does not exist."));
+		return (return_failure("Error.\nNo file existing or no permission."));
 	ret = check_extension(av);
 	if (ret == FAILURE)
 		return (return_failure("Error.\nExtension map invalid."));

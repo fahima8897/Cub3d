@@ -6,7 +6,7 @@
 #    By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 16:11:35 by fboumell          #+#    #+#              #
-#    Updated: 2022/06/01 21:23:07 by adaloui          ###   ########.fr        #
+#    Updated: 2022/06/02 22:06:55 by adaloui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -146,6 +146,8 @@ SRCS	= mandatory/main.c \
 		mandatory/utils_check_line_content2.c \
 		mandatory/utils_check_map_content.c \
 		mandatory/utils_get_all_map_info.c \
+		mandatory/utils_check_walls_left.c \
+		mandatory/utils_2.c \
 		mandatory/check_map_content.c \
 		mandatory/get_rest_of_map.c \
 		mandatory/t_verif.c \
