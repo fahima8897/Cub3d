@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_content.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 21:08:18 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/02 22:44:09 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/03 16:07:21 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ int	check_walls_top_bottom(char **map)
 	while (map[0][j])
 	{
 		if (map[0][j] != '1' && map[0][j] != '\n' && map[0][j] != ' ')
-			return (return_failure("Error\nError Parsing."));
+			return (FAILURE);
 		j++;
 	}
 	j = 0;
 	while (map[size][j])
 	{
 		if (map[size][j] != '1' && map[size][j] != '\n' && map[size][j] != ' ')
-			return (return_failure("Error\nError Parsing."));
+			return (FAILURE);
 		j++;
 	}
 	return (SUCCESS);
@@ -109,17 +109,17 @@ int	check_map_content_characters(t_data *data)
 	if (mapx == NULL)
 		return (return_failure("Error\nmapx could not load."));
 	if (check_walls_top_bottom(data->map->map_2) == FAILURE)
-		return (ret_free("", mapx));
+		return (ret_free("Error\nError Parsing.", mapx));
 	if (check_walls_left(mapx) == FAILURE)
-		return (ret_free("Error\nParsing popo", mapx));
+		return (ret_free("Error\nError Parsing.", mapx));
 	if (check_walls_right(data->map->map_2) == FAILURE)
 		return (ret_free("", mapx));
 	if (check_hole_inside_map(data->map->map_2) == FAILURE)
-		return (ret_free("Error\nParsing lolo", mapx));
+		return (ret_free("Error\nError Parsing.", mapx));
 	if (check_player_nb(data->map) == FAILURE)
-		return (ret_free("", mapx));
+		return (ret_free("Error\nError Parsing.", mapx));
 	if (check_forbidden_character(data->map->map_2) == FAILURE)
-		return (ret_free("", mapx));
+		return (ret_free("Error\nError Parsing.", mapx));
 	free_tab(mapx);
 	return (SUCCESS);
 }

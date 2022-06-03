@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_line_content.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 19:12:05 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 19:04:56 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/03 14:41:18 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,8 @@ int	check_line_content(t_map *map, t_data *data)
 
 	check = verif_init();
 	if (check_filled_lines(map->map, &check, data) == FAILURE)
-		return (return_failure("Error\nProblem in line."));
+		return (return_failure("Error\nError Parsing."));
 	if (check_verif_2(check) == FAILURE)
-		return (return_failure("Error\nAt least one ressource is not present."));
+		return (return_failure("Error\nError Parsing."));
 	return (SUCCESS);
 }

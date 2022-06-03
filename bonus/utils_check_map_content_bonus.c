@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_check_map_content_bonus.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 18:52:25 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 20:28:19 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/03 16:06:18 by fboumell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_forbidden_character(char **map)
 				&& map[i][j] != 'N' && map[i][j] != 'E'
 				&& map[i][j] != 'S' && map[i][j] != 'W'
 				&& map[i][j] != ' ' && map[i][j] != '\n')
-				return (return_failure("Error\nError Parsing."));
+				return (FAILURE);
 			j++;
 		}
 		i++;
@@ -92,11 +92,11 @@ int	check_player_nb(t_map *map)
 		}
 	}
 	if (p_nb != 1)
-		return (return_failure("Error\nError parsing."));
+		return (FAILURE);
 	if (p_nb == 1)
 	{
 		if (check_player_inside_map(map->map_2) == FAILURE)
-			return (return_failure("Error\nError parsing."));
+			return (FAILURE);
 	}
 	return (SUCCESS);
 }
