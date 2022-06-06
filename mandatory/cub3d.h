@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/06 21:31:47 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/06 22:49:49 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,7 +264,7 @@ int			put_image_on_screen(t_data *data);
 
 	/* raycaster_utils.c */
 void		get_rays_distance(t_data *data);
-void		player_touch_walls(t_data *data);
+void		ray_touch_walls(t_data *data);
 void		get_walls_dist(t_data *data);
 
 	/* draw.c */

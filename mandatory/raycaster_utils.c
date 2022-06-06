@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:46:41 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/06 21:17:01 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/06 23:04:52 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ void	get_walls_dist(t_data *data)
 	data->ray.line_height = (int)(data->win_height / data->ray.wall_dist);
 	data->ray.wall_start = -data->ray.line_height / 2 + data->win_height / 2;
 	data->ray.wall_end = data->ray.line_height / 2 + data->win_height / 2;
-	if (data->ray.side == 2 || data->ray.side == 3)
+	if (data->ray.side == WE || data->ray.side == EA)
 		data->ray.wall_x = data->map->player.p_pos.y + data->ray.wall_dist
 			* data->ray.dir.y;
-	else
+	else if (data->ray.side == NO || data->ray.side == SO)
 		data->ray.wall_x = data->map->player.p_pos.x + data->ray.wall_dist
 			* data->ray.dir.x;
 	data->ray.wall_x -= floor(data->ray.wall_x);
 }
 
-void	player_touch_walls(t_data *data)
+void	ray_touch_walls(t_data *data)
 {
 	while (data->ray.hit == 0)
 	{
