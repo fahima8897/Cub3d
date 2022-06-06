@@ -6,101 +6,106 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:24:25 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 19:14:23 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/06 21:18:06 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_rgb(t_data *data, int *tab, int y, int x)
-{
-	if (data->tx.endian == 1)
-	{
-		data->tx.addr[(x * data->tx.bpp >> 3)
-			+ y * data->tx.line] = tab[0];
-		data->tx.addr[(x * data->tx.bpp >> 3)
-			+ 1 + y * data->tx.line] = tab[1];
-		data->tx.addr[(x * data->tx.bpp >> 3)
-			+ 2 + y * data->tx.line] = tab[2];
-	}
-	else
-	{
-		data->tx.addr[(x * data->tx.bpp >> 3)
-			+ y * data->tx.line] = tab[2];
-		data->tx.addr[(x * data->tx.bpp >> 3)
-			+ 1 + y * data->tx.line] = tab[1];
-		data->tx.addr[(x * data->tx.bpp >> 3)
-			+ 2 + y * data->tx.line] = tab[0];
-	}
-}
-
-void	draw_wall(t_data *data, t_img *tex, int y, int x)
-{
-	data->tx.addr[(x * data->tx.bpp >> 3)
-		+ y * data->tx.line]
-		= tex->addr[(int)(data->ray.wall_x * tex->width) * (tex->bpp >> 3)
-		+ (int)((y - data->ray.wall_start * 1.0) / data->ray.line_height
-			* tex->height) *tex->line];
-	data->tx.addr[(x * data->tx.bpp >> 3)
-		+ 1 + y * data->tx.line]
-		= tex->addr[(int)(data->ray.wall_x * tex->width) * (tex->bpp >> 3)
-		+ 1 + (int)((y - data->ray.wall_start * 1.0)
-			/ data->ray.line_height * tex->height) *tex->line];
-	data->tx.addr[(x * data->tx.bpp >> 3)
-		+ 2 + y * data->tx.line]
-		= tex->addr[(int)(data->ray.wall_x * tex->width) * (tex->bpp >> 3)
-		+ 2 + (int)((y - data->ray.wall_start * 1.0)
-			/ data->ray.line_height * tex->height) *tex->line];
-}
-
-void	draw_tmp(t_data *data, int y, int x)
-{
-	if (data->ray.side == NO)
-		draw_wall(data, &data->north, y, x);
-	else if (data->ray.side == SO)
-		draw_wall(data, &data->south, y, x);
-	else if (data->ray.side == WE)
-		draw_wall(data, &data->west, y, x);
-	else if (data->ray.side == EA)
-		draw_wall(data, &data->east, y, x);
-}
-
-void	set_stop(t_data *data, int *start, int *end)
+int	find_limit(t_data *data, int *limit, int *begin)
 {
 	if (data->ray.wall_start < 0)
-		*start = 0;
+		*begin = 0;
 	else
-		*start = data->ray.wall_start;
+		*begin = data->ray.wall_start;
 	if (data->ray.wall_end >= data->win_height)
-		*end = data->win_height - 1;
+		*limit = data->win_height - 1;
 	else
-		*end = data->ray.wall_end;
+		*limit = data->ray.wall_end;
+	return (SUCCESS);
 }
 
-void	put_in_display(t_data *data, int x)
+int	draw_every_walls(t_data *data, t_img *img, int height, int width)
 {
-	int	y;
-	int	start;
-	int	end;
+	data->screen.addr[(width * data->screen.bpp >> 3)
+		+ height * data->screen.line]
+		= img->addr[(int)(data->ray.wall_x * img->width) * (img->bpp >> 3)
+		+ (int)((height - data->ray.wall_start * 1.0) / data->ray.line_height
+			* img->height) *img->line];
+	data->screen.addr[(width * data->screen.bpp >> 3)
+		+ 1 + height * data->screen.line]
+		= img->addr[(int)(data->ray.wall_x * img->width) * (img->bpp >> 3)
+		+ 1 + (int)((height - data->ray.wall_start * 1.0)
+			/ data->ray.line_height * img->height) *img->line];
+	data->screen.addr[(width * data->screen.bpp >> 3)
+		+ 2 + height * data->screen.line]
+		= img->addr[(int)(data->ray.wall_x * img->width) * (img->bpp >> 3)
+		+ 2 + (int)((height - data->ray.wall_start * 1.0)
+			/ data->ray.line_height * img->height) *img->line];
+	return (SUCCESS);
+}
+
+int	draw_walls_types(t_data *data, int height, int width)
+{
+	if (data->ray.side == NO)
+		draw_every_walls(data, &data->west, height, width);
+	if (data->ray.side == SO)
+		draw_every_walls(data, &data->east, height, width);
+	if (data->ray.side == WE)
+		draw_every_walls(data, &data->north, height, width);
+	if (data->ray.side == EA)
+		draw_every_walls(data, &data->south, height, width);
+	return (SUCCESS);
+}
+
+int	draw_colors_on_screen(t_data *data, int *tab, int width, int height)
+{
+	if (data->screen.endian == 1)
+	{
+		data->screen.addr[(width * data->screen.bpp >> 3)
+			+ height * data->screen.line] = tab[0];
+		data->screen.addr[(width * data->screen.bpp >> 3)
+			+ 1 + height * data->screen.line] = tab[1];
+		data->screen.addr[(width * data->screen.bpp >> 3)
+			+ 2 + height * data->screen.line] = tab[2];
+	}
+	else
+	{
+		data->screen.addr[(width * data->screen.bpp >> 3)
+			+ height * data->screen.line] = tab[2];
+		data->screen.addr[(width * data->screen.bpp >> 3)
+			+ 1 + height * data->screen.line] = tab[1];
+		data->screen.addr[(width * data->screen.bpp >> 3)
+			+ 2 + height * data->screen.line] = tab[0];
+	}
+	return (SUCCESS);
+}
+
+int	draw_on_screen(t_data *data, int width)
+{
+	int	limit;
+	int	begin;
+	int	height;
 	int	tab_floor[3];
 	int	tab_ceiling[3];
 
-	y = 0;
-	set_stop(data, &start, &end);
+	find_limit(data, &limit, &begin);
 	tab_init(data, tab_floor, tab_ceiling);
-	while (y < start)
+	height = 0;
+	while (height < begin)
 	{
-		draw_rgb(data, tab_ceiling, y, x);
-		y++;
+		draw_colors_on_screen(data, tab_ceiling, width, height);
+		height++;
 	}
-	while (y < end)
+	while (height < limit)
 	{
-		draw_tmp(data, y, x);
-		y++;
+		draw_walls_types(data, height, width);
+		height++;
 	}
-	while (y < data->win_height - 1)
+	while (height < data->win_height - 1)
 	{
-		draw_rgb(data, tab_floor, y, x);
-		y++;
+		draw_colors_on_screen(data, tab_floor, width, height);
+		height++;
 	}
+	return (SUCCESS);
 }

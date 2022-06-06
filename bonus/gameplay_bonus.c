@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 16:30:43 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 20:28:12 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/06 18:40:20 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,69 +15,69 @@
 void	forward(t_data *data)
 {
 	if (data->map->map_2[(int)(data->map->player.p_pos.x
-			+ data->map->player.dir_pos.x * 0.4)]
+			+ data->map->player.dir_pos.x * SPEED)]
 		[(int)(data->map->player.p_pos.y)] == '0'
 		|| data->map->map_2[(int)(data->map->player.p_pos.x +
-	data->map->player.dir_pos.x * 0.4)][(int)(data->map->player.p_pos.y)]
+	data->map->player.dir_pos.x * SPEED)][(int)(data->map->player.p_pos.y)]
 	== data->map->player.p_dir)
-		data->map->player.p_pos.x += data->map->player.dir_pos.x * 0.4;
+		data->map->player.p_pos.x += data->map->player.dir_pos.x * SPEED;
 	if (data->map->map_2[(int)(data->map->player.p_pos.x)]
-	[(int)(data->map->player.p_pos.y + data->map->player.dir_pos.y * 0.4)]
+	[(int)(data->map->player.p_pos.y + data->map->player.dir_pos.y * SPEED)]
 	== '0' || data->map->map_2[(int)(data->map->player.p_pos.x)]
-	[(int)(data->map->player.p_pos.y + data->map->player.dir_pos.y * 0.4)]
+	[(int)(data->map->player.p_pos.y + data->map->player.dir_pos.y * SPEED)]
 	== data->map->player.p_dir)
-		data->map->player.p_pos.y += data->map->player.dir_pos.y * 0.4;
+		data->map->player.p_pos.y += data->map->player.dir_pos.y * SPEED;
 }
 
 void	back(t_data *data)
 {
 	if (data->map->map_2[(int)(data->map->player.p_pos.x
-			- data->map->player.dir_pos.x * 0.4)]
+			- data->map->player.dir_pos.x * SPEED)]
 	[(int)(data->map->player.p_pos.y)]
 	== '0' || data->map->map_2[(int)(data->map->player.p_pos.x
-	- data->map->player.dir_pos.x * 0.4)][(int)(data->map->player.p_pos.y)]
+	- data->map->player.dir_pos.x * SPEED)][(int)(data->map->player.p_pos.y)]
 	== data->map->player.p_dir)
-		data->map->player.p_pos.x -= data->map->player.dir_pos.x * 0.4;
+		data->map->player.p_pos.x -= data->map->player.dir_pos.x * SPEED;
 	if (data->map->map_2[(int)(data->map->player.p_pos.x)]
-	[(int)(data->map->player.p_pos.y - data->map->player.dir_pos.y * 0.4)]
+	[(int)(data->map->player.p_pos.y - data->map->player.dir_pos.y * SPEED)]
 	== '0' || data->map->map_2[(int)(data->map->player.p_pos.x)]
-	[(int)(data->map->player.p_pos.y - data->map->player.dir_pos.y * 0.4)]
+	[(int)(data->map->player.p_pos.y - data->map->player.dir_pos.y * SPEED)]
 	== data->map->player.p_dir)
-		data->map->player.p_pos.y -= data->map->player.dir_pos.y * 0.4;
+		data->map->player.p_pos.y -= data->map->player.dir_pos.y * SPEED;
 }
 
 void	left(t_data *data)
 {
 	if (data->map->map_2[(int)(data->map->player.p_pos.x
-			- data->map->player.plane_pos.x * 0.4)]
+			- data->map->player.plane_pos.x * SPEED)]
 	[(int)(data->map->player.p_pos.y)] == '0'
 	|| data->map->map_2[(int)(data->map->player.p_pos.x
-	- data->map->player.plane_pos.x * 0.4)]
+	- data->map->player.plane_pos.x * SPEED)]
 	[(int)(data->map->player.p_pos.y)] == data->map->player.p_dir)
-		data->map->player.p_pos.x += -(data->map->player.plane_pos.x * 0.4);
+		data->map->player.p_pos.x += -(data->map->player.plane_pos.x * SPEED);
 	if (data->map->map_2[(int)(data->map->player.p_pos.x)]
-	[(int)(data->map->player.p_pos.y - data->map->player.plane_pos.y * 0.4)]
+	[(int)(data->map->player.p_pos.y - data->map->player.plane_pos.y * SPEED)]
 	== '0' || data->map->map_2[(int)(data->map->player.p_pos.x)]
-	[(int)(data->map->player.p_pos.y - data->map->player.plane_pos.y * 0.4)]
+	[(int)(data->map->player.p_pos.y - data->map->player.plane_pos.y * SPEED)]
 	== data->map->player.p_dir)
-		data->map->player.p_pos.y += -(data->map->player.plane_pos.y * 0.4);
+		data->map->player.p_pos.y += -(data->map->player.plane_pos.y * SPEED);
 }
 
 void	right(t_data *data)
 {
 	if (data->map->map_2[(int)(data->map->player.p_pos.x
-			+ data->map->player.plane_pos.x * 0.4)]
+			+ data->map->player.plane_pos.x * SPEED)]
 	[(int)(data->map->player.p_pos.y)] == '0'
 	|| data->map->map_2[(int)(data->map->player.p_pos.x
-	+ data->map->player.plane_pos.x * 0.4)][(int)(data->map->player.p_pos.y)]
+	+ data->map->player.plane_pos.x * SPEED)][(int)(data->map->player.p_pos.y)]
 	== data->map->player.p_dir)
-		data->map->player.p_pos.x += data->map->player.plane_pos.x * 0.4;
+		data->map->player.p_pos.x += data->map->player.plane_pos.x * SPEED;
 	if (data->map->map_2[(int)(data->map->player.p_pos.x)]
 	[(int)(data->map->player.p_pos.y + data->map->player.plane_pos.y
-	* 0.4)] == '0' || data->map->map_2[(int)(data->map->player.p_pos.x)]
-	[(int)(data->map->player.p_pos.y + data->map->player.plane_pos.y * 0.4)]
+	* SPEED)] == '0' || data->map->map_2[(int)(data->map->player.p_pos.x)]
+	[(int)(data->map->player.p_pos.y + data->map->player.plane_pos.y * SPEED)]
 	== data->map->player.p_dir)
-		data->map->player.p_pos.y += data->map->player.plane_pos.y * 0.4;
+		data->map->player.p_pos.y += data->map->player.plane_pos.y * SPEED;
 }
 
 void	keyboard_gameplay(t_data *data)

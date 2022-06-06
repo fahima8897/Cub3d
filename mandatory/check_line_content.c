@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_line_content.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 19:12:05 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/03 14:41:18 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/06/06 20:21:15 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	compare_and_check_number_line(char **split_byspace, t_verif *check)
 	{
 		check->f++;
 		if (check_verif(*check) == FAILURE)
-			return (return_failure("Error\nError Parsing."));
+			return (FAILURE);
 		if (reduce_compare_and_check_line_f(split_byspace[1]) == FAILURE)
 			return (FAILURE);
 	}
@@ -52,7 +52,7 @@ int	compare_and_check_number_line(char **split_byspace, t_verif *check)
 	{
 		check->c++;
 		if (check_verif(*check) == FAILURE)
-			return (return_failure("Error\nError Parsing."));
+			return (FAILURE);
 		if (reduce_compare_and_check_line_c(split_byspace[1]) == FAILURE)
 			return (FAILURE);
 	}
@@ -70,7 +70,7 @@ int	reduce_fonction_above(char **s_byspa, t_verif *check, char *str,
 			return (reduce_check_filled_lines(s_byspa));
 	}
 	if (s_byspa[2])
-		return (ret_free("Error\nError Parsing.", s_byspa));
+		return (ret_free(NULL, s_byspa));
 	else
 		free_tab(s_byspa);
 	return (SUCCESS);
@@ -89,12 +89,12 @@ int	check_filled_lines(char **map, t_verif *check, t_data *data)
 		{
 			s_byspa = ft_split(map[i], ' ');
 			if (!s_byspa[1])
-				return (ret_free("Error\nError Parsing.", s_byspa));
+				return (ret_free(NULL, s_byspa));
 			if (reduce_fonction_above(s_byspa, check, s_byspa[1], data) == -1)
 				return (FAILURE);
 		}
 		else
-			return (return_failure("Error\nError Parsing."));
+			return (FAILURE);
 	}
 	return (SUCCESS);
 }

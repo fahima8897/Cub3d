@@ -6,44 +6,46 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 11:54:26 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 20:28:13 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/06 18:53:22 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	rot_left(t_data *data)
+void	look_left_camera(t_data *data)
 {
-	double		old_dirx;
-	double		old_planex;
+	double		previous_cam_x;
+	double		previous_dir_x;
 
-	old_dirx = data->map->player.dir_pos.x;
-	old_planex = data->map->player.plane_pos.x;
-	data->map->player.dir_pos.x = data->map->player.dir_pos.x * cos(0.04)
-		- data->map->player.dir_pos.y * sin(0.04);
-	data->map->player.dir_pos.y = old_dirx * sin(0.04)
-		+ data->map->player.dir_pos.y * cos(0.04);
-	data->map->player.plane_pos.x = data->map->player.plane_pos.x * cos(0.04)
-		- data->map->player.plane_pos.y * sin(0.04);
-	data->map->player.plane_pos.y = old_planex * sin(0.04)
-		+ data->map->player.plane_pos.y * cos(0.04);
+	previous_cam_x = data->map->player.plane_pos.x;
+	previous_dir_x = data->map->player.dir_pos.x;
+	data->map->player.dir_pos.x = data->map->player.dir_pos.x * cos(CAM_SPEED)
+		- data->map->player.dir_pos.y * sin(CAM_SPEED);
+	data->map->player.dir_pos.y = previous_dir_x * sin(CAM_SPEED)
+		+ data->map->player.dir_pos.y * cos(CAM_SPEED);
+	data->map->player.plane_pos.x = data->map->player.plane_pos.x
+		* cos(CAM_SPEED)
+		- data->map->player.plane_pos.y * sin(CAM_SPEED);
+	data->map->player.plane_pos.y = previous_cam_x * sin(CAM_SPEED)
+		+ data->map->player.plane_pos.y * cos(CAM_SPEED);
 }
 
-void	rot_right(t_data *data)
+void	look_right_camera(t_data *data)
 {
-	double		old_dirx;
-	double		old_planex;
+	double		previous_cam_x;
+	double		previous_dir_x;
 
-	old_dirx = data->map->player.dir_pos.x;
-	old_planex = data->map->player.plane_pos.x;
-	data->map->player.dir_pos.x = data->map->player.dir_pos.x * cos(-0.04)
-		- data->map->player.dir_pos.y * sin(-0.04);
-	data->map->player.dir_pos.y = old_dirx * sin(-0.04)
-		+ data->map->player.dir_pos.y * cos(-0.04);
-	data->map->player.plane_pos.x = data->map->player.plane_pos.x * cos(0.04)
-		- data->map->player.plane_pos.y * sin(-0.04);
-	data->map->player.plane_pos.y = old_planex * sin(-0.04)
-		+ data->map->player.plane_pos.y * cos(-0.04);
+	previous_cam_x = data->map->player.plane_pos.x;
+	previous_dir_x = data->map->player.dir_pos.x;
+	data->map->player.dir_pos.x = data->map->player.dir_pos.x * cos(-CAM_SPEED)
+		- data->map->player.dir_pos.y * sin(-CAM_SPEED);
+	data->map->player.dir_pos.y = previous_dir_x * sin(-CAM_SPEED)
+		+ data->map->player.dir_pos.y * cos(-CAM_SPEED);
+	data->map->player.plane_pos.x = data->map->player.plane_pos.x
+		* cos(CAM_SPEED)
+		- data->map->player.plane_pos.y * sin(-CAM_SPEED);
+	data->map->player.plane_pos.y = previous_cam_x * sin(-CAM_SPEED)
+		+ data->map->player.plane_pos.y * cos(-CAM_SPEED);
 }
 
 int	mouse_handler(int x, int y, t_data *data)
@@ -52,13 +54,13 @@ int	mouse_handler(int x, int y, t_data *data)
 	{
 		if (x > data->win_width / 2)
 		{
-			rot_right(data);
+			look_right_camera(data);
 			mlx_mouse_move(data->mlx, data->mlx_win,
 				data->win_width / 2, data->win_height / 2);
 		}
 		else if (x < data->win_width / 2)
 		{
-			rot_left(data);
+			look_left_camera(data);
 			mlx_mouse_move(data->mlx, data->mlx_win,
 				data->win_width / 2, data->win_height / 2);
 		}

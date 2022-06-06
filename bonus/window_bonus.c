@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 20:28:20 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/06 18:22:09 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,15 @@ int	close_redx(t_data *data)
 
 int	put_new_image_on_screen(t_data *data)
 {
-	data->tx.img = mlx_new_image(data->mlx, data->win_width, data->win_height);
-	if (!data->tx.img)
+	data->screen.img = mlx_new_image(data->mlx, data->win_width,
+			data->win_height);
+	if (!data->screen.img)
 		return (return_failure("Error\nInit display\n"));
-	data->tx.addr = mlx_get_data_addr(data->tx.img, &data->tx.bpp,
-			&data->tx.line, &data->tx.endian);
-	if (!data->tx.addr)
+	data->screen.addr = mlx_get_data_addr(data->screen.img, &data->screen.bpp,
+			&data->screen.line, &data->screen.endian);
+	if (!data->screen.addr)
 		return (return_failure("Error\nInit display\n"));
-	data->tx.status = 1;
+	data->screen.status = 1;
 	return (SUCCESS);
 }
 

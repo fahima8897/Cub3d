@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:24:10 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/01 19:27:32 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/06 18:58:12 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	get_player_dir(t_data *data)
 	return (data->map->player.p_dir);
 }
 
-t_coord	get_player_pos(t_data *data)
+t_pos	get_player_pos(t_data *data)
 {
 	int	i;
 	int	j;

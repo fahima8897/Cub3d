@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/02 22:43:56 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/06 20:27:16 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,14 @@
 # define WE 2
 # define EA 3
 
-typedef struct s_coord
+# define SPEED 0.1
+# define CAM_SPEED 0.05
+
+typedef struct s_pos
 {
 	double		x;
 	double		y;
-}				t_coord;
+}				t_pos;
 
 typedef struct s_img
 {
@@ -79,9 +82,9 @@ typedef struct s_gameplay
 typedef struct s_player
 {
 	char		p_dir;
-	t_coord		p_pos;
-	t_coord		dir_pos;
-	t_coord		plane_pos;
+	t_pos		p_pos;
+	t_pos		dir_pos;
+	t_pos		plane_pos;
 	t_gameplay	gamplay;
 }	t_player;
 
@@ -99,13 +102,13 @@ typedef struct s_map
 
 typedef struct s_ray
 {
-	t_coord		dir;
-	t_coord		map;
+	t_pos		dir;
+	t_pos		map;
 	int			mapx;
 	int			mapy;
-	t_coord		delta_dist;
-	t_coord		side_dist;
-	t_coord		cam;
+	t_pos		delta_dist;
+	t_pos		side_dist;
+	t_pos		cam;
 	int			hit;
 	int			stepx;
 	int			stepy;
@@ -125,7 +128,7 @@ typedef struct s_data
 	int			win_width;
 	t_map		*map;
 	t_map_info	*map_info;
-	t_img		tx;
+	t_img		screen;
 	t_ray		ray;
 	t_img		north;
 	t_img		south;
@@ -209,7 +212,7 @@ int			check_we(t_verif *check, char *tmp, t_data *data);
 int			check_ea(t_verif *check, char *tmp, t_data *data);
 
 	/*	utils_get_all_map_info.c	*/
-t_coord		get_player_pos(t_data *data);
+t_pos		get_player_pos(t_data *data);
 char		get_player_dir(t_data *data);
 t_map_info	*get_colors_cf(char **map, t_map_info *map_info);
 
@@ -257,10 +260,15 @@ void		west_east(t_data *data, char dir);
 void		init_player(t_data *data, int x, int y, char dir);
 
 	/* raycats.c */
-int			draw(t_data *data);
+int			put_image_on_screen(t_data *data);
+
+	/* raycaster_utils.c */
+void		get_rays_distance(t_data *data);
+void		player_touch_walls(t_data *data);
+void		get_walls_dist(t_data *data);
 
 	/* draw.c */
-void		put_in_display(t_data *data, int x);
+int			draw_on_screen(t_data *data, int x);
 
 	/* create_texture.c */
 int			create_textures_wall(t_data *data);

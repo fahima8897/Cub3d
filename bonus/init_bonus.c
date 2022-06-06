@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:38:08 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/02 22:46:50 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/06 17:05:55 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	init_img(t_data *data)
 {
-	data->tx.bpp = 0;
-	data->tx.height = 0;
-	data->tx.width = 0;
-	data->tx.endian = 0;
-	data->tx.line = 0;
-	data->tx.status = 0;
-	data->tx.img = NULL;
-	data->tx.addr = NULL;
+	data->screen.bpp = 0;
+	data->screen.height = 0;
+	data->screen.width = 0;
+	data->screen.endian = 0;
+	data->screen.line = 0;
+	data->screen.status = 0;
+	data->screen.img = NULL;
+	data->screen.addr = NULL;
 }
 
 void	init_ray(t_data *data)

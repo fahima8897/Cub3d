@@ -6,7 +6,7 @@
 #    By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 16:11:35 by fboumell          #+#    #+#              #
-#    Updated: 2022/06/02 22:40:43 by adaloui          ###   ########.fr        #
+#    Updated: 2022/06/06 19:00:06 by adaloui          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,6 +89,7 @@ SRCS_BONUS = bonus/main_bonus.c \
 		bonus/add_sound_bonus.c \
 		bonus/utils_check_walls_left_bonus.c \
 		bonus/utils_2_bonus.c \
+		bonus/raycaster_utils_bonus.c \
 
 SRCS	= mandatory/main.c \
 		mandatory/utils.c \
@@ -164,6 +165,7 @@ SRCS	= mandatory/main.c \
 		mandatory/first_step_parse.c \
 		mandatory/second_step_parse.c \
 		mandatory/draw_utils.c \
+		mandatory/raycaster_utils.c \
 
 OBJS = ${SRCS:.c=.o}
 BONUS_OBJ = ${SRCS_BONUS:.c=.o}

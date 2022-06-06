@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/07 11:26:46 by fboumell          #+#    #+#             */
-/*   Updated: 2022/05/15 14:24:22 by user42           ###   ########.fr       */
+/*   Updated: 2022/06/06 19:00:55 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,3 @@ char	*ft_strjoin_2(char *save, char *buf);
 char	*ft_strchr_2(char *save, int c);
 
 #endif
-
-/* mon .h*/
-/*
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
-# include "../cub3d.h"
-
-# define BUFFER_SIZE 1
-
-int		get_next_line(int fd, char **line);
-void	*ft_memmove_2(void *dst, void *src, int len);
-int     ft_strlen_2(char *s);
-char	*ft_strjoin_2(char *s1, char *s2);
-int		ft_strchr_2(char *s);
-char	*ft_get_line(char *str);
-char	*ft_get_char(char *str);
-
-#endif*/

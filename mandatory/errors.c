@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 17:38:16 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/02 21:30:27 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/06 20:15:20 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	return_failure(char *error_str)
 
 int	ret_free(char *error_str, char **tab)
 {
-	printf("\033[1;31m%s\n\033[0m", error_str);
+	if (error_str != NULL)
+		printf("\033[1;31m%s\n\033[0m", error_str);
 	free_tab(tab);
 	return (FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:39:58 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/01 19:57:13 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/06 17:05:55 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	free_loading_txt_failed(t_data *data, char **s_byspace)
 	if (data->mlx_win)
 	{
 		free_map_info(data->map_info, data);
-		if (data->tx.img != NULL)
-			mlx_destroy_image(data->mlx, data->tx.img);
+		if (data->screen.img != NULL)
+			mlx_destroy_image(data->mlx, data->screen.img);
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		mlx_destroy_display(data->mlx);
 		data->mlx_win = NULL;
@@ -87,8 +87,8 @@ void	free_data(t_data *data)
 		mlx_destroy_image(data->mlx, data->south.img);
 	if (data->north.img != NULL)
 		mlx_destroy_image(data->mlx, data->north.img);
-	if (data->tx.img != NULL)
-		mlx_destroy_image(data->mlx, data->tx.img);
+	if (data->screen.img != NULL)
+		mlx_destroy_image(data->mlx, data->screen.img);
 	if (data->map)
 		free_struct(data->map);
 }
