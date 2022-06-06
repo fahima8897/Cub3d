@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:59:29 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/06 19:24:37 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/06 21:31:47 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	release_keyboard(int key, t_data *data)
 	return (SUCCESS);
 }
 
-int	loop_raycast(t_data *data)
+int	create_rays(t_data *data)
 {
 	keyboard_gameplay(data);
 	put_image_on_screen(data);

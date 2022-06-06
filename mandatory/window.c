@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 13:53:47 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/06 18:27:47 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/06 21:31:47 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	init_window(t_data *data)
 
 void	loop(t_data *data)
 {
-	mlx_loop_hook(data->mlx, loop_raycast, data);
+	mlx_loop_hook(data->mlx, create_rays, data);
 	mlx_hook(data->mlx_win, 2, 1L << 0, &press_keyboard, data);
 	mlx_hook(data->mlx_win, 3, 1L << 1, &release_keyboard, data);
 	mlx_hook(data->mlx_win, 17, 0L, &close_redx, data);

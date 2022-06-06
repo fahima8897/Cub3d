@@ -6,7 +6,7 @@
 /*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:38:43 by fboumell          #+#    #+#             */
-/*   Updated: 2022/06/06 20:27:16 by adaloui          ###   ########.fr       */
+/*   Updated: 2022/06/06 21:31:47 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,7 +288,7 @@ int			look_right(t_data *data);
 	/* gameplay_utils.c	*/
 int			release_keyboard(int key, t_data *data);
 int			press_keyboard(int key, t_data *data);
-int			loop_raycast(t_data *data);
+int			create_rays(t_data *data);
 
 	/* first_step_parse.c */
 int			check_arguments(int ac, char *av);
