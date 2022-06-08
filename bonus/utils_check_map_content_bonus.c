@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_check_map_content_bonus.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fboumell <fboumell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaloui <adaloui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 18:52:25 by adaloui           #+#    #+#             */
-/*   Updated: 2022/06/03 16:06:18 by fboumell         ###   ########.fr       */
+/*   Updated: 2022/06/07 14:19:44 by adaloui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ int	check_forbidden_character(char **map)
 			if (map[i][j] != '1' && map[i][j] != '0'
 				&& map[i][j] != 'N' && map[i][j] != 'E'
 				&& map[i][j] != 'S' && map[i][j] != 'W'
-				&& map[i][j] != ' ' && map[i][j] != '\n')
+				&& map[i][j] != ' ' && map[i][j] != '\n'
+				&& map[i][j] != '\t' && map[i][j] != '\b'
+				&& map[i][j] != '\v' && map[i][j] != '\f'
+				&& map[i][j] != '\r')
 				return (FAILURE);
 			j++;
 		}
